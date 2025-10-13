@@ -4,24 +4,8 @@ import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 
 const HeroSection = ({ onGetProposal, onContactUs }) => {
-  // Variantes para os elementos flutuantes do fundo
-  const floatingVariants = {
-    animate: (custom) => ({
-      y: [0, -30, 0],
-      x: [0, custom.x, 0],
-      rotate: [0, custom.rotate, 0],
-      scale: [1, 1.1, 1],
-      transition: {
-        duration: custom.duration,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    })
-  };
-
-  // Variantes para animação de entrada dos textos
   const textVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 40 },
     visible: (custom) => ({
       opacity: 1,
       y: 0,
@@ -33,9 +17,8 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     })
   };
 
-  // Variantes para os botões
   const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 30 },
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
     visible: (custom) => ({
       opacity: 1,
       scale: 1,
@@ -48,7 +31,6 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     })
   };
 
-  // Variantes para os indicadores de confiança
   const indicatorVariants = {
     hidden: { opacity: 0, x: -20 },
     visible: (custom) => ({
@@ -63,71 +45,32 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-primary overflow-hidden">
-      {/* Background Pattern - Animado */}
-      <div className="absolute inset-0 opacity-10">
+    <section className="relative min-h-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
+      {/* 🔴 Gradiente vermelho à direita */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-transparent to-red-600 opacity-30" />
+
+      {/* 🌟 Partículas flutuantes */}
+      {[...Array(12)].map((_, i) => (
         <motion.div
-          className="absolute top-20 left-10 w-32 h-32 border-2 border-white rounded-full"
-          variants={floatingVariants}
-          animate="animate"
-          custom={{ x: 15, rotate: 360, duration: 8 }}
+          key={i}
+          className="absolute w-2 h-2 bg-white rounded-full"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`
+          }}
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.2, 0.5, 0.2],
+            scale: [1, 1.3, 1]
+          }}
+          transition={{
+            duration: 5 + Math.random() * 5,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+            ease: "easeInOut"
+          }}
         />
-        <motion.div
-          className="absolute top-40 right-20 w-24 h-24 border-2 border-white rounded-lg rotate-45"
-          variants={floatingVariants}
-          animate="animate"
-          custom={{ x: -20, rotate: -180, duration: 10 }}
-        />
-        <motion.div
-          className="absolute bottom-32 left-1/4 w-16 h-16 border-2 border-white rounded-full"
-          variants={floatingVariants}
-          animate="animate"
-          custom={{ x: 25, rotate: 180, duration: 7 }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-1/3 w-20 h-20 border-2 border-white rounded-lg"
-          variants={floatingVariants}
-          animate="animate"
-          custom={{ x: -15, rotate: 360, duration: 9 }}
-        />
-        
-        {/* Elementos adicionais flutuantes */}
-        <motion.div
-          className="absolute top-1/3 left-1/3 w-12 h-12 border border-white rounded-full"
-          variants={floatingVariants}
-          animate="animate"
-          custom={{ x: 10, rotate: -360, duration: 12 }}
-        />
-        <motion.div
-          className="absolute top-2/3 right-1/4 w-28 h-28 border border-white rounded-lg rotate-12"
-          variants={floatingVariants}
-          animate="animate"
-          custom={{ x: -25, rotate: 180, duration: 11 }}
-        />
-        
-        {/* Partículas flutuantes */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-white rounded-full"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0.2, 0.5, 0.2],
-              scale: [1, 1.5, 1]
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </div>
+      ))}
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -144,7 +87,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
               <span className="text-accent">Transforma</span>{' '}
               Negócios
             </motion.h1>
-            
+
             {/* Parágrafo */}
             <motion.p
               className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
@@ -176,7 +119,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
                   Gerar Proposta Personalizada
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 variants={buttonVariants}
                 initial="hidden"
