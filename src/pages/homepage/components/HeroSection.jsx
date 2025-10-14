@@ -1,9 +1,24 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'; // AnimatePresence é crucial para a transição de saída
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 
 const HeroSection = ({ onGetProposal, onContactUs }) => {
+  
+  // 1. Configuração da Animação de Palavras
+  const WORDS = ["Negócios", "Vidas", "Dados", "Informações"];
+  const INTERVAL_TIME = 4000; // 4 segundos
+
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % WORDS.length);
+    }, INTERVAL_TIME);
+
+    return () => clearInterval(interval);
+  }, [WORDS.length]);
+
   // Variantes para animação em cascata do texto
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,6 +44,33 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
       transition: {
         duration: 1,
         ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+  
+  // Variantes para a troca de palavra: fade-in de baixo e fade-out para cima
+  const wordVariants = {
+    initial: { 
+      y: 20, 
+      opacity: 0, 
+      filter: "blur(4px)" 
+    },
+    animate: { 
+      y: 0, 
+      opacity: 1, 
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    },
+    exit: { 
+      y: -20, 
+      opacity: 0, 
+      filter: "blur(4px)",
+      transition: {
+        duration: 0.4,
+        ease: "easeIn"
       }
     }
   };
@@ -121,7 +163,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#0C233F] overflow-hidden">
 
-      {/* 🌊 Ondas animadas de fundo */}
+      {/* 🌊 Ondas animadas de fundo e gradientes (Manteve-se o seu código) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div
           className="absolute -bottom-10 left-0 right-0 h-40 bg-gradient-to-r from-accent/20 via-purple-500/20 to-blue-500/20 blur-xl"
@@ -147,7 +189,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
         />
       </div>
 
-      {/* ✨ Partículas avançadas */}
+      {/* ✨ Partículas avançadas e Brilhos Especiais (Manteve-se o seu código) */}
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
@@ -165,7 +207,6 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
         />
       ))}
 
-      {/* 🔆 Brilhos especiais */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"
         animate={{
@@ -198,21 +239,36 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
           initial="hidden"
           animate="visible"
         >
-          {/* Título Principal com efeito mais discreto */}
+          {/* Título Principal com efeito de troca de palavra */}
           <div className="relative inline-block mb-6">
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight relative z-10"
               variants={textVariants}
             >
-              Tecnologia que{' '}
+              Uma tecnologia que{' '}
               <span className="text-accent">
-                Transforma
+                Protege
               </span>{' '}
-              Negócios
+              {/* 🔄 Animação da palavra */}
+              <AnimatePresence mode="wait"> 
+                <motion.span
+                  key={WORDS[currentWordIndex]}
+                  variants={wordVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="inline-block relative"
+                  style={{ minWidth: '200px' }} // Garante que o texto ao lado não "salte"
+                >
+                  <span className="text-white relative z-10">{WORDS[currentWordIndex]}</span>
+                  {/* Efeito sutil de background na palavra */}
+                  <span className="absolute inset-0 bg-white/10 rounded-xl blur-md" />
+                </motion.span>
+              </AnimatePresence>
             </motion.h1>
           </div>
 
-          {/* Parágrafo com animação suave */}
+          {/* Parágrafo e Botões (Manteve-se o seu código) */}
           <motion.p
             className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-light"
             variants={textVariants}
@@ -221,7 +277,6 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
             com confiabilidade corporativa para entregar soluções que geram resultados reais.
           </motion.p>
 
-          {/* Botões com efeitos magnéticos aprimorados */}
           <motion.div 
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
             variants={containerVariants}
@@ -243,7 +298,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
                   whileHover={{ transition: { duration: 0.5 } }}
                 />
-                Gerar Proposta Personalizada
+                Solicitar Proposta
               </Button>
             </motion.div>
 
@@ -268,7 +323,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
             </motion.div>
           </motion.div>
 
-          {/* Trust Indicators com hover effects */}
+          {/* Trust Indicators (Manteve-se o seu código) */}
           <motion.div 
             className="flex flex-wrap justify-center items-center gap-8 text-white/80"
             variants={containerVariants}
@@ -281,7 +336,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
             ].map((item, index) => (
               <motion.div
                 key={item.text}
-                className="flex items-center space-x-3 p-3 rounded-2xl bg-white/5 backdrop-blur-sm hover:bg-white/10 cursor-pointer transition-colors duration-300"
+                className="flex items-center space-x-3 p-3 rounded-2xl bg-white/5 backdrop-blur-sm hover:bg-white/10 cursor-default transition-colors duration-300"
                 variants={indicatorVariants}
                 custom={index}
                 whileHover="hover"
@@ -302,7 +357,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator aprimorado */}
+      {/* Scroll Indicator (Manteve-se o seu código) */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
         initial={{ opacity: 0, y: -20 }}

@@ -7,50 +7,57 @@ const ServicesGrid = ({ onServiceClick }) => {
   const services = [
     {
       id: 1,
-      title: "Desenvolvimento de Software",
-      description: "Soluções personalizadas com tecnologias modernas para impulsionar seu negócio digital.",
-      icon: "Code",
-      features: ["React & Node.js", "APIs RESTful", "Arquitetura Escalável", "Testes Automatizados"],
+      title: "Manutenção Preventiva",
+      description: "Executamos inspeções periódicas e ajustes técnicos para evitar falhas e manter os sistemas sempre operacionais.",
+      icon: "Settings",
+      features: ["Única", "Periódica"],
       color: "from-blue-500 to-blue-600"
     },
     {
       id: 2,
-      title: "Transformação Digital",
-      description: "Modernize seus processos e sistemas para aumentar eficiência e competitividade.",
-      icon: "Zap",
-      features: ["Automação de Processos", "Integração de Sistemas", "Cloud Migration", "Digital Strategy"],
+      title: "Manutenção Corretiva",
+      description: "Atuamos na identificação e reparo imediato de falhas, restaurando a funcionalidade dos sistemas com agilidade.",
+      icon: "Wrench",
+      features: ["Infraestrutura", "Equipamento", "Mão de obra"],
       color: "from-purple-500 to-purple-600"
     },
     {
       id: 3,
-      title: "Consultoria em TI",
-      description: "Expertise técnica para orientar suas decisões estratégicas de tecnologia.",
-      icon: "Users",
-      features: ["Arquitetura de Soluções", "Code Review", "Performance Optimization", "Security Audit"],
+      title: "Adequação de Sistema",
+      description: "Adaptamos e atualizamos sistemas existentes para atender às normas técnicas e às necessidades específicas do cliente.",
+      icon: "Sliders",
+      features: ["Infraestrutura", "Equipamento", "Mão de obra"],
       color: "from-green-500 to-green-600"
     },
     {
       id: 4,
-      title: "Infraestrutura Cloud",
-      description: "Migração e otimização de infraestrutura para ambientes cloud seguros e escaláveis.",
-      icon: "Cloud",
+      title: "Teste de Estanqueidade",
+      description: "Verificamos a vedação de tubulações e conexões para garantir que não haja vazamentos em sistemas pressurizados.",
+      icon: "Pipette",
       features: ["AWS & Azure", "DevOps & CI/CD", "Monitoramento 24/7", "Backup & Recovery"],
       color: "from-orange-500 to-orange-600"
     },
     {
       id: 5,
-      title: "Segurança Cibernética",
-      description: "Proteção completa dos seus dados e sistemas contra ameaças digitais.",
-      icon: "Shield",
+      title: "Teste de Ultrassom",
+      description: "Utilizamos tecnologia ultrassônica para detectar falhas internas em materiais e componentes sem causar danos.",
+      icon: "Waves",
       features: ["Penetration Testing", "LGPD Compliance", "Security Training", "Incident Response"],
       color: "from-red-500 to-red-600"
     },
     {
       id: 6,
-      title: "Análise de Dados",
-      description: "Transforme dados em insights estratégicos para tomada de decisões inteligentes.",
-      icon: "BarChart3",
+      title: "Teste Hidrostático",
+      description: "Realizamos ensaios com água pressurizada para avaliar a resistência e integridade de redes de combate a incêndio.",
+      icon: "Gauge",
       features: ["Business Intelligence", "Machine Learning", "Data Visualization", "Predictive Analytics"],
+      color: "from-indigo-500 to-indigo-600"
+    },
+    {
+      id: 7,
+      title: "Teste de Sirene",
+      description: "Inspecionamos e testamos os sistemas de alarme sonoro para assegurar sua eficácia em situações de emergência.",
+      icon: "Bell",
       color: "from-indigo-500 to-indigo-600"
     }
   ];
