@@ -24,7 +24,6 @@ const Header = ({ className = '' }) => {
     { name: 'Soluções', path: '#solutions', icon: 'Layers' },
     { name: 'Serviços', path: '#services', icon: 'Settings' },
     { name: 'Clientes', path: '#clientes', icon: 'Briefcase' },
-    { name: 'Solicitar Proposta', path: '/proposal-engine', icon: 'Calculator' }
   ];
 
   const handleNavigation = (path) => {
@@ -98,30 +97,6 @@ const Header = ({ className = '' }) => {
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => handleNavigation('/proposal-engine')}
-              iconName="Calculator"
-              iconPosition="left"
-              className="btn-magnetic"
-            >
-              Solicitar Proposta
-            </Button>
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => window.open('tel:+5511999999999', '_self')}
-              iconName="Phone"
-              iconPosition="left"
-              className="btn-magnetic bg-accent hover:bg-accent/90"
-            >
-              Fale Conosco
-            </Button>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -161,29 +136,6 @@ const Header = ({ className = '' }) => {
                 </button>
               ))}
             </nav>
-
-            {/* Mobile CTA Buttons */}
-            <div className="mt-4 pt-4 border-t border-border space-y-3">
-              <Button
-                variant="outline"
-                fullWidth
-                onClick={() => handleNavigation('/proposal-engine')}
-                iconName="Calculator"
-                iconPosition="left"
-              >
-                Solicitar Proposta
-              </Button>
-              <Button
-                variant="default"
-                fullWidth
-                onClick={() => window.open('tel:+5511999999999', '_self')}
-                iconName="Phone"
-                iconPosition="left"
-                className="bg-accent hover:bg-accent/90"
-              >
-                Fale Conosco
-              </Button>
-            </div>
           </div>
         </div>
       </div>
