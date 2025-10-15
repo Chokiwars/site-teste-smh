@@ -1,14 +1,14 @@
 # ANOTAÇÕES
 
-## |PRODUTOS|
-*Equipamento*
+### |PRODUTOS|
+***Equipamento***
 - Sirene
 - Detector
 - Central de Alarme
 - Cilindro
 - Acionador Manual
 
-*Material*
+***Material***
 - Bateria
 - Fonte
 - Filtro
@@ -17,11 +17,12 @@
 - Chave
 - Placa de sinalização
 
-## | SERVIÇOS |
-Teste de estanqueidade  
-Teste de ultrassom  
-Teste hidrostático  
-Teste de sirene  <br><br>
+### | SERVIÇOS |
+> Teste de estanqueidade  
+> Teste de ultrassom  
+> Teste hidrostático  
+> Teste de sirene  <br>
+
 Manutenção Preventiva
 - Única
 - Periódica  <br><br>
@@ -34,7 +35,21 @@ Adequação de sistema
 - Equipamento
 - Mão de obra  
 
-# Agradecimentos
-🎨Bia  
-🙏Eric  
-❤️Sabrina  
+# METAS
+***LOGIN***
+> Fazer página de login de cliente  
+> Fazer página de login de funcionários
+
+***FORMULÁRIO***  
+> Fazer página de formulário de pedidos de cliente  
+> Fazer página de formulário de pedidos de funcionários
+
+***AUTERAÇÕES (PÁGINA DE FORMULÁRIO - /FormularioPedidos)***  
+> Criar uma parte para descontos ou aumento dos lucros no Formulário de Pedidos.  
+> Criar um campo de texto para especificar (mais ainda) o produto.
+
+
+## Agradecimentos
+🎨Bia: `@Chokiwars`  
+🙏Eric: `@EricSouzaDosSantos`  
+❤️Sabrina: `@sabrinasavini`  
