@@ -1,33 +1,40 @@
 import React, { useState, useEffect } from "react";
 
 const produtosDisponiveis = [
+  // EQUIPAMENTOS
+  { id: "EQ001", descricao: "Sirene", preco: 120.0, estoque: true },
+  { id: "EQ002", descricao: "Detector", preco: 85.5, estoque: true },
+  { id: "EQ003", descricao: "Central de Alarme", preco: 450.0, estoque: true },
+  { id: "EQ004", descricao: "Cilindro", preco: 210.0, estoque: true },
+  { id: "EQ005", descricao: "Acionador Manual", preco: 130.0, estoque: true },
+
+  // MATERIAIS
+  { id: "2197", descricao: "Bateria Selada 12ah / 12v", preco: 500.0, estoque: true },
+  { id: "MT002", descricao: "Fonte", preco: 220.0, estoque: true },
+  { id: "MT003", descricao: "Filtro", preco: 75.0, estoque: true },
+  { id: "MT004", descricao: "Módulo", preco: 145.0, estoque: true },
+  { id: "MT005", descricao: "Válvula", preco: 90.0, estoque: true },
+  { id: "MT006", descricao: "Chave", preco: 40.0, estoque: true },
+  { id: "MT007", descricao: "Placa de sinalização", preco: 60.0, estoque: true },
+
+  // EXTRAS DO SEU CÓDIGO
   { id: "P0001", descricao: "Produto 33218938", preco: 48.708, estoque: true },
   { id: "P0002", descricao: "Produto 28371922", preco: 39.99, estoque: false },
   { id: "P0003", descricao: "Produto 29319320", preco: 90.315, estoque: true },
-  { id: "2197",  descricao: "Bateria Selada 12ah / 12v",       preco: 500.00,   estoque: true },
-  { id: "0001", descricao: "Mão de obra especializada para instalação dos equipamentos(*)", preco: 1500.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
-  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "0001",
+    descricao: "Mão de obra especializada para instalação dos equipamentos(*)",
+    preco: 1500.0,
+    estoque: true },
 ];
 
 function FormularioPedidos() {
   const [pedidos, setPedidos] = useState(() => {
-    // Carrega do localStorage, se existir
     const pedidosSalvos = localStorage.getItem("pedidos");
     return pedidosSalvos
       ? JSON.parse(pedidosSalvos)
       : [{ produto: produtosDisponiveis[0], quantidade: 1 }];
   });
 
-  // Salva automaticamente no localStorage quando mudar
   useEffect(() => {
     localStorage.setItem("pedidos", JSON.stringify(pedidos));
   }, [pedidos]);
@@ -56,14 +63,12 @@ function FormularioPedidos() {
     setPedidos(novosPedidos);
   };
 
-  // Só contabiliza produtos que estão em estoque
   const valorTotal = pedidos.reduce(
     (total, p) =>
       p.produto.estoque ? total + p.quantidade * p.produto.preco : total,
     0
   );
 
-  // Verifica se há algum produto sem estoque selecionado
   const temProdutoSemEstoque = pedidos.some((p) => !p.produto.estoque);
 
   const handleEnviar = () => {
@@ -71,17 +76,16 @@ function FormularioPedidos() {
       alert("Remova os produtos sem estoque antes de enviar o pedido!");
       return;
     }
-
-    // Salva no localStorage (reforço)
     localStorage.setItem("pedidos", JSON.stringify(pedidos));
-
     alert("Pedido enviado com sucesso!");
     console.log("Pedidos salvos:", pedidos);
   };
 
   return (
-    <div className="p-6 bg-gray-200 rounded-xl shadow-lg max-w-xl mx-auto">
-      <h2 className="text-lg font-bold mb-3 text-center">Formulário de Pedidos (Orçamento)</h2>
+    <div className="p-6 bg-gray-200 rounded-xl shadow-lg max-w-2xl mx-auto">
+      <h2 className="text-lg font-bold mb-3 text-center">
+        Formulário de Pedidos (Orçamento)
+      </h2>
 
       {pedidos.map((pedido, index) => (
         <div
@@ -94,11 +98,35 @@ function FormularioPedidos() {
               onChange={(e) => atualizarProduto(index, e.target.value)}
               className="p-2 rounded border w-full"
             >
-              {produtosDisponiveis.map((produto) => (
-                <option key={produto.id} value={produto.id}>
-                  {produto.id}
-                </option>
-              ))}
+              <optgroup label="Equipamentos">
+                {produtosDisponiveis
+                  .filter((p) => p.id.startsWith("EQ"))
+                  .map((produto) => (
+                    <option key={produto.id} value={produto.id}>
+                      {produto.descricao}
+                    </option>
+                  ))}
+              </optgroup>
+
+              <optgroup label="Materiais">
+                {produtosDisponiveis
+                  .filter((p) => p.id.startsWith("MT"))
+                  .map((produto) => (
+                    <option key={produto.id} value={produto.id}>
+                      {produto.descricao}
+                    </option>
+                  ))}
+              </optgroup>
+
+              <optgroup label="Outros">
+                {produtosDisponiveis
+                  .filter((p) => !p.id.startsWith("MT") && !p.id.startsWith("EQ"))
+                  .map((produto) => (
+                    <option key={produto.id} value={produto.id}>
+                      {produto.descricao || "Produto não especificado"}
+                    </option>
+                  ))}
+              </optgroup>
             </select>
           </div>
 
@@ -124,7 +152,6 @@ function FormularioPedidos() {
             </p>
           </div>
 
-          {/* Botão de remover fixado no canto */}
           <button
             onClick={() => removerPedido(index)}
             className="absolute right-2 top-2 bg-red-500 text-white rounded-full w-8 h-8 font-bold"
@@ -134,7 +161,6 @@ function FormularioPedidos() {
         </div>
       ))}
 
-      {/* Botão de adicionar um pedido */}
       <button
         onClick={adicionarPedido}
         className="bg-blue-800 hover:bg-blue-900 text-white px-3 py-1 rounded-lg mt-2"
