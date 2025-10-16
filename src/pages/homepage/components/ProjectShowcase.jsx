@@ -1,88 +1,98 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Icon from '../../../components/AppIcon';
-import Image from '../../../components/AppImage';
+import Icon from '../../../components/AppIcon'; 
 import Button from '../../../components/ui/Button';
 
 const ProjectShowcase = ({ onViewProject }) => {
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeMarket, setActiveMarket] = useState(0);
 
-  const projects = [
+
+  const BASE_IMAGE_URL = "https://images.unsplash.com/photo-1579766946019-21664e48227b?w=800&h=600&fit=crop";
+
+  const markets = [
     {
       id: 1,
-      title: "Sistema ERP Corporativo",
-      client: "TechCorp Brasil",
-      category: "Desenvolvimento de Software",
-      description: "Desenvolvimento de sistema ERP completo para gestão empresarial, integrando todos os departamentos em uma única plataforma.",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop",
-      technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
-      results: [
-        "40% redução no tempo de processos",
-        "R$ 2.5M economia anual",
-        "99.9% disponibilidade do sistema"
-      ],
-      duration: "8 meses",
-      status: "Concluído"
+      name: "Aeroportos",
+      description: "Sistemas de detecção e combate a incêndio de alta performance para a segurança de terminais, hangares e infraestruturas aeroportuárias.",
+      image: BASE_IMAGE_URL
     },
     {
       id: 2,
-      title: "Plataforma E-commerce B2B",
-      client: "MegaDistribuidora",
-      category: "Transformação Digital",
-      description: "Criação de plataforma e-commerce B2B com integração completa ao sistema de gestão existente.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      technologies: ["Next.js", "Stripe", "MongoDB", "Docker"],
-      results: [
-        "300% aumento nas vendas online",
-        "50% redução no tempo de pedidos",
-        "95% satisfação dos clientes"
-      ],
-      duration: "6 meses",
-      status: "Concluído"
+      name: "Centros Comerciais",
+      description: "Soluções robustas para a proteção de grandes complexos comerciais, garantindo a segurança de pessoas e patrimônio.",
+      image: "https://images.unsplash.com/photo-1542318047-9754c0032b49?w=800&h=600&fit=crop"
     },
     {
       id: 3,
-      title: "Migração Cloud AWS",
-      client: "FinanceGroup",
-      category: "Infraestrutura Cloud",
-      description: "Migração completa da infraestrutura on-premise para AWS com implementação de DevOps.",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
-      technologies: ["AWS", "Kubernetes", "Terraform", "Jenkins"],
-      results: [
-        "60% redução nos custos de TI",
-        "99.99% disponibilidade",
-        "Escalabilidade automática"
-      ],
-      duration: "4 meses",
-      status: "Concluído"
+      name: "Construção Civil",
+      description: "Proteção contra incêndio em novas edificações e reformas, com foco em sistemas que se integram à arquitetura moderna.",
+      image: "https://images.unsplash.com/photo-1497366367807-775731300977?w=800&h=600&fit=crop"
     },
     {
       id: 4,
-      title: "Sistema de BI e Analytics",
-      client: "RetailChain",
-      category: "Análise de Dados",
-      description: "Implementação de sistema de Business Intelligence para análise de dados de vendas e estoque.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      technologies: ["Power BI", "Python", "SQL Server", "Azure"],
-      results: [
-        "Insights em tempo real",
-        "25% otimização do estoque",
-        "Previsões 90% precisas"
-      ],
-      duration: "5 meses",
-      status: "Em Andamento"
+      name: "Salas Técnicas (CPDs)",
+      description: "Prevenção e combate a incêndio em ambientes críticos com equipamentos sensíveis, usando agentes limpos que não danificam os ativos.",
+      image: "https://images.unsplash.com/photo-1557088164-96860d2b706c?w=800&h=600&fit=crop"
+    },
+    {
+      id: 5,
+      name: "Data Centers",
+      description: "Sistemas avançados de proteção contra incêndio para a continuidade de operações em data centers hyperscale e colocation.",
+      image: "https://images.unsplash.com/photo-1542621307-e817c76766d3?w=800&h=600&fit=crop"
+    },
+    {
+      id: 6,
+      name: "Governo",
+      description: "Sistemas de segurança contra incêndio para edifícios públicos, arquivos e infraestruturas críticas governamentais.",
+      image: "https://images.unsplash.com/photo-1577907572620-80a22ed9b26e?w=800&h=600&fit=crop"
+    },
+    {
+      id: 7,
+      name: "Indústrias",
+      description: "Soluções personalizadas para ambientes industriais com riscos específicos, protegendo linhas de produção e maquinário.",
+      image: "https://images.unsplash.com/photo-1542621307-e817c76766d3?w=800&h=600&fit=crop"
+    },
+    {
+      id: 8,
+      name: "Logística",
+      description: "Proteção de centros de distribuição, armazéns e estoques, com sistemas que garantem a segurança das mercadorias.",
+      image: "https://images.unsplash.com/photo-1589988891487-1111624c9c3e?w=800&h=600&fit=crop"
+    },
+    {
+      id: 9,
+      name: "Mineração",
+      description: "Tecnologia de ponta para a proteção de equipamentos pesados e infraestruturas em operações de mineração, em ambientes desafiadores.",
+      image: "https://images.unsplash.com/photo-1596753066635-f09c7333550b?w=800&h=600&fit=crop"
+    },
+    {
+      id: 10,
+      name: "Portos",
+      description: "Segurança contra incêndio para instalações portuárias, terminais de carga e áreas de armazenamento de grande volume.",
+      image: "https://images.unsplash.com/photo-1547833019-38be98e826f5?w=800&h=600&fit=crop"
+    },
+    {
+      id: 11,
+      name: "Shopping Centers",
+      description: "Sistemas abrangentes para a proteção de shopping centers, assegurando a segurança dos visitantes e do complexo comercial.",
+      image: "https://images.unsplash.com/photo-1601633512211-1a3556f8f553?w=800&h=600&fit=crop"
+    },
+    {
+      id: 12,
+      name: "Telecomunicações",
+      description: "Soluções críticas para centrais de telecomunicações, protegendo equipamentos eletrônicos e garantindo a continuidade dos serviços.",
+      image: "https://images.unsplash.com/photo-1510511991475-7b5871f11a41?w=800&h=600&fit=crop"
     }
   ];
 
-  const nextProject = () => {
-    setActiveProject((prev) => (prev + 1) % projects?.length);
+  const nextMarket = () => {
+    setActiveMarket((prev) => (prev + 1) % markets?.length);
   };
 
-  const prevProject = () => {
-    setActiveProject((prev) => (prev - 1 + projects?.length) % projects?.length);
+  const prevMarket = () => {
+    setActiveMarket((prev) => (prev - 1 + markets?.length) % markets?.length);
   };
 
-  const currentProject = projects?.[activeProject];
+  const currentMarket = markets?.[activeMarket];
 
   return (
     <section className="py-20 bg-white">
@@ -95,121 +105,61 @@ const ProjectShowcase = ({ onViewProject }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Projetos em Destaque
+            Mercados Atendidos
           </h2>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Conheça alguns dos projetos que transformaram negócios e geraram 
-            resultados excepcionais para nossos clientes.
+          <p className="text-xl text-text-secondary max-w-4xl mx-auto">
+            A SMH SISTEMAS é especializada na Proteção Contra Incêndio de Ambientes de Missão Crítica e Riscos Especiais, 
+            atendendo a diversos setores.
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Main Project Display */}
+          {/* Main Market Display */}
           <div className="bg-surface rounded-3xl overflow-hidden shadow-medium">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              {/* Project Image */}
+              {/* Market Image */}
               <div className="relative h-96 lg:h-auto overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={currentProject?.id}
+                    key={currentMarket?.id}
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.5 }}
                     className="h-full"
                   >
-                    <Image
-                      src={currentProject?.image}
-                      alt={currentProject?.title}
+                    {/* ⚠️ Alteração: Usando a tag <img> nativa em vez do componente Image customizado */}
+                    <img
+                      src={currentMarket?.image}
+                      alt={currentMarket?.name}
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
                 </AnimatePresence>
                 
-                {/* Status Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    currentProject?.status === 'Concluído' 
-                      ? 'bg-green-100 text-green-800' :'bg-blue-100 text-blue-800'
-                  }`}>
-                    {currentProject?.status}
-                  </span>
-                </div>
+                {/* Removido: Status Badge, pois não se aplica a Mercados */}
               </div>
 
-              {/* Project Details */}
+              {/* Market Details */}
               <div className="p-8 lg:p-12 flex flex-col justify-center">
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={currentProject?.id}
+                    key={currentMarket?.id}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="mb-4">
-                      <span className="text-accent font-semibold text-sm uppercase tracking-wide">
-                        {currentProject?.category}
-                      </span>
-                    </div>
-                    
                     <h3 className="text-3xl font-bold text-primary mb-4">
-                      {currentProject?.title}
+                      {currentMarket?.name}
                     </h3>
                     
                     <p className="text-text-secondary mb-6 leading-relaxed">
-                      {currentProject?.description}
+                      {currentMarket?.description}
                     </p>
+                    
+                    {/* Removidos todos os detalhes do projeto que não são mais relevantes */}
 
-                    {/* Client & Duration */}
-                    <div className="flex flex-wrap gap-6 mb-6 text-sm">
-                      <div className="flex items-center space-x-2">
-                        <Icon name="Building" size={16} className="text-accent" />
-                        <span className="font-medium">Cliente: {currentProject?.client}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Icon name="Clock" size={16} className="text-accent" />
-                        <span className="font-medium">Duração: {currentProject?.duration}</span>
-                      </div>
-                    </div>
-
-                    {/* Technologies */}
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-foreground mb-3">Tecnologias:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {currentProject?.technologies?.map((tech, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Results */}
-                    <div className="mb-8">
-                      <h4 className="font-semibold text-foreground mb-3">Resultados:</h4>
-                      <ul className="space-y-2">
-                        {currentProject?.results?.map((result, index) => (
-                          <li key={index} className="flex items-center text-sm">
-                            <Icon name="Check" size={16} className="text-green-500 mr-2 flex-shrink-0" />
-                            {result}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <Button
-                      variant="default"
-                      onClick={() => onViewProject(currentProject)}
-                      iconName="ExternalLink"
-                      iconPosition="right"
-                      className="bg-accent hover:bg-accent/90 btn-magnetic"
-                    >
-                      Ver Detalhes do Projeto
-                    </Button>
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -219,20 +169,20 @@ const ProjectShowcase = ({ onViewProject }) => {
           {/* Navigation Controls */}
           <div className="flex justify-center items-center mt-8 space-x-4">
             <button
-              onClick={prevProject}
+              onClick={prevMarket}
               className="w-12 h-12 bg-white shadow-medium rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300 hover:scale-110"
             >
               <Icon name="ChevronLeft" size={20} />
             </button>
 
-            {/* Project Indicators */}
+            {/* Market Indicators */}
             <div className="flex space-x-2">
-              {projects?.map((_, index) => (
+              {markets?.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveProject(index)}
+                  onClick={() => setActiveMarket(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === activeProject 
+                    index === activeMarket 
                       ? 'bg-accent scale-125' :'bg-gray-300 hover:bg-gray-400'
                   }`}
                 />
@@ -240,7 +190,7 @@ const ProjectShowcase = ({ onViewProject }) => {
             </div>
 
             <button
-              onClick={nextProject}
+              onClick={nextMarket}
               className="w-12 h-12 bg-white shadow-medium rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300 hover:scale-110"
             >
               <Icon name="ChevronRight" size={20} />
@@ -257,17 +207,17 @@ const ProjectShowcase = ({ onViewProject }) => {
           className="text-center mt-16"
         >
           <p className="text-lg text-text-secondary mb-6">
-            Quer ver seu projeto aqui? Vamos conversar sobre suas necessidades.
+            Não encontrou seu setor? Converse conosco sobre uma solução personalizada.
           </p>
           <Button
             variant="outline"
             size="lg"
-            onClick={() => onViewProject({ title: 'Novo Projeto' })}
-            iconName="Plus"
+            onClick={() => onViewProject({ title: 'Novo Projeto' })} 
+            iconName="MessageSquare" 
             iconPosition="left"
             className="px-8 py-4 btn-magnetic border-accent text-accent hover:bg-accent hover:text-white"
           >
-            Iniciar Novo Projeto
+            Fale Conosco
           </Button>
         </motion.div>
       </div>

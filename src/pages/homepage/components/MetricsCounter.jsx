@@ -11,10 +11,10 @@ const MetricsCounter = () => {
   });
 
   const finalValues = {
-    clients: 500,
+    clients: 1000,
     projects: 1200,
-    satisfaction: 98,
-    experience: 15
+    satisfaction: 100,
+    experience: 30
   };
 
   const metrics = [

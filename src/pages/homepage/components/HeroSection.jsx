@@ -5,9 +5,9 @@ import Icon from '../../../components/AppIcon';
 
 const HeroSection = ({ onGetProposal, onContactUs }) => {
   
-  // 1. Configuração da Animação de Palavras
+  //Animação de Palavras
   const WORDS = ["Negócios", "Vidas", "Dados", "Informações"];
-  const INTERVAL_TIME = 4000; // 4 segundos
+  const INTERVAL_TIME = 3000;
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
@@ -48,7 +48,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     }
   };
   
-  // Variantes para a troca de palavra: fade-in de baixo e fade-out para cima
+
   const wordVariants = {
     initial: { 
       y: 20, 
@@ -75,7 +75,6 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     }
   };
 
-  // Variantes para botões com efeito magnético aprimorado
   const buttonVariants = {
     hidden: { 
       opacity: 0, 
@@ -103,7 +102,6 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     }
   };
 
-  // Variantes para os indicadores de confiança
   const indicatorVariants = {
     hidden: { 
       opacity: 0, 
@@ -129,7 +127,6 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     }
   };
 
-  // Variantes para partículas avançadas
   const particleVariants = {
     float: (custom) => ({
       y: [0, -custom * 10 - 20, 0],
@@ -145,7 +142,6 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     })
   };
 
-  // Variantes para onda de fundo
   const waveVariants = {
     animate: {
       x: ["0%", "-100%"],
@@ -163,7 +159,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#0C233F] overflow-hidden">
 
-      {/* 🌊 Ondas animadas de fundo e gradientes (Manteve-se o seu código) */}
+      {/* Ondas animadas de fundo e gradientes*/}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div
           className="absolute -bottom-10 left-0 right-0 h-40 bg-gradient-to-r from-accent/20 via-purple-500/20 to-blue-500/20 blur-xl"
@@ -189,7 +185,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
         />
       </div>
 
-      {/* ✨ Partículas avançadas e Brilhos Especiais (Manteve-se o seu código) */}
+      {/* Partículas avançadas e Brilhos Especiais */}
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
@@ -249,7 +245,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
               <span className="text-accent">
                 Protege
               </span>{' '}
-              {/* 🔄 Animação da palavra */}
+              {/*Animação da palavra */}
               <AnimatePresence mode="wait"> 
                 <motion.span
                   key={WORDS[currentWordIndex]}
@@ -268,7 +264,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
             </motion.h1>
           </div>
 
-          {/* Parágrafo e Botões (Manteve-se o seu código) */}
+          {/* Parágrafo e Botões*/}
           <motion.p
             className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-light"
             variants={textVariants}
@@ -330,9 +326,9 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
           >
             {[
               { icon: 'Shield', text: '100% Seguro' },
-              { icon: 'Clock', text: 'Resposta em 24h' },
+              { icon: 'Zap', text: 'Resposta rápida' },
               { icon: 'Award', text: 'Certificado ISO' },
-              { icon: 'Users', text: '500+ Clientes' }
+              { icon: 'Users', text: '1000+ Clientes' }
             ].map((item, index) => (
               <motion.div
                 key={item.text}

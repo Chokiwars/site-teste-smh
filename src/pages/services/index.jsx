@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Wrench, Sliders, Pipette, Waves, Gauge, Bell, Check, ArrowRight, Sparkles, X } from 'lucide-react';
-
-// --- Utilitários de Componentes (simulando os imports externos) ---
+import {
+  Settings,
+  Wrench,
+  Sliders,
+  Pipette,
+  Waves,
+  Gauge,
+  Bell,
+  Check,
+  ArrowRight,
+  Sparkles,
+  X
+} from 'lucide-react';
 
 const iconMap = {
   Settings, Wrench, Sliders, Pipette, Waves, Gauge, Bell, Check, ArrowRight, Sparkles, X
@@ -15,42 +25,29 @@ const Icon = ({ name, size = 24, className = "" }) => {
 };
 
 const Button = ({ children, variant = 'default', size = 'md', onClick, iconName, iconPosition = 'right', className = "" }) => {
-  // Cores personalizadas: accent: #29314A (nova cor primária) / primary: #333
   let baseClasses = "font-medium rounded-xl transition duration-300 flex items-center justify-center space-x-2 shadow-lg";
 
-  // Adaptação de variante
   if (variant === 'default') {
-    // COR: Atualizado para a nova cor no interior do componente
     baseClasses += " bg-[#29314A] text-white hover:bg-[#29314A]/90 border border-transparent";
   } else if (variant === 'outline') {
-    // COR: Atualizado para a nova cor no interior do componente
     baseClasses += " bg-white text-[#29314A] border border-[#29314A] hover:bg-[#29314A] hover:text-white";
   }
 
-  // Adaptação de tamanho
-  if (size === 'sm') {
-    baseClasses += " px-3 py-1.5 text-sm";
-  } else if (size === 'md') {
-    baseClasses += " px-4 py-2";
-  } else if (size === 'lg') {
-    baseClasses += " px-6 py-3 text-lg";
-  }
+  if (size === 'sm') baseClasses += " px-3 py-1.5 text-sm";
+  else if (size === 'md') baseClasses += " px-4 py-2";
+  else if (size === 'lg') baseClasses += " px-6 py-3 text-lg";
 
   const iconComponent = iconName ? <Icon name={iconName} size={20} /> : null;
 
   return (
     <button onClick={onClick} className={`${baseClasses} ${className}`}>
       {iconName && iconPosition === 'left' && iconComponent}
-      {/* CORREÇÃO CRÍTICA: Lógica de renderização de children simplificada para evitar crash ao acessar .length em nós que não são strings (como o botão de fechar). */}
-      {children ? (
-        typeof children === 'string' ? <span>{children}</span> : children
-      ) : null}
+      {children && (typeof children === 'string' ? <span>{children}</span> : children)}
       {iconName && iconPosition === 'right' && iconComponent}
     </button>
   );
 };
 
-// --- Estrutura de Dados do Grid de Serviços ---
 const servicesData = [
   {
     id: 1,
@@ -110,133 +107,106 @@ const servicesData = [
   }
 ];
 
-// --- Componente Principal (que incorpora a ServicesGrid e a lógica da ServicesPage) ---
-
 const App = () => {
   const [selectedService, setSelectedService] = useState(null);
 
-  // Função para simular a navegação (mostrar o detalhe do serviço)
   const handleServiceClick = (service) => {
     setSelectedService(service);
-    // Usa setTimeout para garantir que a rolagem ocorra após a renderização do modal
     setTimeout(() => window.scrollTo(0, 0), 0);
   };
 
-  // Renderiza o Modal/Página de Detalhes
   if (selectedService) {
-    // Esta é a simulação da "outra página"
     return (
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="min-h-screen bg-gray-50 p-6 md:p-12"
       >
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8 lg:p-12 mt-10 border-t-4 border-[#29314A]"> 
-          <div className="flex justify-between items-start mb-8">
-            <h1 className="text-4xl font-extrabold text-[#333] break-words max-w-[80%]">
-              {selectedService.title}
-            </h1>
+        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8 lg:p-12 mt-10 border-t-4 border-[#29314A]">
+          {/* Header moderno e limpo */}
+          <div className="flex justify-between items-center mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-[#29314A] flex items-center justify-center">
+                <Icon name={selectedService.icon} size={22} className="text-white" />
+              </div>
+              <h1 className="text-3xl font-extrabold text-[#333]">
+                {selectedService.title}
+              </h1>
+            </div>
+
             <Button
               variant="outline"
               onClick={() => setSelectedService(null)}
               iconName="X"
-              className="p-3 w-auto h-auto rounded-full text-gray-500 hover:text-white hover:bg-red-500 border-none"
-            >
-              {/* Botão de fechar */}
-            </Button>
+              className="p-3 rounded-full text-gray-500 hover:text-white hover:bg-red-500 border-none"
+            />
           </div>
 
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-600 mb-8 leading-relaxed">
             {selectedService.description}
           </p>
 
-          {/* CORREÇÃO: Removida a classe 'shadow-xl' para que o bloco com o ícone gigante pareça estático e não um botão. */}
-          <div className={`w-full h-40 rounded-xl bg-gradient-to-r ${selectedService.color} flex items-center justify-center mb-10`}>
-            <Icon name={selectedService.icon} size={64} className="text-white opacity-90" />
+          {/* Seção de benefícios reformulada */}
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-10">
+            <h2 className="text-xl font-semibold text-[#29314A] mb-4">
+              Benefícios e Detalhes
+            </h2>
+            <ul className="space-y-3">
+              {selectedService.features?.map((feature, idx) => (
+                <li key={idx} className="flex items-start text-gray-700 text-base">
+                  <Icon name="Check" size={18} className="text-green-500 mr-2 mt-0.5" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <h2 className="text-2xl font-bold text-[#333] mb-4 border-b pb-2">Detalhes e Benefícios</h2>
-          <ul className="space-y-3 list-disc pl-6">
-            {selectedService.features && selectedService.features.map((feature, idx) => (
-              <li key={idx} className="flex items-start text-lg text-gray-800">
-                <Icon name="Check" size={20} className="text-green-500 mr-3 flex-shrink-0 mt-1" />
-                {feature}
-              </li>
-            ))}
-          </ul>
-          
-          <div className="mt-12 text-center">
-            {/* O botão de Orçamento foi mantido como colorido (variant="default") e com ícone, seguindo a última versão fornecida por você. */}
+          <div className="text-center">
             <Button
               variant="default"
               size="lg"
-              // Usando console.log em vez de alert()
-              onClick={() => console.log(`Ação: Iniciar Contato sobre ${selectedService.title}`)}
+              onClick={() =>
+                console.log(`Solicitar orçamento: ${selectedService.title}`)
+              }
               iconName="Sparkles"
               iconPosition="left"
               className="bg-[#29314A] hover:bg-[#29314A]/90 px-8 py-4"
             >
-              Solicitar Orçamento para {selectedService.title}
+              Solicitar Orçamento
             </Button>
-            <p className="mt-4 text-sm text-gray-500">
-              (Simulação: Em uma aplicação real, isso abriria um formulário de contato.)
-            </p>
-          </div>
 
+          </div>
         </div>
       </motion.div>
     );
   }
 
-  // Renderiza o Grid de Serviços (ServicesGrid original)
+  // Grid original dos serviços
   return (
     <div className="min-h-screen bg-gray-50">
-      
-      {/* Cabeçalho da ServicesPage original */}
-      <div className="pt-32 px-6 max-w-7xl mx-auto text-center"> 
-        {/* Título animado */}
-        <motion.h1 
+      <div className="pt-32 px-6 max-w-7xl mx-auto text-center">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8 }}
           className="text-4xl font-extrabold text-[#333] mb-2"
         >
           Conheça nossos serviços
         </motion.h1>
-        
-        {/* Descrição animada com delay - ESPAÇAMENTO REDUZIDO DE mb-12 PARA mb-8 */}
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="text-gray-600 text-xl max-w-3xl mx-auto mb-8"
         >
-          Descubra como a SMH Sistemas pode impulsionar sua operação com tecnologia de alto nível
+          Descubra como a SMH Sistemas pode impulsionar sua operação com tecnologia de alto nível.
         </motion.p>
       </div>
 
-      {/* Conteúdo da ServicesGrid */}
       <section className="py-10 bg-gray-50">
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
-          
-          {/* Título escondido */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-[#333] mb-6 hidden">
-              Nossos Serviços
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto hidden">
-              Oferecemos soluções tecnológicas completas para impulsionar sua transformação digital.
-            </p>
-          </motion.div>
-
-          {/* O Grid de Serviços (aqui é a área de interesse para colunas e gap) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicesData.map((service, index) => (
               <motion.div
@@ -245,12 +215,12 @@ const App = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group"
               >
                 <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col border border-gray-100">
-                  {/* Icon Header */}
                   <div className="mb-6">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div
+                      className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    >
                       <Icon name={service.icon} size={32} className="text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-[#333] mb-3 group-hover:text-[#29314A] transition-colors duration-300">
@@ -261,20 +231,24 @@ const App = () => {
                     </p>
                   </div>
 
-                  {/* Features List */}
                   <div className="flex-grow mb-6 pt-4 border-t border-gray-100">
-                    <h4 className='text-sm font-semibold text-gray-500 mb-2'>Principais Focos:</h4>
+                    <h4 className="text-sm font-semibold text-gray-500 mb-2">
+                      Principais Focos:
+                    </h4>
                     <ul className="space-y-2">
                       {service.features?.map((feature, idx) => (
                         <li key={idx} className="flex items-center text-sm text-gray-800">
-                          <Icon name="Check" size={16} className="text-green-500 mr-2 flex-shrink-0" />
+                          <Icon
+                            name="Check"
+                            size={16}
+                            className="text-green-500 mr-2 flex-shrink-0"
+                          />
                           {feature}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* CTA Button */}
                   <Button
                     variant="outline"
                     onClick={() => handleServiceClick(service)}
@@ -288,29 +262,6 @@ const App = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: servicesData.length * 0.1 }}
-            viewport={{ once: true }}
-            className="text-center mt-20 p-10 bg-white rounded-2xl shadow-inner border border-gray-100"
-          >
-            <p className="text-xl text-gray-600 mb-6 font-semibold">
-              Não encontrou exatamente o que precisa? Criamos soluções personalizadas para atender à sua demanda específica.
-            </p>
-            <Button
-              variant="default"
-              size="lg"
-              onClick={() => handleServiceClick({ title: 'Solicitação Personalizada', description: 'Entre em contato para discutirmos suas necessidades exclusivas.' })}
-              iconName="Sparkles"
-              iconPosition="left"
-              className="bg-[#29314A] hover:bg-[#29314A]/90 px-8 py-4 text-lg"
-            >
-              Solicitar Solução Personalizada
-            </Button>
-          </motion.div>
         </div>
       </section>
     </div>

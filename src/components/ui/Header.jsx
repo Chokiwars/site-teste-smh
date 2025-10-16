@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
+import { path } from 'd3';
 
 const Header = ({ className = '' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -24,6 +25,8 @@ const Header = ({ className = '' }) => {
     { name: 'Soluções', path: '#solutions', icon: 'Layers' },
     { name: 'Serviços', path: '/services', icon: 'Settings' },
     { name: 'Clientes', path: '#clientes', icon: 'Briefcase' },
+    { name: 'FormularioPedidos', path: '/formulario-pedidos', icon: 'Home'},
+    { name: 'Login', path: '/login', icon: 'Users'}
   ];
 
   const handleNavigation = (path) => {
@@ -77,7 +80,7 @@ const Header = ({ className = '' }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navigationItems.slice(0, 5).map((item) => (
+            {navigationItems.slice(0, 7).map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNavigation(item.path)}

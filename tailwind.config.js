@@ -6,7 +6,10 @@ export default {
     './components/**/*.{js,jsx}',
     './app/**/*.{js,jsx}',
     './src/**/*.{js,jsx}',
+    './index.html', 
+    './src/**/*.{js,ts,jsx,tsx}'
   ],
+
   prefix: "",
   theme: {
     container: {
