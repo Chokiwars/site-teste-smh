@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./FundoAnimado.css"; // Fundo animado
 
 // Adicionei imagens fictícias para os produtos (substitua pelos links reais)
 const produtosDisponiveis = [
