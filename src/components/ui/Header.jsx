@@ -24,7 +24,7 @@ const Header = ({ className = '' }) => {
     { name: 'Soluções', path: '#solutions', icon: 'Layers' },
     { name: 'Serviços', path: '#services', icon: 'Settings' },
     { name: 'Clientes', path: '#clientes', icon: 'Briefcase' },
-    { name: 'FormularioPedidos', path: '/formulario-pedidos', icon: 'Home'},
+    { name: 'Formulario de Pedidos', path: '/formulario-pedidos', icon: 'FileText'},
   ];
 
   const handleNavigation = (path) => {
