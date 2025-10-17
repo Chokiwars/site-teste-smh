@@ -105,7 +105,7 @@ function FormularioPedidos() {
         style={{ borderTop: "6px solid #202e3fff" }}
       >
         <h2 className="text-lg font-bold mb-3 text-center text-[#0b1e36]">
-          Formulário de Pedidos (Orçamento)
+          Formulário de Pedidos
         </h2>
 
         {pedidos.map((pedido, index) => (
