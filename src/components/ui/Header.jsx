@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
+import { path } from 'd3';
+import Logo from '@/assets/images/smh_sistemas_logo.jpg';
+
 
 const Header = ({ className = '' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,10 +25,11 @@ const Header = ({ className = '' }) => {
     { name: 'Início', path: '/homepage', icon: 'Home' },
     { name: 'Sobre Nós', path: '#about', icon: 'Users' },
     { name: 'Soluções', path: '#solutions', icon: 'Layers' },
-    { name: 'Serviços', path: '#services', icon: 'Settings' },
-    { name: 'Clientes', path: '#clientes', icon: 'Briefcase' },
+    { name: 'Serviços', path: '/services', icon: 'Settings' },
+    { name: 'Clientes', path: '/clientes', icon: 'Briefcase' },
     { name: 'FormularioPedidosFuncionarios', path: '/formulario-pedidos-funcionarios', icon: 'Home'},
     { name: 'FormularioPedidosClientes', path: '/formulario-pedidos-clientes', icon: 'Home'},
+    { name: 'Login', path: '/login', icon: 'Users'}
   ];
 
   const handleNavigation = (path) => {
@@ -56,26 +60,14 @@ const Header = ({ className = '' }) => {
       <div className="w-full">
         <div className="flex items-center justify-between h-16 px-6 lg:px-8">
           {/* Logo */}
-          <div
-            className="flex items-center cursor-pointer group"
-            onClick={() => handleNavigation('/homepage')}
-          >
-            <div className="flex items-center space-x-3">
-              <div className="relative">
-                <div className="w-10 h-10 bg-gradient-brand rounded-lg flex items-center justify-center shadow-subtle group-hover:shadow-medium transition-all duration-300">
-                  <span className="text-white font-bold text-lg">S</span>
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">H</span>
-                </div>
-              </div>
-              <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                  SMH Sistemas
-                </h1>
-              </div>
-            </div>
-          </div>
+          
+<div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
+    <img
+        src={Logo}
+        alt="Logo SMH Sistemas"
+        className="w-full h-full object-contain rounded-xl shadow-md ring-1 ring-border group-hover:ring-primary transition-all duration-300"
+    />
+</div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
