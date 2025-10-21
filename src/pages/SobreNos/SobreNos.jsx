@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import "../FundoAnimado.css"; // ← Import do fundo animado
 
 // Imagens/ícones ilustrativos
 const imagens = {
