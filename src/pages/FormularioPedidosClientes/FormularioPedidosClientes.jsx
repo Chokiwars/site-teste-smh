@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../FundoAnimado.css"; // ← Import do fundo animado
 
 const produtosDisponiveis = [
   { id: "EQ001", descricao: "Sirene", preco: 120.0, estoque: true, img: "https://via.placeholder.com/100?text=Sirene" },
@@ -39,9 +38,11 @@ function FormularioPedidosCliente() {
     const novosPedidos = [...pedidos];
     novosPedidos[index].produto = produto;
     setPedidos(novosPedidos);
+
     const novosAbertos = [...abertos];
     novosAbertos[index] = false;
     setAbertos(novosAbertos);
+
     const novosFiltros = [...filtros];
     novosFiltros[index] = "";
     setFiltros(novosFiltros);
@@ -51,6 +52,7 @@ function FormularioPedidosCliente() {
     const novosFiltros = [...filtros];
     novosFiltros[index] = valor;
     setFiltros(novosFiltros);
+
     const novosAbertos = [...abertos];
     novosAbertos[index] = true;
     setAbertos(novosAbertos);
@@ -82,7 +84,7 @@ function FormularioPedidosCliente() {
   }, []);
 
   return (
-    <div className="animated-bg min-h-screen flex justify-center items-start pt-20 pb-10">
+    <div className="min-h-screen flex justify-center items-start pt-20 pb-10 bg-white">
       <div
         ref={fadeRef}
         className="fade-in p-8 bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-auto opacity-0 translate-y-5 transition-all duration-700 border-t-[6px] border-[#0b1e36]"
@@ -99,7 +101,7 @@ function FormularioPedidosCliente() {
           return (
             <div
               key={index}
-              className="relative grid grid-cols-1 md:grid-cols-4 gap-4 items-center mb-6 p-5 rounded-xl border border-gray-200 shadow-md bg-gray-50 hover:shadow-xl transition-all duration-300"
+              className="relative grid grid-cols-1 md:grid-cols-4 gap-4 items-center mb-6 p-5 rounded-xl border border-gray-200 shadow-md transition-all duration-300"
             >
               <div className="flex justify-center items-center">
                 {pedido.produto ? (

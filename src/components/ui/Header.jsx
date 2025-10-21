@@ -25,9 +25,9 @@ const Header = ({ className = '' }) => {
     { name: 'Soluções', path: '#solutions', icon: 'Layers' },
     { name: 'Serviços', path: '/services', icon: 'Settings' },
     { name: 'Clientes', path: '/clientes', icon: 'Briefcase' },
-    { name: 'Formulario de Funcionarios', path: '/formulario-pedidos-funcionarios', icon: 'Home' },
-    { name: 'Formulario de Clientes', path: '/formulario-pedidos-clientes', icon: 'Home' },
-    { name: 'Login', path: '/login', icon: 'User' }
+    { name: 'Formulario', path: '/formulario-pedidos-clientes', icon: 'Home'},
+    { name: 'Cadastro', path: '/cadastro-clientes', icon: 'Users'},
+    { name: 'Login', path: '/login-clientes', icon: 'User'},
   ];
 
   const handleNavigation = (path) => {

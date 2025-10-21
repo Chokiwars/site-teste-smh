@@ -44,9 +44,9 @@ Adequação de sistema
 ***
 ***LOGIN***
 > Fazer página de login de cliente  
-> Fazer página pós login de cliente (home)  
+> Fazer página pós login de cliente (dashboard)  
 > Fazer página de login de funcionários  
-> Fazer página pós login de funcionários (home)   
+> Fazer página pós login de funcionários (dashboard)   
 ***
 ***FORMULÁRIO***  
 > Fazer página de formulário de pedidos de cliente   
