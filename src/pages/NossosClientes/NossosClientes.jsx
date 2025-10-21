@@ -161,7 +161,7 @@ export default function SMHClientsCarousel() {
       { id: 30, name: 'Furnas', logoUrl: 'https://images.seeklogo.com/logo-png/23/1/furnas-logo-png_seeklogo-237269.png' },
       { id: 26, name: 'ExxonMobil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/18/Exxon_Mobil_Logo.svg' },
     ],
-    Outros: [
+    Saúde: [
       { id: 1, name: 'Accumed Glicomed', logoUrl: 'https://www.smh.com.br/wp-content/uploads/2021/03/accumed.png' },
       { id: 27, name: 'Farmácias São João', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Logotipo_Farm%C3%A1cias_S%C3%A3o_Jo%C3%A3o.jpg' },
       { id: 39, name: 'Iron BR', logoUrl: 'https://ironbr.com.br/wp-content/uploads/2019/08/div_center-branco.png' },
