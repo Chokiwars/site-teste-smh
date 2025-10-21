@@ -68,7 +68,7 @@ const CTASection = ({ onGetProposal, onContactUs }) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-16 sm:mt-20" // aumentei a margem superior para afastar dos cards
+          className="text-center mt-16 sm:mt-20"
         >
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center mb-8">
             <Button

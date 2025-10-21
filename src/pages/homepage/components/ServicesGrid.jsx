@@ -1,61 +1,143 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "../../../components/ui/Button";
+import ExtintorImage from "@/assets/images/extintores-smh.png";
+
+// --- NOVAS VARIANTES DE ANIMAÇÃO ---
+
+// 1. Container principal que orquestra os filhos (imagem e bloco de texto)
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.25, // Pequeno atraso entre a imagem e o início do texto
+    },
+  },
+};
+
+// 2. Variante para a IMAGEM (mais dinâmica)
+const imageVariants = {
+  hidden: { x: -200, opacity: 0, scale: 0.8, rotate: -5 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80, // Um pouco mais "rígido"
+      damping: 12,   // Menos amortecimento para um leve "bounce"
+      duration: 1.2,
+    },
+  },
+};
+
+// 3. Container para o TEXTO (para orquestrar os parágrafos)
+const textContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15, // Atraso entre cada parágrafo
+    },
+  },
+};
+
+// 4. Variante para cada PARÁGRAFO individualmente
+const paragraphVariants = {
+  hidden: { y: 40, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+// 5. Variante para o BOTÃO (com escala)
+const buttonVariants = {
+  hidden: { opacity: 0, scale: 0.7 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 12,
+    },
+  },
+};
+
 
 const ServicesGrid = () => {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
         {/* Cabeçalho */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={paragraphVariants} // Reutilizando a variante de parágrafo
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#29314A] mb-6 leading-snug">
-             Mais de 30 anos de excelência em Engenharia Contra Incêndio
+            Mais de 30 anos de excelência em Engenharia Contra Incêndio
           </h2>
         </motion.div>
 
-        {/* Texto principal */}
+        {/* Container principal que orquestra as animações */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="space-y-6 text-gray-700 text-lg leading-relaxed"
+          className="flex flex-col lg:flex-row items-center gap-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
         >
-          <p>
-            A <strong className="text-[#29314A]">SMH SISTEMAS</strong> atua em
-            todo o Brasil com equipe própria e certificações internacionais,
-            oferecendo soluções completas para prevenção e combate a incêndios.
-          </p>
+          {/* Imagem com animação mais evidente */}
+          <motion.img
+            src={ExtintorImage}
+            alt="Extintores SMH"
+            variants={imageVariants}
+            className="w-full max-w-md rounded-xl shadow-lg"
+          />
 
-          <p>
-             <strong>Protegemos vidas, dados, patrimônio e conectividade</strong> —
-            garantindo a continuidade das operações mesmo em situações críticas.
-          </p>
-
-          <p>
-             <strong>Especialistas em ambientes de missão crítica e riscos especiais</strong>,
-            atendemos líderes dos setores de telecom, data centers, finanças,
-            indústria e construção.
-          </p>
-
-          <p>
-             Oferecemos projeto, equipamentos certificados, instalação,
-            manutenção, assistência técnica e recarga de gases.
-          </p>
+          {/* Container do texto para efeito cascata */}
+          <motion.div
+            variants={textContainerVariants}
+            className="space-y-6 text-gray-700 text-lg leading-relaxed"
+          >
+            {/* Cada parágrafo agora é um motion.p */}
+            <motion.p variants={paragraphVariants}>
+              A <strong className="text-[#29314A]">SMH SISTEMAS</strong> atua em
+              todo o Brasil com equipe própria e certificações internacionais,
+              oferecendo soluções completas para prevenção e combate a incêndios.
+            </motion.p>
+            <motion.p variants={paragraphVariants}>
+              <strong>Protegemos vidas, dados, patrimônio e conectividade</strong> —
+              garantindo a continuidade das operações mesmo em situações críticas.
+            </motion.p>
+            <motion.p variants={paragraphVariants}>
+              <strong>
+                Especialistas em ambientes de missão crítica e riscos especiais
+              </strong>
+              , atendemos líderes dos setores de telecom, data centers,
+              finanças, indústria e construção.
+            </motion.p>
+            <motion.p variants={paragraphVariants}>
+              Oferecemos projeto, equipamentos certificados, instalação,
+              manutenção, assistência técnica e recarga de gases.
+            </motion.p>
+          </motion.div>
         </motion.div>
 
-        {/* CTA no final */}
+        {/* Botão final com animação de destaque */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          variants={buttonVariants}
+          viewport={{ once: true, amount: 0.8 }}
           className="text-center mt-16"
         >
           <Button
@@ -64,9 +146,7 @@ const ServicesGrid = () => {
             iconName="ArrowRight"
             iconPosition="left"
             className="bg-[#29314A] hover:bg-[#29314A]/90 px-10 py-5 text-lg"
-            onClick={() =>
-              console.log("Ação: Leva para a página Sobre Nós")
-            }
+            onClick={() => console.log("Ação: Leva para a página Sobre Nós")}
           >
             Quer saber mais?
           </Button>
