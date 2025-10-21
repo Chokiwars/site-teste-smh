@@ -5,7 +5,7 @@ import Icon from '../../../components/AppIcon';
 
 const HeroSection = ({ onGetProposal, onContactUs }) => {
   
-  //Animação de Palavras
+
   const WORDS = ["Negócios", "Vidas", "Dados", "Informações"];
   const INTERVAL_TIME = 3000;
 
@@ -19,7 +19,7 @@ const HeroSection = ({ onGetProposal, onContactUs }) => {
     return () => clearInterval(interval);
   }, [WORDS.length]);
 
-  // Variantes para animação em cascata do texto
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
