@@ -1,16 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-/**
- * Observações:
- * - Use a variável CSS --header-height para controlar o espaço superior que evita que o conteúdo
- *   seja escondido pelo menu fixo. Ajuste essa variável conforme a altura real do seu header.
- * - O componente calcula dinamicamente quantos logos exibir por slide conforme a largura da janela.
- * - Pausa o autoplay ao passar o mouse sobre o carrossel.
- */
-
-/* animação por palavra */
+ 
 const wordAnimation = {
   initial: { y: 50, opacity: 0 },
   animate: {
@@ -19,7 +10,7 @@ const wordAnimation = {
     transition: { type: 'spring', damping: 10, stiffness: 100 },
   },
 };
-
+ 
 const AnimatedText = ({ text, className, style, delay = 0 }) => {
   const words = String(text).split(' ');
   const container = {
@@ -45,7 +36,7 @@ const AnimatedText = ({ text, className, style, delay = 0 }) => {
     </motion.div>
   );
 };
-
+ 
 const ClientLogoBox = ({ clientName, logoUrl }) => (
   <div
     className="flex-1 flex items-center justify-center p-6 bg-white rounded-lg border border-gray-200 shadow-md h-24 md:h-32 transition-transform duration-300 hover:shadow-xl hover:scale-[1.02]"
@@ -56,13 +47,13 @@ const ClientLogoBox = ({ clientName, logoUrl }) => (
     </div>
   </div>
 );
-
+ 
 const cardVariants = {
   initial: { opacity: 0, y: 50, scale: 0.95 },
   animate: { opacity: 1, y: 0, scale: 1 },
   exit: { opacity: 0, y: -50, scale: 0.95 },
 };
-
+ 
 function ClientsCarousel({ clients }) {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -73,13 +64,13 @@ function ClientsCarousel({ clients }) {
     if (w >= 640) return 3;
     return 2;
   });
-
+ 
   const updateVisibleCount = useCallback(() => {
     const w = window.innerWidth;
     const newCount = w >= 1024 ? 4 : w >= 640 ? 3 : 2;
     setVisibleCount(newCount);
   }, []);
-
+ 
   useEffect(() => {
     const onResize = () => {
       updateVisibleCount();
@@ -88,27 +79,27 @@ function ClientsCarousel({ clients }) {
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, [updateVisibleCount]);
-
+ 
   const totalSlides = Math.max(1, Math.ceil(clients.length / visibleCount));
-
+ 
   const next = useCallback(() => {
     setIndex(prev => (prev + 1) % totalSlides);
   }, [totalSlides]);
-
+ 
   const prev = useCallback(() => {
     setIndex(prev => (prev - 1 + totalSlides) % totalSlides);
   }, [totalSlides]);
-
+ 
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(next, 5000);
     return () => clearInterval(interval);
   }, [isPaused, next]);
-
+ 
   const startIndex = index * visibleCount;
   const currentClients = clients.slice(startIndex, startIndex + visibleCount);
   const animationKey = `${index}-${visibleCount}`;
-
+ 
   return (
     <div
       onMouseEnter={() => setIsPaused(true)}
@@ -136,7 +127,7 @@ function ClientsCarousel({ clients }) {
           ))}
         </motion.div>
       </AnimatePresence>
-
+ 
       <motion.button
         onClick={prev}
         className="absolute z-20 p-3 bg-white text-[var(--smh-900)] rounded-full shadow-lg transition border border-gray-200 left-0 top-1/2 -translate-y-1/2"
@@ -151,7 +142,7 @@ function ClientsCarousel({ clients }) {
       >
         <ChevronRight size={24} />
       </motion.button>
-
+ 
       <div className="mt-8 flex space-x-2 justify-center">
         {Array.from({ length: totalSlides }).map((_, i) => (
           <motion.button
@@ -170,39 +161,87 @@ function ClientsCarousel({ clients }) {
     </div>
   );
 }
-
+ 
 export default function SMHClientsCarousel() {
   const groupedClients = {
-    Bancos: [
-      { id: 5, name: 'Banco do Brasil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Banco_do_Brasil_logo.svg' },
-      { id: 6, name: 'Bradesco', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Banco_Bradesco_logo_%28horizontal%29.png' },
-      { id: 8, name: 'Banco BMG', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Logo_do_Banco_Bmg.svg' },
-      { id: 9, name: 'Banif Banco', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Logo_banif.jpg' },
-      { id: 10, name: 'Banrisul', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Banrisul_logotipo_2022.svg' },
-      { id: 16, name: 'BTG Pactual', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Btg-logo-blue.svg' },
-      { id: 17, name: 'Banco BV', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Banco_BV_Logo.svg' },
-      { id: 38, name: 'Julius Bar', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Julius_B%C3%A4r_Logo.svg' }
+    Financeiro: [
+      { id: 1, name: 'Banco do Brasil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Banco_do_Brasil_logo.svg' },
+      { id: 2, name: 'Bradesco', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Banco_Bradesco_logo_%28horizontal%29.png' },
+      { id: 3, name: 'Banco BMG', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Logo_do_Banco_Bmg.svg' },
+      { id: 4, name: 'Banif Banco', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Logo_banif.jpg' },
+      { id: 5, name: 'Banrisul', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Banrisul_logotipo_2022.svg' },
+      { id: 6, name: 'BTG Pactual', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Btg-logo-blue.svg' },
+      { id: 7, name: 'Banco BV', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Banco_BV_Logo.svg' },
+      { id: 8, name: 'Julius Bar', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Julius_B%C3%A4r_Logo.svg' },
+      { id: 21, name: 'Morgan Stanley', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Morgan_Stanley_Logo_1.svg' },
+      { id: 24, name: 'Natixis', logoUrl: 'https://upload.wikimedia.org/wikipedia/fr/1/14/Natixis_logo.svg' },
+      { id: 26, name: 'Sicoob', logoUrl: 'https://logodownload.org/wp-content/uploads/2017/11/sicoob-logo-0.png' },
+      { id: 26, name: 'Standard Bank', logoUrl: 'https://upload.wikimedia.org/wikipedia/de/9/95/Standard_Bank_Logo.svg' },
+      { id: 26, name: 'XP investimentos', logoUrl: 'https://capitalfundos.com.br/wp-content/uploads/2018/04/Logo_XPi_Inst_para_Fundo_Dourado.png' },
+      { id: 26, name: 'Zurich', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Zurich_Insurance_Group_Logo_Horizontal.svg' },
+      { id: 26, name: 'Serasa Experian', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/30/SerasaExperian-TM_Portrait_RGB.svg' },
     ],
     Tecnologia: [
-      { id: 2, name: 'Adata', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/ADATA_Technology_logo_svg.png' },
-      { id: 31, name: 'Google', logoUrl: 'https://pngimg.com/uploads/google/google_PNG19644.png' },
-      { id: 34, name: 'IBM', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-      { id: 44, name: 'Microsoft', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
-      { id: 41, name: 'Linkedin', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/LinkedIn_2021.svg' },
-      { id: 36, name: 'Ipiranga', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Ipiranga_Logo.jpg' }
+      { id: 9, name: 'Adata', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/ADATA_Technology_logo_svg.png' },
+      { id: 10, name: 'Google', logoUrl: 'https://pngimg.com/uploads/google/google_PNG19644.png' },
+      { id: 11, name: 'IBM', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
+      { id: 12, name: 'Microsoft', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
+      { id: 13, name: 'Linkedin', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/LinkedIn_2021.svg' },
+      { id: 14, name: 'Iron BR', logoUrl: 'https://ironbr.com.br/wp-content/uploads/2019/08/div_center-branco.png' },
+      { id: 26, name: 'ODATA', logoUrl: 'https://media.datacenterdynamics.com/media/images/odata_349x175.2e16d0ba.fill-279x140.png' },
+      { id: 26, name: 'Philips', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Philips_logo_new.svg' },
     ],
     Energia: [
-      { id: 3, name: 'AES Eletropaulo', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/AES_Eletropaulo.svg' },
-      { id: 30, name: 'Furnas', logoUrl: 'https://images.seeklogo.com/logo-png/23/1/furnas-logo-png_seeklogo-237269.png' },
-      { id: 26, name: 'ExxonMobil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/18/Exxon_Mobil_Logo.svg' },
+      { id: 16, name: 'AES Eletropaulo', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/AES_Eletropaulo.svg' },
+      { id: 17, name: 'Furnas', logoUrl: 'https://images.seeklogo.com/logo-png/23/1/furnas-logo-png_seeklogo-237269.png' },
+      { id: 18, name: 'ExxonMobil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/18/Exxon_Mobil_Logo.svg' },
     ],
-    Saúde: [
-      { id: 1, name: 'Accumed Glicomed', logoUrl: 'https://www.smh.com.br/wp-content/uploads/2021/03/accumed.png' },
-      { id: 27, name: 'Farmácias São João', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Logotipo_Farm%C3%A1cias_S%C3%A3o_Jo%C3%A3o.jpg' },
-      { id: 39, name: 'Iron BR', logoUrl: 'https://ironbr.com.br/wp-content/uploads/2019/08/div_center-branco.png' },
-    ]
-  };
 
+    Engenharia: [
+      { id: 26, name: 'Zopone', logoUrl: 'https://images.seeklogo.com/logo-png/26/1/zopone-engenharia-correto-logo-png_seeklogo-261080.png' },
+      { id: 26, name: 'Sistenge', logoUrl: 'https://media.licdn.com/dms/image/v2/D4D0BAQEK1P4usucoZw/company-logo_200_200/company-logo_200_200/0/1689683235592/sistenge_logo?e=2147483647&v=beta&t=xWCX__4W4dU1g1yBTgLWPj-Iek0m1SfPkDm0LETiz0Y' },
+      { id: 26, name: 'Saeng Engenharia', logoUrl: 'https://jpmax.com.br/wp-content/uploads/2024/08/Saeng-Logo.webp' },
+      { id: 26, name: 'SBM Offshore', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/43/SBM_Offshore_logo.svg' },
+      { id: 26, name: 'Scania', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Scandia_wordmark.svg' },
+    ],
+    Outros: [
+      { id: 21, name: 'Mineração Rio do Norte', logoUrl: 'https://revistaminerios.com/wp-content/uploads/2020/02/indice.png' },
+      { id: 22, name: 'MSC Cruises', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/83/MSC_Cruises_Logo.png' },
+      { id: 23, name: 'National Starch', logoUrl: 'https://www.pressreleasefinder.com/primages/2011/med/AZPR010a_3231427.jpg' },
+      { id: 24, name: 'Nitro quimica', logoUrl: 'https://www.lrindustrial.ind.br/uploads/clientes/nitroquimica_logotipo_633dc8366601f.jpg' },
+      { id: 15, name: 'Ipiranga', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Ipiranga_Logo.jpg' },
+      { id: 25, name: 'Pepsico', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/PepsiCo_logo.svg' },
+      { id: 26, name: 'Petrobras', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif' },
+      { id: 26, name: 'Pirelli', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Pirelli_-_logo_full_%28Italy%2C_1997%29.svg' },
+      { id: 26, name: 'Rede', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Logo_rede%28empresa%29.png' },
+      { id: 26, name: 'Santillana', logoUrl: 'https://www.proactivanet.com/wp-content/uploads/2023/01/PROACTIVANET-Logo-Santillana.png' },
+      { id: 26, name: 'Shell', logoUrl: 'https://upload.wikimedia.org/wikipedia/pt/7/7a/Shell_logo.png' },
+      { id: 26, name: 'Shopee', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Shopee.svg' },
+      { id: 26, name: 'Uber', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png' },
+      { id: 26, name: 'Votorantim', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Votorantim.png' },
+    ],
+ 
+    Saúde: [
+      { id: 26, name: 'Accumed Glicomed', logoUrl: 'https://www.smh.com.br/wp-content/uploads/2021/03/accumed.png' },
+      { id: 26, name: 'Farmácias São João', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Logotipo_Farm%C3%A1cias_S%C3%A3o_Jo%C3%A3o.jpg' },
+      { id: 26, name: 'Pfizer', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Pfizer_logo.svg' },
+      { id: 26, name: 'Roche', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Hoffmann-La_Roche_logo.svg' },
+    ],
+ 
+    Telecomunicações: [
+      { id: 26, name: 'Telefonica', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Telef%C3%B3nica_Logo.svg' },
+      { id: 26, name: 'Vivo', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Logo_Vivo_Purpura_Positivo.svg' },
+      { id: 26, name: 'Telxius', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/58/Telxius_logo.svg' },
+      { id: 26, name: 'Tim', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/02/TIM_logo_%282016-present%29.svg' },
+      { id: 26, name: 'Oi', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Oi_logo_2022.png' },
+      { id: 26, name: 'Uol', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/UOL_logo.png'},
+      { id: 26, name: 'Net Claro Embratel', logoUrl: 'https://telesintese.com.br/wp-content/uploads/2019/01/Logo-NET-Claro-Embratel.jpg' },
+      { id: 26, name: 'NWI telecom', logoUrl: 'https://media.datacenterdynamics.com/media/images/logo_nwi_telecom.2e16d0ba.fill-279x140.png' },
+      { id: 26, name: 'WSnet', logoUrl: 'https://www.wsnetbrasil.com.br/media/img/LOGO.png' },
+    ]
+ 
+  };
+ 
   return (
     <div
       style={{
@@ -224,7 +263,7 @@ export default function SMHClientsCarousel() {
           :root { --header-height: 140px; }
         }
       `}</style>
-
+ 
       <AnimatedText
         text="Clientes Parceiros"
         className="text-3xl sm:text-4xl font-extrabold mb-1 text-center justify-center"
@@ -237,7 +276,7 @@ export default function SMHClientsCarousel() {
         style={{ color: 'var(--smh-accent1)' }}
         delay={0.4}
       />
-
+ 
       {Object.entries(groupedClients).map(([groupName, clients]) => (
         <section key={groupName} className="w-full max-w-6xl mx-auto mb-16">
           <h2 className="text-2xl font-bold mb-6 text-center">{groupName}</h2>
