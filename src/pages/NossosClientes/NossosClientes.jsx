@@ -2,15 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-/**
- * Observações:
- * - Use a variável CSS --header-height para controlar o espaço superior que evita que o conteúdo
- *   seja escondido pelo menu fixo. Ajuste essa variável conforme a altura real do seu header.
- * - O componente calcula dinamicamente quantos logos exibir por slide conforme a largura da janela.
- * - Pausa o autoplay ao passar o mouse sobre o carrossel.
- */
 
-/* animação por palavra */
 const wordAnimation = {
   initial: { y: 50, opacity: 0 },
   animate: {
