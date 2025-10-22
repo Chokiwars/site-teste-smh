@@ -26,10 +26,12 @@
 Manutenção Preventiva
 - Única
 - Periódica  <br><br>
+
 Manutenção Corretiva
 - Infraestrutura
 - Equipamento
 - Mão de obra  <br><br>
+
 Adequação de sistema
 - Infraestrutura
 - Equipamento
@@ -63,10 +65,12 @@ Adequação de sistema
 > *Gerar Orçamento:*  
 Recebe -> Telefone/E-mail/WhatsApp    
 
-***AUTERAÇÕES (PÁGINA DE FORMULÁRIO - /FormularioPedidos***  
+***AUTERAÇÕES (PÁGINA DE FORMULÁRIO - /FormularioPedidos)***  
 > Criar uma parte para descontos ou aumento dos lucros no Formulário de Pedidos.  
 > Criar um campo de texto para especificar (mais ainda) o produto.
-
+***
+***
+***
 
 ## Agradecimentos
 🎨Bia: [`@Chokiwars`](https://github.com/Chokiwars/)  
