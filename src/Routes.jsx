@@ -9,6 +9,7 @@ import Homepage from './pages/homepage/PaginaHome';
 import SobreNos from "./pages/SobreNos/SobreNos";
 import FormularioPedidosClientes from "pages/FormularioPedidosClientes/FormularioPedidosClientes";
 import ServicesPage from './pages/Servicos/Servicos';
+import Solucoes from "pages/Solucoes/Solucoes";
 import LoginClientes from './pages/LoginClientes/LoginClientes';
 import Clientes from "./pages/NossosClientes/NossosClientes";
 import CadastroClientes from "pages/CadastroClientes/CadastroClientes";
@@ -27,6 +28,7 @@ const Routes = () => {
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/sobre-nos" element={<SobreNos />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/solucoes" element={<Solucoes />} />
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/login-clientes" element={<LoginClientes />} />
         <Route path="/cadastro-clientes" element={<CadastroClientes />} />

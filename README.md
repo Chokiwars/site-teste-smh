@@ -37,6 +37,18 @@ Adequação de sistema
 - Equipamento
 - Mão de obra  
 
+
+### | TIPOS DE VENDAS |
+> Empreitada global (venda casada):
+> * É a venda de um produto + a instalação  
+  
+> Venda de produto (venda comum):
+> * É a venda apenas do produto
+
+***
+***
+***
+
 # METAS
 ***CADASTRO***
 > Fazer página de cadastro de cliente  

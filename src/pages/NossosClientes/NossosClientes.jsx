@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
- 
+
+
 const wordAnimation = {
   initial: { y: 50, opacity: 0 },
   animate: {

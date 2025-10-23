@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 // Ícones ilustrativos
 const imagens = {
-  historia: "https://img.icons8.com/fluency/96/history.png",
-  missao: "https://img.icons8.com/fluency/96/mission.png",
-  valores: "https://img.icons8.com/fluency/96/values.png",
-  equipe: "https://img.icons8.com/fluency/96/team.png",
-  contato: "https://img.icons8.com/fluency/96/contact-card.png",
+  historia: "src/assets/images/historia.jpeg",
+  missao: "src/assets/images/missao.jpg",
+  valores: "src/assets/images/valores.jpg",
+  equipe: "src/assets/images/equipe.jpeg",
+  contato: "src/assets/images/contato.jpeg",
 };
 
 // Variantes de animação
