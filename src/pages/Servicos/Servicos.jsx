@@ -40,13 +40,56 @@ const Button = ({ children, variant = 'default', size = 'md', onClick, iconName,
   const iconComponent = iconName ? <Icon name={iconName} size={20} /> : null;
 
   return (
-    <button onClick={onClick} className={`${baseClasses} ${className}`}>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={onClick}
+      className={`${baseClasses} ${className}`}
+      type="button"
+    >
       {iconName && iconPosition === 'left' && iconComponent}
       {children && (typeof children === 'string' ? <span>{children}</span> : children)}
       {iconName && iconPosition === 'right' && iconComponent}
-    </button>
+    </motion.button>
   );
 };
+
+// --- CÓDIGO DA ANIMAÇÃO DE TEXTO ---
+const wordAnimation = {
+  initial: { y: 50, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { type: 'spring', damping: 10, stiffness: 100 },
+  },
+};
+
+const AnimatedText = ({ text, className, style, delay = 0 }) => {
+  const words = String(text).split(' ');
+  const container = {
+    animate: {
+      transition: { delayChildren: delay, staggerChildren: 0.05 },
+    },
+  };
+  return (
+    <motion.div
+      className={`flex flex-wrap ${className || ''}`}
+      style={style}
+      variants={container}
+      initial="initial"
+      animate="animate"
+    >
+      {words.map((word, index) => (
+        <span key={index} className="overflow-hidden inline-block mr-2">
+          <motion.span className="inline-block" variants={wordAnimation}>
+            {word + (index < words.length - 1 ? ' ' : '')}
+          </motion.span>
+        </span>
+      ))}
+    </motion.div>
+  );
+};
+// --- FIM DO CÓDIGO DA ANIMAÇÃO ---
 
 const servicesData = [
   {
@@ -118,8 +161,8 @@ const App = () => {
   if (selectedService) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 30, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="min-h-screen bg-gray-50 p-6 md:p-12"
       >
@@ -186,81 +229,94 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="pt-32 px-6 max-w-7xl mx-auto text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl font-extrabold text-[#333] mb-2"
-        >
-          Conheça nossos serviços
-        </motion.h1>
+        
+        {/* --- TÍTULO COM ANIMAÇÃO --- */}
+        <AnimatedText
+          text="Conheça nossos serviços"
+          className="text-4xl font-extrabold text-[#333] mb-2 justify-center"
+          delay={0.1}
+        />
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-gray-600 text-xl max-w-3xl mx-auto mb-8"
-        >
-          Descubra como a SMH Sistemas pode impulsionar sua operação com tecnologia de alto nível.
-        </motion.p>
+        {/* --- SUBTÍTULO COM ANIMAÇÃO --- */}
+        <AnimatedText
+          text="Descubra como a SMH Sistemas pode impulsionar sua operação com tecnologia de alto nível."
+          className="text-gray-600 text-xl max-w-3xl mx-auto mb-8 justify-center"
+          delay={0.4}
+        />
+
       </div>
 
       <section className="py-10 bg-gray-50">
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {/* --- BLOCO DOS CARDS DE SERVIÇO CORRIGIDO --- */}
             {servicesData.map((service, index) => (
               <motion.div
                 key={service.id}
+                // Classes de estilo e 'group' unificadas aqui
+                className="group bg-white rounded-2xl p-8 shadow-xl h-full flex flex-col border border-gray-100"
+                
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                
+                // Efeitos de hover unificados
+                whileHover={{ 
+                  scale: 1.03, 
+                  boxShadow: "0 15px 30px rgba(41, 49, 74, 0.3)",
+                  y: -8 // Equivalente a 'hover:-translate-y-2'
+                }}
+                
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col border border-gray-100">
-                  <div className="mb-6">
-                    <div
-                      className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Icon name={service.icon} size={32} className="text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-[#333] mb-3 group-hover:text-[#29314A] transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  <div className="flex-grow mb-6 pt-4 border-t border-gray-100">
-                    <h4 className="text-sm font-semibold text-gray-500 mb-2">
-                      Principais Focos:
-                    </h4>
-                    <ul className="space-y-2">
-                      {service.features?.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-gray-800">
-                          <Icon
-                            name="Check"
-                            size={16}
-                            className="text-green-500 mr-2 flex-shrink-0"
-                          />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    onClick={() => handleServiceClick(service)}
-                    iconName="ArrowRight"
-                    iconPosition="right"
-                    className="w-full group-hover:bg-[#29314A] group-hover:text-white group-hover:border-[#29314A] transition-all duration-300 text-base"
+                {/* O 'div' interno desnecessário foi removido */}
+                
+                <div className="mb-6">
+                  <div
+                    className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
                   >
-                    Ver Detalhes
-                  </Button>
+                    <Icon name={service.icon} size={32} className="text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#333] mb-3 group-hover:text-[#29314A] transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    {service.description}
+                  </p>
                 </div>
+
+                <div className="flex-grow mb-6 pt-4 border-t border-gray-100">
+                  <h4 className="text-sm font-semibold text-gray-500 mb-2">
+                    Principais Focos:
+                  </h4>
+                  <ul className="space-y-2">
+                    {service.features?.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-sm text-gray-800">
+                        <Icon
+                          name="Check"
+                          size={16}
+                          className="text-green-500 mr-2 flex-shrink-0"
+                        />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <Button
+                  variant="outline"
+                  onClick={() => handleServiceClick(service)}
+                  iconName="ArrowRight"
+                  iconPosition="right"
+                  className="w-full group-hover:bg-[#29314A] group-hover:text-white group-hover:border-[#29314A] transition-all duration-300 text-base"
+                >
+                  Ver Detalhes
+                </Button>
               </motion.div>
             ))}
+            {/* --- FIM DO BLOCO DOS CARDS --- */}
+
           </div>
         </div>
       </section>
