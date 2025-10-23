@@ -12,7 +12,7 @@ const ProposalPreview = ({ selectedServices, projectData, pricing, onSubmit, onS
       currency: 'BRL'
     })?.format(value);
   };
-
+  
   const getTimelineLabel = (timeline) => {
     const options = {
       '1-month': '1 mês',
