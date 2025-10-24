@@ -34,9 +34,9 @@ const Header = ({ className = '' }) => {
     { name: 'Soluções', path: '/solucoes', icon: 'Layers' },
     { name: 'Serviços', path: '/services', icon: 'Settings' },
     { name: 'Clientes', path: '/clientes', icon: 'Briefcase' },
-    { name: 'Formulario', path: '/formulario-pedidos-clientes', icon: 'Home'},
-    { name: 'Cadastro', path: '/cadastro-clientes', icon: 'Users'},
-    { name: 'Login', path: '/login-clientes', icon: 'User'},
+    { name: 'Formulario', path: '/formulario-pedidos-clientes', icon: 'Home' },
+    { name: 'Cadastro', path: '/cadastro-clientes', icon: 'Users' },
+    { name: 'Login', path: '/login-clientes', icon: 'User' },
   ];
 
   const socialLinks = [
@@ -64,14 +64,11 @@ const Header = ({ className = '' }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg' : ''
-      } ${className}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''} ${className}`}
     >
       {/* Informações de Contato Acima do Header */}
       <div className="bg-[#003366] text-white py-1.5 text-sm font-medium">
         <div className="container mx-auto flex justify-between items-center px-4">
-          
           <div className="hidden md:flex items-center gap-6">
             <a href="tel:+551150605777" className="flex items-center gap-1.5 hover:text-gray-300 transition-colors">
               <Icon name="Phone" size={16} />
@@ -102,8 +99,8 @@ const Header = ({ className = '' }) => {
 
             <div className="hidden lg:block w-px h-5 bg-white/30"></div>
 
-            <Button 
-              onClick={() => navigate('/contato')} 
+            <Button
+              onClick={() => navigate('/contato')}
               className="bg-white/10 text-white border border-white/30 hover:bg-white/20 px-4 py-1.5 rounded-lg text-sm transition-all duration-300 transform hover:scale-105"
             >
               Fale Conosco
@@ -116,7 +113,7 @@ const Header = ({ className = '' }) => {
       <header className="bg-white border-b border-gray-200 w-full shadow-sm">
         <div className="flex items-center justify-between h-18 px-6 lg:px-8">
           {/* Logo */}
-          <a href="/homepage" className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 transition-transform duration-300 transform hover:scale-105">
+          <a href="/homepage" className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 transition-transform duration-300 transform hover:scale-105">
             <img
               src={Logo}
               alt="Logo SMH Sistemas"
@@ -133,7 +130,6 @@ const Header = ({ className = '' }) => {
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 group ${
                   isActivePath(item.path)
                     ? `${primaryColor.text} ${primaryColor.bgActive} font-semibold` // Estado Ativo
-                    // --- MUDANÇA AQUI ---
                     : `text-slate-600 hover:text-red-600 ${primaryColor.bgHover}` // Estado Inativo
                 }`}
               >
@@ -164,9 +160,7 @@ const Header = ({ className = '' }) => {
         {/* Mobile Menu */}
         <div
           className={`lg:hidden transition-all duration-300 ease-out ${
-            isMobileMenuOpen
-              ? 'max-h-screen opacity-100'
-              : 'max-h-0 opacity-0 overflow-hidden'
+            isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         >
           <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
@@ -178,7 +172,6 @@ const Header = ({ className = '' }) => {
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-300 ${
                     isActivePath(item.path)
                       ? `${primaryColor.text} ${primaryColor.bgActive} font-semibold` // Estado Ativo
-                      // --- MUDANÇA AQUI ---
                       : `text-slate-700 hover:text-red-600 hover:bg-gray-200` // Estado Inativo
                   }`}
                 >
@@ -187,7 +180,7 @@ const Header = ({ className = '' }) => {
                 </button>
               ))}
             </nav>
-            
+
             <div className="lg:hidden flex justify-center space-x-6 pt-5 mt-4 border-t border-gray-200">
               {socialLinks.map((social) => (
                 <a
