@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // 1. IMPORTADO AQUI
+import { useNavigate } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 import ExtintorImage from "@/assets/images/extintores-smh.png";
 
@@ -107,7 +107,7 @@ const ServicesGrid = () => {
             variants={textContainerVariants}
             className="space-y-6 text-gray-700 text-lg leading-relaxed"
           >
-            {/* Cada parágrafo agora é um motion.p */}
+
             <motion.p variants={paragraphVariants}>
               A <strong className="text-[#29314A]">SMH SISTEMAS</strong> atua em
               todo o Brasil com equipe própria e certificações internacionais,

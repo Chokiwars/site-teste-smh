@@ -6,12 +6,14 @@ import { motion } from 'framer-motion';
 // Ajuste o caminho abaixo para apontar para o arquivo do seu logo
 import seuLogo from '../../assets/images/smh_sistemas_logo.jpg'; 
 
-// Importação dos ícones do Lucide
+// --- MUDANÇA 1: IMPORTAÇÕES DE ÍCONES ---
+// Mantemos os ícones do Lucide que você já usa
 import { 
   Linkedin, Instagram, Facebook, 
-  Phone, Mail, MapPin, Clock,
-  MessagesSquare 
+  Phone, Mail, MapPin, Clock 
 } from 'lucide-react'; 
+// Adicionamos a importação do WhatsApp da biblioteca react-icons
+import { BsWhatsapp } from 'react-icons/bs'; 
 
 // Importações de componentes (mantidas)
 import Header from '../../components/ui/Header';
@@ -41,12 +43,12 @@ const Homepage = () => {
     console.log('Project clicked:', project?.title);
   };
 
-  // Configuração dos Links das Redes Sociais
+  // --- MUDANÇA 2: ATUALIZAR O ARRAY socialLinks ---
   const socialLinks = [
     { 
       name: 'WhatsApp', 
       url: 'https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+um+or%C3%A7amento.', // ⚠️ Ajuste o número
-      icon: MessagesSquare, 
+      icon: BsWhatsapp, // Trocamos MessagesSquare por BsWhatsapp
       style: 'hover:text-[#25D366]' 
     },
     { name: 'LinkedIn', url: 'https://br.linkedin.com/company/smhsistemas', icon: Linkedin, style: 'hover:text-[#0A66C2]' },
@@ -102,7 +104,7 @@ const Homepage = () => {
               
               {/* Seção de Redes Sociais */}
               <div className="mt-6 mb-4">
-                <h4 className="font-semibold mb-3">Siga-nos</h4>
+                <h4 className="font-semibold mb-3">Acompanhe</h4>
                 <div className="flex space-x-4"> 
                   {socialLinks.map((link) => {
                     const Icon = link.icon;
@@ -115,6 +117,7 @@ const Homepage = () => {
                         aria-label={`Acesse nosso ${link.name}`}
                         className={`text-white/90 transition duration-300 ease-in-out hover:scale-110 ${link.style}`}
                       >
+                        {/* O 'Icon' aqui agora será o BsWhatsapp e funcionará perfeitamente */}
                         <Icon size={28} /> 
                       </a>
                     );

@@ -71,16 +71,7 @@ const CTASection = ({ onGetProposal, onContactUs }) => {
           className="text-center mt-16 sm:mt-20"
         >
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center mb-8">
-            <Button
-              variant="default"
-              size="lg"
-              onClick={onGetProposal}
-              iconName="Calculator"
-              iconPosition="left"
-              className="bg-accent hover:bg-accent/90 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold btn-magnetic shadow-deep w-full sm:w-auto"
-            >
-              Gerar Proposta Gratuita
-            </Button>
+
             
             <Button
               variant="outline"
