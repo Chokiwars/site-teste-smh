@@ -248,7 +248,7 @@ export default function SMHClientsCarousel() {
       style={{
         ['--smh-900']: '#0C233F',
         ['--smh-800']: '#29314A',
-        ['--smh-accent1']: '#ED1C24',
+        ['--smh-accent1']: '#5c4f50ff',
         ['--smh-accent2']: '#EF313A',
         fontFamily: "'Inter', sans-serif",
       }}

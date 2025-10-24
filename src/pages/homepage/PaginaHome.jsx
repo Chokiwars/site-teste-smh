@@ -2,7 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-
+// ⚠️ PASSO 1: IMPORTAR SEU LOGO
+// Ajuste o caminho abaixo para apontar para o arquivo do seu logo
+import seuLogo from '../../assets/images/smh_sistemas_logo.jpg'; 
 
 // Importação dos ícones do Lucide
 import { 
@@ -86,9 +88,13 @@ const Homepage = () => {
             {/* Company Info e Redes Sociais (Ocupa 2 colunas em MD+) */}
             <div className="col-span-1 md:col-span-2"> 
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-brand rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">S</span>
-                </div>
+                
+                <img 
+                  src={seuLogo} 
+                  alt="Logo SMH Sistemas" 
+                  className="w-28 h-28 rounded-full object-cover"
+                />
+                
                 <div>
                   <h3 className="text-xl font-bold">SMH Sistemas</h3>
                 </div>

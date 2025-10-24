@@ -1,11 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // 1. IMPORTADO AQUI
 import Button from "../../../components/ui/Button";
 import ExtintorImage from "@/assets/images/extintores-smh.png";
 
-// --- NOVAS VARIANTES DE ANIMAÇÃO ---
 
-// 1. Container principal que orquestra os filhos (imagem e bloco de texto)
 const containerVariants = {
   hidden: {},
   visible: {
@@ -15,7 +14,6 @@ const containerVariants = {
   },
 };
 
-// 2. Variante para a IMAGEM (mais dinâmica)
 const imageVariants = {
   hidden: { x: -200, opacity: 0, scale: 0.8, rotate: -5 },
   visible: {
@@ -25,14 +23,13 @@ const imageVariants = {
     rotate: 0,
     transition: {
       type: "spring",
-      stiffness: 80, // Um pouco mais "rígido"
-      damping: 12,   // Menos amortecimento para um leve "bounce"
+      stiffness: 80,
+      damping: 12,
       duration: 1.2,
     },
   },
 };
 
-// 3. Container para o TEXTO (para orquestrar os parágrafos)
 const textContainerVariants = {
   hidden: {},
   visible: {
@@ -42,7 +39,7 @@ const textContainerVariants = {
   },
 };
 
-// 4. Variante para cada PARÁGRAFO individualmente
+
 const paragraphVariants = {
   hidden: { y: 40, opacity: 0 },
   visible: {
@@ -55,7 +52,7 @@ const paragraphVariants = {
   },
 };
 
-// 5. Variante para o BOTÃO (com escala)
+
 const buttonVariants = {
   hidden: { opacity: 0, scale: 0.7 },
   visible: {
@@ -71,6 +68,8 @@ const buttonVariants = {
 
 
 const ServicesGrid = () => {
+  const navigate = useNavigate(); // 2. INICIALIZADO AQUI
+
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
@@ -146,7 +145,7 @@ const ServicesGrid = () => {
             iconName="ArrowRight"
             iconPosition="left"
             className="bg-[#29314A] hover:bg-[#29314A]/90 px-10 py-5 text-lg"
-            onClick={() => console.log("Ação: Leva para a página Sobre Nós")}
+            onClick={() => navigate("/sobre-nos")}
           >
             Quer saber mais?
           </Button>

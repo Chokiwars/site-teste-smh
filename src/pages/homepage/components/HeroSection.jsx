@@ -131,9 +131,7 @@ const HeroSection = ({ onContactUs }) => {
           initial="hidden"
           animate="visible"
         >
-          {/* MUDANÇA APLICADA AQUI: 
-            A margem inferior (mb-8) foi aumentada para (mb-12)
-          */}
+
           <div className="relative inline-block mb-12">
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight relative z-10"
@@ -157,11 +155,6 @@ const HeroSection = ({ onContactUs }) => {
             </motion.h1>
           </div>
 
-          {/* A div do botão (abaixo) também tem uma mb-12 (margem inferior).
-            Se quiser que o botão fique AINDA mais para baixo,
-            você pode aumentar o mb-12 do título (acima) para mb-16,
-            ou aumentar o mb-12 desta div do botão. 
-          */}
           <motion.div className="flex justify-center items-center mb-12" variants={containerVariants}>
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
               <Button

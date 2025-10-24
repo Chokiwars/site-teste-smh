@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
 const ProjectShowcase = ({ onViewProject }) => {
   const [activeMarket, setActiveMarket] = useState(0);
+  const navigate = useNavigate();
 
   const markets = [
     {
@@ -195,13 +197,14 @@ const ProjectShowcase = ({ onViewProject }) => {
           </div>
         </div>
 
-        {/* CTA final */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mt-16"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
         >
           <p className="text-lg text-text-secondary mb-6">
             Não encontrou seu setor? Converse conosco sobre uma solução personalizada.
@@ -209,10 +212,10 @@ const ProjectShowcase = ({ onViewProject }) => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => onViewProject({ title: 'Novo Projeto' })}
+            onClick={() => navigate('/contato')}
             iconName="MessageSquare"
             iconPosition="left"
-            className="px-8 py-4 btn‑magnetic border‑accent text‑accent hover:bg‑accent hover:text‑white"
+            className="px-8 py-4 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 ease-in-out"
           >
             Fale Conosco
           </Button>

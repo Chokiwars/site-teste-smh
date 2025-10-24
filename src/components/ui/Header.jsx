@@ -111,13 +111,18 @@ const Header = ({ className = '' }) => {
 
       {/* Header Interno */}
       <header className="bg-white border-b border-gray-200 w-full shadow-sm">
+        {/* A altura do menu é mantida em h-18 (72px) */}
         <div className="flex items-center justify-between h-18 px-6 lg:px-8">
-          {/* Logo */}
-          <a href="/homepage" className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 transition-transform duration-300 transform hover:scale-105">
+          
+          {/* MUDANÇA APLICADA AQUI:
+            Largura aumentada (w-24 / sm:w-32)
+            Altura controlada (h-16 / sm:h-16) para caber no menu h-18
+          */}
+          <a href="/homepage" className="relative w-24 h-16 sm:w-32 sm:h-16 flex-shrink-0 transition-transform duration-300 transform hover:scale-105">
             <img
               src={Logo}
               alt="Logo SMH Sistemas"
-              className="w-full h-full object-contain rounded-lg"
+              className="w-full h-full object-contain rounded-lg" // object-contain fará a imagem se ajustar ao container retangular
             />
           </a>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Icon from '../../../components/AppIcon';
+import Icon from '../../../components/AppIcon'; 
 
 const MetricsCounter = () => {
   const [counters, setCounters] = useState({
@@ -82,6 +82,30 @@ const MetricsCounter = () => {
     };
   }, []);
 
+  const certifications = [
+    {
+      title: 'ISO 37001:2017',
+      subtitle: '(Sistema de Gestão Antissuborno)',
+      description: 'Estabelece requisitos e fornece orientações para estabelecer, implementar, manter e melhorar um sistema de gestão antissuborno, promovendo uma cultura de transparência e responsabilidade.',
+      link: '#', // ⚠️ ATUALIZE ESTE LINK
+      icon: 'Gavel' 
+    },
+    {
+      title: 'ISO 37301:2021',
+      subtitle: '(Sistema de Gestão de Compliance)',
+      description: 'Define os padrões para sistemas de gestão de compliance, assegurando o cumprimento de leis e regulamentações, além de demonstrar dedicação a práticas empresariais éticas e legais.',
+      link: '#', // ⚠️ ATUALIZE ESTE LINK
+      icon: 'Scale' 
+    },
+    {
+      title: 'ISO 9001:2015',
+      subtitle: '(Sistema de Gestão da Qualidade)',
+      description: 'Voltada para gestão da qualidade, garantindo que processos sejam otimizados para a satisfação do cliente, aprimorando a eficiência e a consistência dos produtos e serviços.',
+      link: '#', // ⚠️ ATUALIZE ESTE LINK
+      icon: 'Star' 
+    }
+  ];
+
   return (
     <section className="py-20 bg-primary">
       <div className="container mx-auto px-6 lg:px-8">
@@ -101,6 +125,7 @@ const MetricsCounter = () => {
           </p>
         </motion.div>
 
+        {/* Grid dos Contadores (com hover) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {metrics?.map((metric, index) => (
             <motion.div
@@ -135,31 +160,65 @@ const MetricsCounter = () => {
           ))}
         </div>
 
-        {/* Additional Trust Indicators */}
+        {/* SEÇÃO DE CERTIFICAÇÃO ISO - COM ÍCONES E HOVER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-20 pt-16 border-t border-white/20"
         >
-          <div className="flex flex-wrap justify-center items-center gap-8 text-white/60">
-            <div className="flex items-center space-x-2">
-              <Icon name="Shield" size={20} />
-              <span className="text-sm font-medium">Certificação ISO 27001</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Icon name="Globe" size={20} />
-              <span className="text-sm font-medium">Presença Nacional</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Icon name="Clock" size={20} />
-              <span className="text-sm font-medium">Suporte 24/7</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Icon name="Zap" size={20} />
-              <span className="text-sm font-medium">99.9% Uptime</span>
-            </div>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              CERTIFICAÇÕES ISO
+            </h3>
+            <p className="text-lg text-white/80 max-w-3xl mx-auto">
+              Nosso compromisso com a excelência transparece em cada ação, garantindo qualidade, integridade e conformidade, comprovadas pelas certificações ABNT NBR ISO.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {certifications.map((cert, index) => (
+              <motion.div
+                key={cert.title}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true }}
+                // HOVER ADICIONADO AQUI:
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 flex flex-col h-full transition-all duration-300 hover:scale-105 hover:bg-white/20"
+              >
+                <div className="mb-4">
+                  <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Icon name={cert.icon} size={28} className="text-white" />
+                  </div>
+                </div>
+
+                <span className="text-accent font-semibold text-sm uppercase">
+                  Certificação
+                </span>
+                <h4 className="text-xl font-bold text-white mt-2">
+                  {cert.title}
+                </h4>
+                <p className="text-white/70 text-sm mb-4">
+                  {cert.subtitle}
+                </p>
+                
+                <p className="text-white/90 text-base mb-6 flex-grow">
+                  {cert.description}
+                </p>
+
+                <a 
+                  href={cert.link}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-accent font-semibold hover:text-white transition-colors duration-300 inline-flex items-center group mt-auto"
+                >
+                  Ver Certificado
+                  <Icon name="ExternalLink" size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
