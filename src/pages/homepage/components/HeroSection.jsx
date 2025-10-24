@@ -6,8 +6,13 @@ import Icon from '../../../components/AppIcon';
 // Imagens do carrossel
 import image1 from '../../../assets/images/data-center-1.png';
 import image2 from '../../../assets/images/smoke-detector.png';
+import image3 from '../../../assets/images/3.jpg';
+import image4 from '../../../assets/images/4.jpg';
+import image5 from '../../../assets/images/5.jpg';
+import image6 from '../../../assets/images/6.jpg';
 
-const images = [image1, image2];
+
+const images = [image1, image2, image3, image4, image5, image6];
 const INTERVAL_TIME = 5000;
 
 const HeroSection = ({ onContactUs }) => {
@@ -86,8 +91,8 @@ const HeroSection = ({ onContactUs }) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Carrossel de fundo */}
-      <AnimatePresence mode="wait">
+      {/* Carrossel de fundo (sem mode="wait" para transição suave) */}
+      <AnimatePresence>
         <motion.div
           key={images[currentImageIndex]}
           className="absolute inset-0 z-0 bg-cover bg-center"
@@ -126,9 +131,12 @@ const HeroSection = ({ onContactUs }) => {
           initial="hidden"
           animate="visible"
         >
-          <div className="relative inline-block mb-6">
+          {/* MUDANÇA APLICADA AQUI: 
+            A margem inferior (mb-8) foi aumentada para (mb-12)
+          */}
+          <div className="relative inline-block mb-12">
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight relative z-10"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight relative z-10"
               variants={textVariants}
             >
               Uma tecnologia que <span className="text-accent">Protege</span>{' '}
@@ -140,7 +148,7 @@ const HeroSection = ({ onContactUs }) => {
                   animate="animate"
                   exit="exit"
                   className="inline-block relative"
-                  style={{ minWidth: '200px' }}
+                  style={{ minWidth: '180px' }}
                 >
                   <span className="text-white relative z-10">{WORDS[currentWordIndex]}</span>
                   <span className="absolute inset-0 bg-white/10 rounded-xl blur-md" />
@@ -149,6 +157,11 @@ const HeroSection = ({ onContactUs }) => {
             </motion.h1>
           </div>
 
+          {/* A div do botão (abaixo) também tem uma mb-12 (margem inferior).
+            Se quiser que o botão fique AINDA mais para baixo,
+            você pode aumentar o mb-12 do título (acima) para mb-16,
+            ou aumentar o mb-12 desta div do botão. 
+          */}
           <motion.div className="flex justify-center items-center mb-12" variants={containerVariants}>
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
               <Button
@@ -162,7 +175,7 @@ const HeroSection = ({ onContactUs }) => {
                 <motion.span
                   className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-lg"
                 />
-                Falar com Especialista
+                Entre em Contato
               </Button>
             </motion.div>
           </motion.div>
@@ -171,7 +184,7 @@ const HeroSection = ({ onContactUs }) => {
 
       {/* Indicador de scroll */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0, transition: { delay: 2.5, duration: 0.8 } }}
       >
