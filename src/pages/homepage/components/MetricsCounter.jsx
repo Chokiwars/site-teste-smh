@@ -82,26 +82,27 @@ const MetricsCounter = () => {
     };
   }, []);
 
+  // LINKS ATUALIZADOS AQUI
   const certifications = [
     {
       title: 'ISO 37001:2017',
       subtitle: '(Sistema de Gestão Antissuborno)',
       description: 'Estabelece requisitos e fornece orientações para estabelecer, implementar, manter e melhorar um sistema de gestão antissuborno, promovendo uma cultura de transparência e responsabilidade.',
-      link: '#', // ⚠️ ATUALIZE ESTE LINK
+      link: 'https://www.smh.com.br/wp-content/uploads/2025/03/CERTIFICADO-ABNT-NBR-ISO-37001.2017-ANTISSUBORNO-No-484.002.25.pdf',
       icon: 'Gavel' 
     },
     {
       title: 'ISO 37301:2021',
       subtitle: '(Sistema de Gestão de Compliance)',
       description: 'Define os padrões para sistemas de gestão de compliance, assegurando o cumprimento de leis e regulamentações, além de demonstrar dedicação a práticas empresariais éticas e legais.',
-      link: '#', // ⚠️ ATUALIZE ESTE LINK
+      link: 'https://www.smh.com.br/wp-content/uploads/2025/03/CERTIFICADO-ABNT-NBR-ISO-37301.2021-No-483.002.25.pdf',
       icon: 'Scale' 
     },
     {
       title: 'ISO 9001:2015',
       subtitle: '(Sistema de Gestão da Qualidade)',
       description: 'Voltada para gestão da qualidade, garantindo que processos sejam otimizados para a satisfação do cliente, aprimorando a eficiência e a consistência dos produtos e serviços.',
-      link: '#', // ⚠️ ATUALIZE ESTE LINK
+      link: 'https://www.smh.com.br/wp-content/uploads/2025/03/CERTIFICADO-ABNT-NBR-ISO-9001.2015-N%C2%B0-23.019.25.pdf',
       icon: 'Star' 
     }
   ];
@@ -185,7 +186,6 @@ const MetricsCounter = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                // HOVER ADICIONADO AQUI:
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 flex flex-col h-full transition-all duration-300 hover:scale-105 hover:bg-white/20"
               >
                 <div className="mb-4">
