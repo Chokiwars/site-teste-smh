@@ -13,6 +13,7 @@ import Solucoes from "pages/Solucoes/Solucoes";
 import LoginClientes from './pages/LoginClientes/LoginClientes';
 import Clientes from "./pages/NossosClientes/NossosClientes";
 import CadastroClientes from "pages/CadastroClientes/CadastroClientes";
+import Marketplace from "pages/Marketplace/Marketplace";
 
 const Routes = () => {
   return (
@@ -32,7 +33,7 @@ const Routes = () => {
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/login-clientes" element={<LoginClientes />} />
         <Route path="/cadastro-clientes" element={<CadastroClientes />} />
-
+        <Route path="/marketplace" element={<Marketplace />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>

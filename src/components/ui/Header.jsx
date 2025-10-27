@@ -37,6 +37,8 @@ const Header = ({ className = '' }) => {
     { name: 'Formulario', path: '/formulario-pedidos-clientes', icon: 'Home' },
     { name: 'Cadastro', path: '/cadastro-clientes', icon: 'Users' },
     { name: 'Login', path: '/login-clientes', icon: 'User' },
+    { name: 'Marketplace', path: '/marketplace', icon: 'ShoppingCart' },
+    { name: 'Proposal Engine', path: '/proposal-engine', icon: 'FileText' },
   ];
 
   const socialLinks = [
@@ -128,7 +130,7 @@ const Header = ({ className = '' }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
-            {navigationItems.slice(0, 8).map((item) => (
+            {navigationItems.slice(0, 10).map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNavigation(item.path)}
