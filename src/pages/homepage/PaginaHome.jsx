@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -6,13 +6,12 @@ import { motion } from 'framer-motion';
 // Ajuste o caminho abaixo para apontar para o arquivo do seu logo
 import seuLogo from '../../assets/images/smh_sistemas_logo.jpg'; 
 
-// --- MUDANÇA 1: IMPORTAÇÕES DE ÍCONES ---
-// Mantemos os ícones do Lucide que você já usa
+// Importações de Ícones
 import { 
   Linkedin, Instagram, Facebook, 
-  Phone, Mail, MapPin, Clock 
+  Phone, Mail, MapPin, Clock,
+  SendHorizonal
 } from 'lucide-react'; 
-// Adicionamos a importação do WhatsApp da biblioteca react-icons
 import { BsWhatsapp } from 'react-icons/bs'; 
 
 // Importações de componentes (mantidas)
@@ -25,6 +24,14 @@ import CTASection from './components/CTASection';
 
 const Homepage = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    console.log('E-mail cadastrado na newsletter:', email);
+    alert('Obrigado por se inscrever!');
+    setEmail(''); 
+  };
 
   const handleGetProposal = () => {
     navigate('/proposal-engine');
@@ -43,12 +50,11 @@ const Homepage = () => {
     console.log('Project clicked:', project?.title);
   };
 
-  // --- MUDANÇA 2: ATUALIZAR O ARRAY socialLinks ---
   const socialLinks = [
     { 
       name: 'WhatsApp', 
       url: 'https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+um+or%C3%A7amento.', // ⚠️ Ajuste o número
-      icon: BsWhatsapp, // Trocamos MessagesSquare por BsWhatsapp
+      icon: BsWhatsapp,
       style: 'hover:text-[#25D366]' 
     },
     { name: 'LinkedIn', url: 'https://br.linkedin.com/company/smhsistemas', icon: Linkedin, style: 'hover:text-[#0A66C2]' },
@@ -56,7 +62,6 @@ const Homepage = () => {
     { name: 'Facebook', url: 'https://web.facebook.com/smhsistemas?_rdc=1&_rdr#', icon: Facebook, style: 'hover:text-[#1877F2]' },
   ];
   
-  // Dados de Contato com Ícones
   const contactInfo = [
     { icon: Phone, text: '+55 11 5060-5777', link: 'tel:+551150605777' }, 
     { icon: Mail, text: 'smh@smh.com.br', link: 'mailto:smh@smh.com.br' },
@@ -82,30 +87,34 @@ const Homepage = () => {
       </motion.main>
       
       {/* Footer */}
-      <footer className="bg-primary text-white py-12">
+      <footer className="bg-primary text-white pt-16 pb-8">
         <div className="container mx-auto px-6 lg:px-8">
-          {/* Ajuste do grid para 3 colunas em MD: 2 para Info e 1 para Contato */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             
-            {/* Company Info e Redes Sociais (Ocupa 2 colunas em MD+) */}
             <div className="col-span-1 md:col-span-2"> 
-              <div className="flex items-center space-x-3 mb-4">
+              <div className="flex items-center space-x-4 mb-4">
                 
                 <img 
                   src={seuLogo} 
                   alt="Logo SMH Sistemas" 
-                  className="w-28 h-28 rounded-full object-cover"
+                  className="w-20 h-20 rounded-full object-cover shadow-lg"
                 />
                 
                 <div>
-                  <h3 className="text-xl font-bold">SMH Sistemas</h3>
+                  <h3 className="text-2xl font-bold">SMH Sistemas</h3>
+                  <p className="text-lg text-white/80">Contra Incêndio</p>
                 </div>
               </div>
+
+              <p className="text-sm text-white/70 mt-4 max-w-md">
+                Líder em soluções de engenharia e sistemas de combate a incêndio, 
+                garantindo segurança e conformidade para seu patrimônio.
+              </p>
               
               {/* Seção de Redes Sociais */}
-              <div className="mt-6 mb-4">
-                <h4 className="font-semibold mb-3">Acompanhe</h4>
-                <div className="flex space-x-4"> 
+              <div className="mt-8 mb-4">
+                <h4 className="font-semibold mb-4">Acompanhe</h4>
+                <div className="flex space-x-5"> 
                   {socialLinks.map((link) => {
                     const Icon = link.icon;
                     return (
@@ -115,28 +124,22 @@ const Homepage = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Acesse nosso ${link.name}`}
-                        className={`text-white/90 transition duration-300 ease-in-out hover:scale-110 ${link.style}`}
+                        // MUDANÇA: Efeito de hover mais pronunciado
+                        className={`text-white/90 transition duration-300 ease-in-out transform hover:scale-125 ${link.style}`}
                       >
-                        {/* O 'Icon' aqui agora será o BsWhatsapp e funcionará perfeitamente */}
                         <Icon size={28} /> 
                       </a>
                     );
                   })}
                 </div>
               </div>
-
-              <div className="text-sm text-white/60 mt-8">
-                © {new Date()?.getFullYear()} SMH Sistemas. Todos os direitos reservados.
-              </div>
             </div>
 
-            {/* Contact (Ocupa 1 coluna em MD+) */}
             <div id="contact" className="col-span-1"> 
-              <h4 className="font-semibold mb-4">Contato</h4>
-              <ul className="space-y-3 text-sm text-white/80">
+              <h4 className="text-lg font-semibold mb-5">Contato</h4>
+              <ul className="space-y-4 text-sm text-white/80">
                 {contactInfo.map((item, index) => {
                   const Icon = item.icon;
-                  // Se houver link, renderiza como <a>, senão como <li>
                   const Content = item.link ? 'a' : 'li'; 
 
                   return (
@@ -145,17 +148,53 @@ const Homepage = () => {
                       href={item.link}
                       target={item.link && (item.text.includes('smh@smh.com.br') || item.text.includes('+55')) ? '_self' : '_blank'}
                       rel={item.link ? 'noopener noreferrer' : undefined}
-                      className={`flex items-start ${item.link ? 'hover:text-secondary transition duration-200' : ''}`}
+                      className={`flex items-start group ${item.link ? 'transition duration-200' : ''}`}
                     >
-                      <Icon size={18} className="mr-3 mt-[2px] flex-shrink-0" />
-                      <span>{item.text}</span>
+                      <Icon size={18} className={`mr-3 mt-[3px] flex-shrink-0 text-secondary ${item.link ? 'group-hover:scale-110 transition-transform' : ''}`} />
+                      <span className={`${item.link ? 'group-hover:text-secondary' : ''}`}>{item.text}</span>
                     </Content>
                   );
                 })}
               </ul>
             </div>
             
+            {/* Newsletter (Ocupa 1 coluna) */}
+            <div className="col-span-1">
+              <h4 className="text-lg font-semibold mb-5">Newsletter</h4>
+              <p className="text-sm text-white/80 mb-5">
+                Receba nossas últimas notícias e ofertas.
+              </p>
+              <form onSubmit={handleNewsletterSubmit} className="relative flex">
+                <input
+                  type="email"
+                  placeholder="Seu melhor e-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  aria-label="Email para newsletter"
+                  className="w-full rounded-l-md border-transparent bg-white/20 px-4 py-3 text-white placeholder-white/60 transition duration-300 focus:bg-white/30 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-primary"
+                />
+                <button
+                  type="submit"
+                  aria-label="Assinar newsletter"
+                  className="flex-shrink-0 rounded-r-md bg-secondary px-4 py-3 text-primary transition duration-300 hover:bg-secondary/90 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-primary"
+                >
+                  <SendHorizonal size={20} />
+                </button>
+              </form>
+              <p className="mt-3 text-xs text-white/50">
+                Respeitamos sua privacidade. Sem spam.
+              </p>
+            </div>
+            
           </div>
+          <div className="mt-12 border-t border-white/20 pt-8 text-center">
+            <p className="text-sm text-white/60">
+              © {new Date()?.getFullYear()} SMH Sistemas. Todos os direitos reservados.
+            </p>
+
+          </div>
+
         </div>
       </footer>
     </div>

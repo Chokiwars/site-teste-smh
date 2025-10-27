@@ -1,42 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Icon from '../AppIcon'; // --- CERTIFIQUE-SE que seu AppIcon tem: 'Phone', 'Mail', 'Instagram', 'Linkedin', 'Facebook'
-import Button from './Button'; // Assumindo que seu Button é um <button> simples
+import { useTranslation } from 'react-i18next';
+import Icon from '../AppIcon';
+import Button from './Button';
 import Logo from '@/assets/images/smh_sistemas_logo.jpg';
 
-// --- DEFINIÇÃO DE CORES PRIMÁRIAS (para consistência) ---
+// Bandeiras externas
+const BRFlag = 'https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg';
+const UKFlag = 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg';
+
+// Cores primárias
 const primaryColor = {
   text: 'text-[#003366]',
   textHover: 'hover:text-[#003366]',
-  bgHover: 'hover:bg-[#003366]/5', // 5% de opacidade
-  bgActive: 'bg-[#003366]/10',  // 10% de opacidade
+  bgHover: 'hover:bg-[#003366]/5',
+  bgActive: 'bg-[#003366]/10',
 };
-// --------------------------------------------------------
 
 const Header = ({ className = '' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language || 'pt');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navigationItems = [
-    { name: 'Início', path: '/homepage', icon: 'Home' },
-    { name: 'Sobre Nós', path: '/sobre-nos', icon: 'Users' },
-    { name: 'Soluções', path: '/solucoes', icon: 'Layers' },
-    { name: 'Serviços', path: '/services', icon: 'Settings' },
-    { name: 'Clientes', path: '/clientes', icon: 'Briefcase' },
-    { name: 'Formulario', path: '/formulario-pedidos-clientes', icon: 'Home' },
-    { name: 'Cadastro', path: '/cadastro-clientes', icon: 'Users' },
-    { name: 'Login', path: '/login-clientes', icon: 'User' },
+    { key: 'home', path: '/homepage', icon: 'Home' },
+    { key: 'about', path: '/sobre-nos', icon: 'Users' },
+    { key: 'solutions', path: '/solucoes', icon: 'Layers' },
+    { key: 'services', path: '/services', icon: 'Settings' },
+    { key: 'clients', path: '/clientes', icon: 'Briefcase' },
+    { key: 'form', path: '/formulario-pedidos-clientes', icon: 'Home' },
+    { key: 'register', path: '/cadastro-clientes', icon: 'Users' },
+    { key: 'login', path: '/login-clientes', icon: 'User' },
+    { key: 'compliance', path: '/compliance-qualidade', icon: 'ShieldCheck' },
   ];
 
   const socialLinks = [
@@ -48,9 +52,7 @@ const Header = ({ className = '' }) => {
   const handleNavigation = (path) => {
     if (path?.startsWith('#')) {
       const element = document.querySelector(path);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     } else {
       navigate(path);
     }
@@ -62,11 +64,14 @@ const Header = ({ className = '' }) => {
     return location?.pathname === path;
   };
 
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    setLanguage(lang);
+  };
+
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''} ${className}`}
-    >
-      {/* Informações de Contato Acima do Header */}
+    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''} ${className}`}>
+      {/* Top Contact */}
       <div className="bg-[#003366] text-white py-1.5 text-sm font-medium">
         <div className="container mx-auto flex justify-between items-center px-4">
           <div className="hidden md:flex items-center gap-6">
@@ -80,9 +85,9 @@ const Header = ({ className = '' }) => {
             </a>
           </div>
 
-          <div className="flex items-center space-x-4 ml-auto">
-            {/* Ícones Sociais (Desktop) */}
-            <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-4 ml-auto">
+            {/* Social Icons */}
+            <div className="flex items-center space-x-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -97,53 +102,60 @@ const Header = ({ className = '' }) => {
               ))}
             </div>
 
-            <div className="hidden lg:block w-px h-5 bg-white/30"></div>
+            {/* Linha separadora */}
+            <div className="w-px h-5 bg-white/30"></div>
 
+            {/* Language Buttons */}
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => changeLanguage('pt')}
+                className={`p-1 rounded-full border ${language === 'pt' ? 'border-white' : 'border-transparent'} hover:border-white transition`}
+              >
+                <img src={BRFlag} alt="Português" className="w-5 h-5 object-cover rounded-full" />
+              </button>
+              <button
+                onClick={() => changeLanguage('en')}
+                className={`p-1 rounded-full border ${language === 'en' ? 'border-white' : 'border-transparent'} hover:border-white transition`}
+              >
+                <img src={UKFlag} alt="English" className="w-5 h-5 object-cover rounded-full" />
+              </button>
+            </div>
+
+            {/* Linha separadora */}
+            <div className="w-px h-5 bg-white/30"></div>
+
+            {/* Fale Conosco */}
             <Button
               onClick={() => navigate('/contato')}
               className="bg-white/10 text-white border border-white/30 hover:bg-white/20 px-4 py-1.5 rounded-lg text-sm transition-all duration-300 transform hover:scale-105"
             >
-              Fale Conosco
+              {t('contact')}
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Header Interno */}
+      {/* Main Header */}
       <header className="bg-white border-b border-gray-200 w-full shadow-sm">
-        {/* A altura do menu é mantida em h-18 (72px) */}
         <div className="flex items-center justify-between h-18 px-6 lg:px-8">
-          
-          {/* MUDANÇA APLICADA AQUI:
-            Largura aumentada (w-24 / sm:w-32)
-            Altura controlada (h-16 / sm:h-16) para caber no menu h-18
-          */}
           <a href="/homepage" className="relative w-24 h-16 sm:w-32 sm:h-16 flex-shrink-0 transition-transform duration-300 transform hover:scale-105">
-            <img
-              src={Logo}
-              alt="Logo SMH Sistemas"
-              className="w-full h-full object-contain rounded-lg" // object-contain fará a imagem se ajustar ao container retangular
-            />
+            <img src={Logo} alt="Logo SMH Sistemas" className="w-full h-full object-contain rounded-lg" />
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
-            {navigationItems.slice(0, 8).map((item) => (
+            {navigationItems.map((item) => (
               <button
-                key={item.name}
+                key={item.key}
                 onClick={() => handleNavigation(item.path)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 group ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                   isActivePath(item.path)
-                    ? `${primaryColor.text} ${primaryColor.bgActive} font-semibold` // Estado Ativo
-                    : `text-slate-600 hover:text-red-600 ${primaryColor.bgHover}` // Estado Inativo
+                    ? `${primaryColor.text} ${primaryColor.bgActive} font-semibold`
+                    : `text-slate-600 hover:text-red-600 ${primaryColor.bgHover}`
                 }`}
               >
-                <Icon
-                  name={item.icon}
-                  size={16}
-                  className="transition-transform duration-300"
-                />
-                <span>{item.name}</span>
+                <Icon name={item.icon} size={16} />
+                <span>{t(item.key)}</span>
               </button>
             ))}
           </nav>
@@ -154,51 +166,57 @@ const Header = ({ className = '' }) => {
             className="lg:hidden p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
             aria-label="Toggle mobile menu"
           >
-            <Icon
-              name={isMobileMenuOpen ? 'X' : 'Menu'}
-              size={24}
-              className={`transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : 'rotate-0'}`}
-            />
+            <Icon name={isMobileMenuOpen ? 'X' : 'Menu'} size={24} className={`transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : 'rotate-0'}`} />
           </button>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={`lg:hidden transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-          }`}
-        >
+        <div className={`lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
           <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
             <nav className="space-y-2">
               {navigationItems.map((item) => (
                 <button
-                  key={item.name}
+                  key={item.key}
                   onClick={() => handleNavigation(item.path)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-300 ${
                     isActivePath(item.path)
-                      ? `${primaryColor.text} ${primaryColor.bgActive} font-semibold` // Estado Ativo
-                      : `text-slate-700 hover:text-red-600 hover:bg-gray-200` // Estado Inativo
+                      ? `${primaryColor.text} ${primaryColor.bgActive} font-semibold`
+                      : `text-slate-700 hover:text-red-600 hover:bg-gray-200`
                   }`}
                 >
                   <Icon name={item.icon} size={20} />
-                  <span className="font-medium">{item.name}</span>
+                  <span className="font-medium">{t(item.key)}</span>
                 </button>
               ))}
             </nav>
 
-            <div className="lg:hidden flex justify-center space-x-6 pt-5 mt-4 border-t border-gray-200">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-black transform hover:scale-110 transition-all duration-300"
-                  aria-label={social.name}
+            {/* Mobile Social + Language */}
+            <div className="flex items-center justify-center space-x-6 pt-5 mt-4 border-t border-gray-200">
+              <div className="flex items-center space-x-3">
+                {socialLinks.map((social) => (
+                  <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transform hover:scale-110 transition-all duration-300">
+                    <Icon name={social.icon} size={24} />
+                  </a>
+                ))}
+              </div>
+
+              {/* Linha separadora */}
+              <div className="w-px h-5 bg-gray-400"></div>
+
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => changeLanguage('pt')}
+                  className={`p-1 rounded-full border ${language === 'pt' ? 'border-gray-700' : 'border-transparent'} hover:border-gray-700 transition`}
                 >
-                  <Icon name={social.icon} size={24} />
-                </a>
-              ))}
+                  <img src={BRFlag} alt="Português" className="w-5 h-5 object-cover rounded-full" />
+                </button>
+                <button
+                  onClick={() => changeLanguage('en')}
+                  className={`p-1 rounded-full border ${language === 'en' ? 'border-gray-700' : 'border-transparent'} hover:border-gray-700 transition`}
+                >
+                  <img src={UKFlag} alt="English" className="w-5 h-5 object-cover rounded-full" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

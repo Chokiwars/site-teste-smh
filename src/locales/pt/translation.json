@@ -1,0 +1,53 @@
+{
+  "home": "Início",
+  "about": "Sobre Nós",
+  "solutions": "Soluções",
+  "services": "Serviços",
+  "clients": "Clientes",
+  "form": "Formulário",
+  "register": "Cadastro",
+  "login": "Login",
+  "compliance": "Compliance",
+  "contact": "Fale Conosco",
+
+  "hero": {
+    "title": {
+      "part1": "Uma tecnologia que",
+      "part2": "Protege"
+    },
+    "words": ["Negócios", "Vidas", "Dados", "Informações"],
+    "contact": "Entre em Contato",
+    "prevImage": "Imagem anterior",
+    "nextImage": "Próxima imagem"
+  },
+
+  "servicesGrid": {
+    "title": "Mais de 30 anos de excelência em Engenharia Contra Incêndio",
+    "imageAlt": "Extintores SMH",
+    "paragraphs": [
+      "A <strong class='text-[#29314A]'>SMH SISTEMAS</strong> atua em todo o Brasil com equipe própria e certificações internacionais, oferecendo soluções completas para prevenção e combate a incêndios.",
+      "<strong>Protegemos vidas, dados, patrimônio e conectividade</strong> — garantindo a continuidade das operações mesmo em situações críticas.",
+      "<strong>Especialistas em ambientes de missão crítica e riscos especiais</strong>, atendemos líderes dos setores de telecom, data centers, finanças, indústria e construção.",
+      "Oferecemos projeto, equipamentos certificados, instalação, manutenção, assistência técnica e recarga de gases."
+    ],
+    "button": "Quer saber mais?"
+  },
+
+  "metrics": {
+    "title": "Números que Falam por Si",
+    "subtitle": "Nossa trajetória de sucesso é medida pelos resultados que entregamos e pela confiança que nossos clientes depositam em nós.",
+
+    "items": {
+      "clients": "Clientes Atendidos",
+      "projects": "Projetos Entregues",
+      "satisfaction": "Satisfação do Cliente",
+      "experience": "Anos de Experiência"
+    },
+
+    "certification": {
+      "title": "Excelência e Qualidade Reconhecida",
+      "text": "Na <span class='text-accent font-semibold'>SMH Sistemas</span> valorizamos a ética, a transparência e a integridade em todas as nossas ações!",
+      "button": "Conheça mais"
+    }
+  }
+}

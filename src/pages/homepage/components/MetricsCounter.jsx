@@ -1,115 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Icon from '../../../components/AppIcon'; 
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import Icon from "../../../components/AppIcon";
 
 const MetricsCounter = () => {
+  const { t } = useTranslation();
+
   const [counters, setCounters] = useState({
     clients: 0,
     projects: 0,
     satisfaction: 0,
-    experience: 0
+    experience: 0,
   });
 
   const finalValues = {
     clients: 1000,
     projects: 1200,
     satisfaction: 100,
-    experience: 30
+    experience: 30,
   };
 
   const metrics = [
     {
-      key: 'clients',
-      label: 'Clientes Atendidos',
-      value: counters?.clients,
-      suffix: '+',
-      icon: 'Users',
-      color: 'text-blue-600'
+      key: "clients",
+      label: t("metrics.items.clients"),
+      value: counters.clients,
+      suffix: "+",
+      icon: "Users",
     },
     {
-      key: 'projects',
-      label: 'Projetos Entregues',
-      value: counters?.projects,
-      suffix: '+',
-      icon: 'CheckCircle',
-      color: 'text-green-600'
+      key: "projects",
+      label: t("metrics.items.projects"),
+      value: counters.projects,
+      suffix: "+",
+      icon: "CheckCircle",
     },
     {
-      key: 'satisfaction',
-      label: 'Satisfação do Cliente',
-      value: counters?.satisfaction,
-      suffix: '%',
-      icon: 'Heart',
-      color: 'text-red-600'
+      key: "satisfaction",
+      label: t("metrics.items.satisfaction"),
+      value: counters.satisfaction,
+      suffix: "%",
+      icon: "Heart",
     },
     {
-      key: 'experience',
-      label: 'Anos de Experiência',
-      value: counters?.experience,
-      suffix: '+',
-      icon: 'Award',
-      color: 'text-purple-600'
-    }
+      key: "experience",
+      label: t("metrics.items.experience"),
+      value: counters.experience,
+      suffix: "+",
+      icon: "Award",
+    },
   ];
 
   useEffect(() => {
-    const duration = 2000; 
+    const duration = 2000;
     const steps = 60;
     const stepDuration = duration / steps;
 
-    const intervals = Object.keys(finalValues)?.map(key => {
-      const increment = finalValues?.[key] / steps;
-      let currentValue = 0;
+    const intervals = Object.keys(finalValues).map((key) => {
+      const increment = finalValues[key] / steps;
       let step = 0;
 
-      return setInterval(() => {
+      const interval = setInterval(() => {
         step++;
-        currentValue = Math.min(Math.ceil(increment * step), finalValues?.[key]);
-        
-        setCounters(prev => ({
-          ...prev,
-          [key]: currentValue
-        }));
-
-        if (step >= steps) {
-          clearInterval(intervals?.find(interval => interval === this));
-        }
+        const currentValue = Math.min(
+          Math.ceil(increment * step),
+          finalValues[key]
+        );
+        setCounters((prev) => ({ ...prev, [key]: currentValue }));
+        if (step >= steps) clearInterval(interval);
       }, stepDuration);
+
+      return interval;
     });
 
-    return () => {
-      intervals?.forEach(interval => clearInterval(interval));
-    };
+    return () => intervals.forEach(clearInterval);
   }, []);
-
-  // LINKS ATUALIZADOS AQUI
-  const certifications = [
-    {
-      title: 'ISO 37001:2017',
-      subtitle: '(Sistema de Gestão Antissuborno)',
-      description: 'Estabelece requisitos e fornece orientações para estabelecer, implementar, manter e melhorar um sistema de gestão antissuborno, promovendo uma cultura de transparência e responsabilidade.',
-      link: 'https://www.smh.com.br/wp-content/uploads/2025/03/CERTIFICADO-ABNT-NBR-ISO-37001.2017-ANTISSUBORNO-No-484.002.25.pdf',
-      icon: 'Gavel' 
-    },
-    {
-      title: 'ISO 37301:2021',
-      subtitle: '(Sistema de Gestão de Compliance)',
-      description: 'Define os padrões para sistemas de gestão de compliance, assegurando o cumprimento de leis e regulamentações, além de demonstrar dedicação a práticas empresariais éticas e legais.',
-      link: 'https://www.smh.com.br/wp-content/uploads/2025/03/CERTIFICADO-ABNT-NBR-ISO-37301.2021-No-483.002.25.pdf',
-      icon: 'Scale' 
-    },
-    {
-      title: 'ISO 9001:2015',
-      subtitle: '(Sistema de Gestão da Qualidade)',
-      description: 'Voltada para gestão da qualidade, garantindo que processos sejam otimizados para a satisfação do cliente, aprimorando a eficiência e a consistência dos produtos e serviços.',
-      link: 'https://www.smh.com.br/wp-content/uploads/2025/03/CERTIFICADO-ABNT-NBR-ISO-9001.2015-N%C2%B0-23.019.25.pdf',
-      icon: 'Star' 
-    }
-  ];
 
   return (
     <section className="py-20 bg-primary">
       <div className="container mx-auto px-6 lg:px-8">
+        {/* Título e Introdução */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,19 +88,18 @@ const MetricsCounter = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Números que Falam por Si
+            {t("metrics.title")}
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Nossa trajetória de sucesso é medida pelos resultados que entregamos 
-            e pela confiança que nossos clientes depositam em nós.
+            {t("metrics.subtitle")}
           </p>
         </motion.div>
 
-        {/* Grid dos Contadores (com hover) */}
+        {/* Contadores */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {metrics?.map((metric, index) => (
+          {metrics.map((metric, index) => (
             <motion.div
-              key={metric?.key}
+              key={metric.key}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -138,88 +107,50 @@ const MetricsCounter = () => {
               className="text-center group"
             >
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                <div className="mb-4">
-                  <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors duration-300">
-                    <Icon name={metric?.icon} size={32} className="text-white" />
-                  </div>
+                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors duration-300">
+                  <Icon name={metric.icon} size={32} className="text-white" />
                 </div>
-                
+
                 <div className="mb-2">
                   <span className="text-4xl md:text-5xl font-bold text-white">
-                    {metric?.value}
+                    {metric.value}
                   </span>
                   <span className="text-2xl font-bold text-accent">
-                    {metric?.suffix}
+                    {metric.suffix}
                   </span>
                 </div>
-                
+
                 <p className="text-white/80 font-medium text-lg">
-                  {metric?.label}
+                  {metric.label}
                 </p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* SEÇÃO DE CERTIFICAÇÃO ISO - COM ÍCONES E HOVER */}
+        {/* Certificações */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-20 pt-16 border-t border-white/20"
+          className="mt-20 pt-16 border-t border-white/20 text-center"
         >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              CERTIFICAÇÕES ISO
-            </h3>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Nosso compromisso com a excelência transparece em cada ação, garantindo qualidade, integridade e conformidade, comprovadas pelas certificações ABNT NBR ISO.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert.title}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 flex flex-col h-full transition-all duration-300 hover:scale-105 hover:bg-white/20"
-              >
-                <div className="mb-4">
-                  <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Icon name={cert.icon} size={28} className="text-white" />
-                  </div>
-                </div>
-
-                <span className="text-accent font-semibold text-sm uppercase">
-                  Certificação
-                </span>
-                <h4 className="text-xl font-bold text-white mt-2">
-                  {cert.title}
-                </h4>
-                <p className="text-white/70 text-sm mb-4">
-                  {cert.subtitle}
-                </p>
-                
-                <p className="text-white/90 text-base mb-6 flex-grow">
-                  {cert.description}
-                </p>
-
-                <a 
-                  href={cert.link}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-accent font-semibold hover:text-white transition-colors duration-300 inline-flex items-center group mt-auto"
-                >
-                  Ver Certificado
-                  <Icon name="ExternalLink" size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-              </motion.div>
-            ))}
-          </div>
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            {t("metrics.certification.title")}
+          </h3>
+          <p
+            className="text-lg text-white/80 max-w-3xl mx-auto mb-8 leading-relaxed"
+            dangerouslySetInnerHTML={{
+              __html: t("metrics.certification.text"),
+            }}
+          />
+          <a
+            href="/compliance-qualidade"
+            className="inline-block px-8 py-3 rounded-full border border-accent text-accent font-semibold hover:bg-accent hover:text-white transition-all duration-300"
+          >
+            {t("metrics.certification.button")}
+          </a>
         </motion.div>
       </div>
     </section>

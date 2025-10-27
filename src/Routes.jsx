@@ -13,6 +13,7 @@ import Solucoes from "pages/Solucoes/Solucoes";
 import LoginClientes from './pages/LoginClientes/LoginClientes';
 import Clientes from "./pages/NossosClientes/NossosClientes";
 import CadastroClientes from "pages/CadastroClientes/CadastroClientes";
+import ComplianceQualidade from "pages/ComplianceQualidade/ComplianceQualidade";
 
 const Routes = () => {
   return (
@@ -32,6 +33,7 @@ const Routes = () => {
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/login-clientes" element={<LoginClientes />} />
         <Route path="/cadastro-clientes" element={<CadastroClientes />} />
+        <Route path="/compliance-qualidade" element={<ComplianceQualidade />} />
 
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>

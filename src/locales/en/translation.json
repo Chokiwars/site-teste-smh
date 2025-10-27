@@ -1,0 +1,53 @@
+{
+  "home": "Home",
+  "about": "About Us",
+  "solutions": "Solutions",
+  "services": "Services",
+  "clients": "Clients",
+  "form": "Form",
+  "register": "Register",
+  "login": "Login",
+  "compliance": "Compliance",
+  "contact": "Contact Us",
+
+  "hero": {
+    "title": {
+      "part1": "A technology that",
+      "part2": "Protects"
+    },
+    "words": ["Businesses", "Lives", "Data", "Information"],
+    "contact": "Contact Us",
+    "prevImage": "Previous image",
+    "nextImage": "Next image"
+  },
+
+  "servicesGrid": {
+    "title": "Over 30 years of excellence in Fire Engineering",
+    "imageAlt": "SMH Extinguishers",
+    "paragraphs": [
+      "<strong class='text-[#29314A]'>SMH SYSTEMS</strong> operates throughout Brazil with its own team and international certifications, offering complete solutions for fire prevention and protection.",
+      "<strong>We protect lives, data, assets, and connectivity</strong> — ensuring business continuity even in critical situations.",
+      "<strong>Experts in mission-critical environments and special risks</strong>, we serve leaders in telecom, data centers, finance, industry, and construction sectors.",
+      "We provide design, certified equipment, installation, maintenance, technical support, and gas refilling."
+    ],
+    "button": "Learn more"
+  },
+
+  "metrics": {
+    "title": "Numbers That Speak for Themselves",
+    "subtitle": "Our success story is measured by the results we deliver and the trust our clients place in us.",
+
+    "items": {
+      "clients": "Clients Served",
+      "projects": "Projects Delivered",
+      "satisfaction": "Customer Satisfaction",
+      "experience": "Years of Experience"
+    },
+
+    "certification": {
+      "title": "Recognized Excellence and Quality",
+      "text": "At <span class='text-accent font-semibold'>SMH Systems</span>, we value ethics, transparency, and integrity in all our actions!",
+      "button": "Learn more"
+    }
+  }
+}
