@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const produtosSeed = [
@@ -31,6 +31,87 @@ const cardVariant = {
     transition: { delay: i * 0.08, type: "spring", stiffness: 80, damping: 16 },
   }),
 };
+
+// Header fixo fora do AnimatePresence
+const Header = React.memo(({ search, setSearch, filterMaxPrice, setFilterMaxPrice, cart, setTela }) => (
+  <div className="w-full flex items-center justify-between py-4 px-6 border-b border-gray-200 bg-white sticky top-[64px] z-30">
+    <div className="flex items-center gap-4">
+      <h3 className="text-lg font-semibold text-slate-800">Marketplace SMH</h3>
+      <span className="text-sm text-gray-500">Mini-shop (demo)</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <input
+        placeholder="Buscar produto..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
+      />
+      <input
+        type="number"
+        placeholder="Preço max R$"
+        value={filterMaxPrice}
+        onChange={(e) => setFilterMaxPrice(e.target.value)}
+        className="w-32 border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
+      />
+      <button
+        className="bg-slate-800 text-white px-3 py-2 rounded-md text-sm"
+        onClick={() => setTela("cart")}
+        aria-label="Ver carrinho"
+      >
+        🛒 {cart.length > 0 ? <span className="ml-2 font-medium">{cart.length}</span> : null}
+      </button>
+      <button
+        onClick={() => {
+          setSearch("");
+          setFilterMaxPrice("");
+          setTela("catalog");
+        }}
+        className="text-sm text-slate-600 px-3 py-2 rounded-md hover:bg-slate-50"
+      >
+        Limpar
+      </button>
+    </div>
+  </div>
+));
+
+const CartItem = React.memo(({ item, alterarQuantidade, remover }) => {
+  const [qty, setQty] = useState(item.qty);
+
+  useEffect(() => {
+    setQty(item.qty);
+  }, [item.qty]);
+
+  return (
+    <div className="flex items-center gap-4 border rounded-lg p-3 border-gray-100">
+      <img src={item.produto.imagem} alt={item.produto.nome} className="w-16 h-16" />
+      <div className="flex-1">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold text-slate-800">{item.produto.nome}</h3>
+          <span className="text-slate-900 font-bold">
+            R$ {(item.produto.preco * qty).toFixed(2)}
+          </span>
+        </div>
+        <p className="text-sm text-gray-500">{item.produto.descricaoCurta}</p>
+        <div className="mt-2 flex items-center gap-2">
+          <input
+            type="number"
+            min={1}
+            value={qty}
+            onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
+            onBlur={() => alterarQuantidade(item.id, qty)}
+            className="w-20 border px-2 py-1 rounded-md"
+          />
+          <button
+            onClick={() => remover(item.id)}
+            className="text-sm text-red-600 px-2 py-1 rounded-md"
+          >
+            Remover
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+});
 
 export default function MarketplaceMiniSMH() {
   const [tela, setTela] = useState("catalog");
@@ -72,47 +153,6 @@ export default function MarketplaceMiniSMH() {
       !filterMaxPrice || p.preco <= Number(filterMaxPrice || 0) || filterMaxPrice === "";
     return matchText && matchPrice;
   });
-
-  const Header = () => (
-    <div className="w-full flex items-center justify-between py-4 px-6 border-b border-gray-200 bg-white sticky top-[64px] z-30">
-      <div className="flex items-center gap-4">
-        <h3 className="text-lg font-semibold text-slate-800">Marketplace SMH</h3>
-        <span className="text-sm text-gray-500">Mini-shop (demo)</span>
-      </div>
-      <div className="flex items-center gap-3">
-        <input
-          placeholder="Buscar produto..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
-        />
-        <input
-          type="number"
-          placeholder="Preço max R$"
-          value={filterMaxPrice}
-          onChange={(e) => setFilterMaxPrice(e.target.value)}
-          className="w-32 border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
-        />
-        <button
-          className="bg-slate-800 text-white px-3 py-2 rounded-md text-sm"
-          onClick={() => setTela("cart")}
-          aria-label="Ver carrinho"
-        >
-          🛒 {cart.length > 0 ? <span className="ml-2 font-medium">{cart.length}</span> : null}
-        </button>
-        <button
-          onClick={() => {
-            setSearch("");
-            setFilterMaxPrice("");
-            setTela("catalog");
-          }}
-          className="text-sm text-slate-600 px-3 py-2 rounded-md hover:bg-slate-50"
-        >
-          Limpar
-        </button>
-      </div>
-    </div>
-  );
 
   const Catalog = () => (
     <motion.div key="catalog" variants={pageVariant} initial="initial" animate="in" exit="out" className="w-full">
@@ -244,35 +284,12 @@ export default function MarketplaceMiniSMH() {
             <>
               <div className="space-y-4">
                 {cart.map((item) => (
-                  <div key={item.id} className="flex items-center gap-4 border rounded-lg p-3 border-gray-100">
-                    <img src={item.produto.imagem} alt={item.produto.nome} className="w-16 h-16" />
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-slate-800">{item.produto.nome}</h3>
-                        <span className="text-slate-900 font-bold">
-                          R$ {(item.produto.preco * item.qty).toFixed(2)}
-                        </span>
-                      </div>
-                      <p className="text-sm text-gray-500">{item.produto.descricaoCurta}</p>
-                      <div className="mt-2 flex items-center gap-2">
-                        <input
-                          type="number"
-                          min={1}
-                          value={item.qty}
-                          onChange={(e) =>
-                            alterarQuantidade(item.id, Math.max(0, Number(e.target.value)))
-                          }
-                          className="w-20 border px-2 py-1 rounded-md"
-                        />
-                        <button
-                          onClick={() => removerDoCarrinho(item.id)}
-                          className="text-sm text-red-600 px-2 py-1 rounded-md"
-                        >
-                          Remover
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <CartItem
+                    key={item.id}
+                    item={item}
+                    alterarQuantidade={alterarQuantidade}
+                    remover={removerDoCarrinho}
+                  />
                 ))}
               </div>
 
@@ -308,7 +325,14 @@ export default function MarketplaceMiniSMH() {
     <div className="min-h-[calc(100vh-64px)] bg-white text-slate-900">
       <div className="pt-[120px]" />
       <div className="max-w-7xl mx-auto">
-        <Header />
+        <Header
+          search={search}
+          setSearch={setSearch}
+          filterMaxPrice={filterMaxPrice}
+          setFilterMaxPrice={setFilterMaxPrice}
+          cart={cart}
+          setTela={setTela}
+        />
         <div className="relative z-10">
           <AnimatePresence mode="wait" initial={false}>
             {tela === "catalog" && <Catalog />}
