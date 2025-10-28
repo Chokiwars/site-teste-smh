@@ -32,7 +32,19 @@ const cardVariant = {
   }),
 };
 
-// Header fixo fora do AnimatePresence
+// CSS para remover setinhas em todos os navegadores
+const noSpinInput = {
+  MozAppearance: "textfield",
+};
+
+const noSpinInputClass = `
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
 const Header = React.memo(({ search, setSearch, filterMaxPrice, setFilterMaxPrice, cart, setTela }) => (
   <div className="w-full flex items-center justify-between py-4 px-6 border-b border-gray-200 bg-white sticky top-[64px] z-30">
     <div className="flex items-center gap-4">
@@ -52,6 +64,7 @@ const Header = React.memo(({ search, setSearch, filterMaxPrice, setFilterMaxPric
         value={filterMaxPrice}
         onChange={(e) => setFilterMaxPrice(e.target.value)}
         className="w-32 border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
+        style={noSpinInput}
       />
       <button
         className="bg-slate-800 text-white px-3 py-2 rounded-md text-sm"
@@ -100,6 +113,7 @@ const CartItem = React.memo(({ item, alterarQuantidade, remover }) => {
             onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
             onBlur={() => alterarQuantidade(item.id, qty)}
             className="w-20 border px-2 py-1 rounded-md"
+            style={noSpinInput}
           />
           <button
             onClick={() => remover(item.id)}
@@ -156,6 +170,7 @@ export default function MarketplaceMiniSMH() {
 
   const Catalog = () => (
     <motion.div key="catalog" variants={pageVariant} initial="initial" animate="in" exit="out" className="w-full">
+      <style>{noSpinInputClass}</style>
       <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-6">
           <h2 className="text-3xl font-extrabold text-slate-900">
@@ -264,6 +279,7 @@ export default function MarketplaceMiniSMH() {
 
   const Cart = () => (
     <motion.div key="cart" variants={pageVariant} initial="initial" animate="in" exit="out" className="w-full">
+      <style>{noSpinInputClass}</style>
       <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Carrinho</h2>
@@ -339,11 +355,6 @@ export default function MarketplaceMiniSMH() {
             {tela === "detail" && produtoSelecionado && <Detail produto={produtoSelecionado} />}
             {tela === "cart" && <Cart />}
           </AnimatePresence>
-        </div>
-      </div>
-      <div className="mt-12 pb-12">
-        <div className="max-w-7xl mx-auto px-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} SMH — Marketplace demo.
         </div>
       </div>
     </div>
