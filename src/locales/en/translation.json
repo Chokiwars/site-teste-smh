@@ -36,18 +36,195 @@
   "metrics": {
     "title": "Numbers That Speak for Themselves",
     "subtitle": "Our success story is measured by the results we deliver and the trust our clients place in us.",
-
     "items": {
       "clients": "Clients Served",
       "projects": "Projects Delivered",
       "satisfaction": "Customer Satisfaction",
       "experience": "Years of Experience"
     },
-
     "certification": {
       "title": "Recognized Excellence and Quality",
       "text": "At <span class='text-accent font-semibold'>SMH Systems</span>, we value ethics, transparency, and integrity in all our actions!",
       "button": "Learn more"
     }
+  },
+
+  "projectShowcase": {
+    "title": "Markets Served",
+    "subtitle": "SMH SYSTEMS specializes in Fire Protection for Mission-Critical Environments and Special Risks, serving multiple sectors.",
+    "markets": [
+      { "name": "Data Centers", "description": "High-performance fire detection and suppression systems for the safety of terminals, hangars, and airport infrastructures.", "image": "https://assets.ibm.com/is/image/ibm/22_27_p_gorodenkoff-549:2x1?dpr=on%2C1.25&wid=960&hei=480" },
+      { "name": "Commercial Centers", "description": "Robust solutions for protecting large commercial complexes, ensuring the safety of people and assets.", "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Westminster_Arcade.jpg" },
+      { "name": "Civil Construction", "description": "Fire protection for new constructions and renovations, focusing on systems that integrate with modern architecture.", "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Factory_of_National_Cement_Share_Company.jpg" },
+      { "name": "Technical Rooms (CPDs)", "description": "Fire prevention and suppression in critical environments with sensitive equipment, using clean agents that do not damage assets.", "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Floridaserversfront1.jpg" },
+      { "name": "Airports", "description": "Advanced fire protection systems to ensure operational continuity in hyperscale and colocation data centers.", "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/20140308_Airport_ground_operations.jpg" },
+      { "name": "Industries", "description": "Customized solutions for industrial environments with specific risks, protecting production lines and machinery.", "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/Kunda_tsemenditehas.jpg" },
+      { "name": "Logistics", "description": "Protection for distribution centers, warehouses, and storage facilities with systems that ensure merchandise safety.", "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Automatisches_Kleinteilelager.jpg" },
+      { "name": "Mining", "description": "Cutting-edge technology for protecting heavy equipment and infrastructure in mining operations under challenging conditions.", "image": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kalgoorlie_open_cast_mine.jpg" },
+      { "name": "Ports", "description": "Fire safety for port facilities, cargo terminals, and large-scale storage areas.", "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Porto_de_Lisboa_%282%29.jpg" },
+      { "name": "Shopping Centers", "description": "Comprehensive systems for protecting shopping malls, ensuring the safety of visitors and commercial complexes.", "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Mall_of_Tripla_sis%C3%A4kuvia_2.jpg" },
+      { "name": "Telecommunications", "description": "Critical solutions for telecom centers, protecting electronic equipment and ensuring service continuity.", "image": "https://blog.tactium.com.br/wp-content/themes/softium/script/timthumb.php?src=https://blog.tactium.com.br/wp-content/uploads/2016/02/como-melhorar-performance-do-seu-telemarketing-ativo.jpg&w=930&h=480&zc=1&q=100" }
+    ],
+    "notFound": "Didn't find your sector? Talk to us about a customized solution.",
+    "button": "Contact Us",
+    "prev": "Previous market",
+    "next": "Next market"
+  },
+
+  "ctaSection": {
+    "heading": "Connect with specialists who understand your business.",
+    "button": "Chat with a Specialist",
+    "benefits": {
+      "fastResponse": {
+        "title": "Fast Response",
+        "description": "Personalized proposal on the spot"
+      },
+      "noCommitment": {
+        "title": "No Commitment",
+        "description": "Free analysis of your needs"
+      },
+      "specializedConsulting": {
+        "title": "Specialized Consulting",
+        "description": "Direct conversation with our specialists"
+      }
+    }
+  },
+
+  "sobreNos": {
+    "title": "About Us",
+    "intro": "Welcome to <span class='font-semibold text-[#ff4747]'>SMH</span> — innovation, safety, and quality in technological solutions that transform the future.",
+    "sections": [
+      {
+        "id": "historia",
+        "titulo": "Our History",
+        "texto": "Founded with the purpose of providing modern and reliable systems, SMH was born from a passion for technology and a commitment to the safety of our clients. We develop customized projects, combining efficiency and simplicity.",
+        "reverso": false,
+        "imagem": "src/assets/images/historia.jpeg"
+      },
+      {
+        "id": "missao",
+        "titulo": "Our Mission",
+        "texto": "Ensure the peace of mind and satisfaction of our clients through safe, accessible, and technological solutions, promoting sustainable development and trust in every partnership.",
+        "reverso": true,
+        "imagem": "src/assets/images/missao.jpg"
+      },
+      {
+        "id": "valores",
+        "titulo": "Our Values",
+        "textoLista": [
+          "💡 Constant innovation and pursuit of excellence",
+          "🤝 Commitment and transparency",
+          "🔒 Safety and trust in every service",
+          "🌱 Sustainability and social responsibility"
+        ],
+        "reverso": false,
+        "imagem": "src/assets/images/valores.jpg"
+      },
+      {
+        "id": "equipe",
+        "titulo": "Our Team",
+        "texto": "We have a multidisciplinary team passionate about technology and innovation. Each member contributes unique skills to make our products and services even better.",
+        "reverso": true,
+        "imagem": "src/assets/images/equipe.jpg"
+      },
+      {
+        "id": "contato",
+        "titulo": "Get in Touch",
+        "texto": "Want to know more about us or have questions? We would be happy to talk to you! 📧 <span class='font-semibold text-[#ff4747]'>contact@smh.com.br</span>",
+        "reverso": false,
+        "imagem": "src/assets/images/contato.png"
+      }
+    ]
+  },
+
+  "systems": {
+    "title": "Fire Systems",
+    "subtitle": "Explore our systems designed to ensure safety, efficiency, and reliability in fire prevention and protection.",
+    "components": "Components and Systems",
+    "moreInfo": "Learn more about this category",
+    "mainItems": "Main Systems:",
+    "others": "others...",
+    "viewDetails": "View Details",
+    "fireDetection": {
+      "title": "Electronic Fire Detection and Alarm Systems",
+      "description": "Advanced technologies for early fire detection and immediate alerts.",
+      "details": "These systems allow continuous monitoring and integration with intelligent alarm panels, ensuring quick and efficient responses in case of fire.",
+      "items": [
+        "Laser-based fire detection system (VESDA / HSSD)",
+        "Conventional and addressable fire detection system",
+        "Aspirating fire alarm system",
+        "Alarm monitoring and supervision system"
+      ]
+    },
+    "gaseousAgents": {
+      "title": "Fire Suppression with Gaseous Agents",
+      "description": "Clean and effective solutions for sensitive areas and electronic equipment.",
+      "details": "They allow rapid extinguishing without damaging electronic equipment, ideal for server rooms and laboratories.",
+      "items": [
+        "Clean agent fire suppression system (FM200, NOVEC 1230, CO₂)",
+        "Automatic agent detection and release system",
+        "Pressurization and controlled discharge system"
+      ]
+    },
+    "hydraulicSystems": {
+      "title": "Hydraulic Fire Suppression Systems",
+      "description": "Robust structures that ensure water supply in emergencies.",
+      "details": "Includes high-pressure pumps, hydrants, and reservoir systems sized for any building type.",
+      "items": [
+        "Hydrant and hose systems",
+        "Fire pumps (electric and diesel)",
+        "Reservoirs and pump houses"
+      ]
+    },
+    "sprinklers": {
+      "title": "Automatic Sprinkler Systems",
+      "description": "Quickly reduce flame spread and minimize structural damage.",
+      "details": "Wet, dry, pre-action, and deluge types with integrated electronic monitoring.",
+      "items": [
+        "Wet and dry sprinkler systems",
+        "Pre-action and deluge systems",
+        "Electronic monitoring and alarms"
+      ]
+    },
+    "gasDetection": {
+      "title": "Gas and Smoke Detection Systems",
+      "description": "Accurate monitoring for environments at risk of flammable or toxic gases.",
+      "details": "Includes fixed and portable detectors integrated with alarm and centralized supervision systems.",
+      "items": [
+        "Fixed system for toxic and flammable gases detection",
+        "Portable gas detection system",
+        "Integrated supervision and alarm system"
+      ]
+    },
+    "passiveProtection": {
+      "title": "Passive Fire Protection Systems",
+      "description": "Preventive barriers that contain fire and smoke.",
+      "details": "Includes fireproof doors, walls, coatings, and compartmentalization to limit fire spread.",
+      "items": [
+        "Fire doors and shutters",
+        "Fire-resistant walls and partitions",
+        "Intumescent coatings and firestopping"
+      ]
+    }
+  },
+
+  "footer": {
+    "logoAlt": "SMH Systems Logo",
+    "companyName": "SMH Systems",
+    "tagline": "Fire Protection",
+    "description": "Leader in engineering and fire protection systems, ensuring safety and compliance for your assets.",
+    "follow": "Follow Us",
+    "contact": "Contact",
+    "hours": "Mon-Fri: 8am to 6pm",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Receive our latest news and offers.",
+    "emailPlaceholder": "Your best email",
+    "subscribe": "Subscribe",
+    "privacy": "We respect your privacy. No spam.",
+    "rights": "All rights reserved."
+  },
+
+  "newsletter": {
+    "thankYou": "Thank you for subscribing!"
   }
 }

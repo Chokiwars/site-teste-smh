@@ -1,24 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 
 const CTASection = ({ onGetProposal, onContactUs }) => {
+  const { t } = useTranslation();
+
   const benefits = [
     {
       icon: "Zap",
-      title: "Resposta Rápida",
-      description: "Proposta personalizada na hora"
+      title: t('ctaSection.benefits.fastResponse.title'),
+      description: t('ctaSection.benefits.fastResponse.description'),
     },
     {
       icon: "Shield",
-      title: "Sem Compromisso",
-      description: "Análise gratuita das suas necessidades"
+      title: t('ctaSection.benefits.noCommitment.title'),
+      description: t('ctaSection.benefits.noCommitment.description'),
     },
     {
       icon: "Users",
-      title: "Consultoria Especializada",
-      description: "Conversa direta com nossos especialistas"
+      title: t('ctaSection.benefits.specializedConsulting.title'),
+      description: t('ctaSection.benefits.specializedConsulting.description'),
     }
   ];
 
@@ -34,7 +37,7 @@ const CTASection = ({ onGetProposal, onContactUs }) => {
           className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Conecte-se com especialistas que entendem do seu negócio.
+            {t('ctaSection.heading')}
           </h2>
         </motion.div>
 
@@ -71,8 +74,6 @@ const CTASection = ({ onGetProposal, onContactUs }) => {
           className="text-center mt-16 sm:mt-20"
         >
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center mb-8">
-
-            
             <Button
               variant="outline"
               size="lg"
@@ -81,7 +82,7 @@ const CTASection = ({ onGetProposal, onContactUs }) => {
               iconPosition="left"
               className="border-white text-white hover:bg-white hover:text-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold btn-magnetic w-full sm:w-auto"
             >
-              Conversar com Especialista
+              {t('ctaSection.button')}
             </Button>
           </div>
         </motion.div>

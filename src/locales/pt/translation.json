@@ -5,49 +5,232 @@
   "services": "Serviços",
   "clients": "Clientes",
   "form": "Formulário",
-  "register": "Cadastro",
-  "login": "Login",
+  "register": "Cadastrar",
+  "login": "Entrar",
   "compliance": "Compliance",
-  "contact": "Fale Conosco",
+  "contact": "Contato",
 
   "hero": {
     "title": {
-      "part1": "Uma tecnologia que",
+      "part1": "A tecnologia que",
       "part2": "Protege"
     },
-    "words": ["Negócios", "Vidas", "Dados", "Informações"],
-    "contact": "Entre em Contato",
+    "words": ["Empresas", "Vidas", "Dados", "Informações"],
+    "contact": "Fale Conosco",
     "prevImage": "Imagem anterior",
     "nextImage": "Próxima imagem"
   },
 
   "servicesGrid": {
-    "title": "Mais de 30 anos de excelência em Engenharia Contra Incêndio",
+    "title": "Mais de 30 anos de excelência em Engenharia de Incêndio",
     "imageAlt": "Extintores SMH",
     "paragraphs": [
-      "A <strong class='text-[#29314A]'>SMH SISTEMAS</strong> atua em todo o Brasil com equipe própria e certificações internacionais, oferecendo soluções completas para prevenção e combate a incêndios.",
-      "<strong>Protegemos vidas, dados, patrimônio e conectividade</strong> — garantindo a continuidade das operações mesmo em situações críticas.",
-      "<strong>Especialistas em ambientes de missão crítica e riscos especiais</strong>, atendemos líderes dos setores de telecom, data centers, finanças, indústria e construção.",
-      "Oferecemos projeto, equipamentos certificados, instalação, manutenção, assistência técnica e recarga de gases."
+      "<strong class='text-[#29314A]'>SMH SYSTEMS</strong> atua em todo o território nacional com equipe própria e certificações internacionais, oferecendo soluções completas para prevenção e proteção contra incêndios.",
+      "<strong>Protegemos vidas, dados, patrimônios e conectividade</strong> — garantindo a continuidade dos negócios mesmo em situações críticas.",
+      "<strong>Especialistas em ambientes mission-critical e riscos especiais</strong>, atendemos líderes dos setores de telecomunicações, data centers, finanças, indústria e construção civil.",
+      "Oferecemos projeto, fornecimento de equipamentos certificados, instalação, manutenção, suporte técnico e recarga de gases."
     ],
-    "button": "Quer saber mais?"
+    "button": "Saiba mais"
   },
 
   "metrics": {
-    "title": "Números que Falam por Si",
-    "subtitle": "Nossa trajetória de sucesso é medida pelos resultados que entregamos e pela confiança que nossos clientes depositam em nós.",
-
+    "title": "Números Que Falam Por Si",
+    "subtitle": "Nossa história de sucesso é medida pelos resultados que entregamos e pela confiança dos nossos clientes.",
     "items": {
       "clients": "Clientes Atendidos",
       "projects": "Projetos Entregues",
-      "satisfaction": "Satisfação do Cliente",
+      "satisfaction": "Satisfação dos Clientes",
       "experience": "Anos de Experiência"
     },
-
     "certification": {
-      "title": "Excelência e Qualidade Reconhecida",
-      "text": "Na <span class='text-accent font-semibold'>SMH Sistemas</span> valorizamos a ética, a transparência e a integridade em todas as nossas ações!",
-      "button": "Conheça mais"
+      "title": "Excelência e Qualidade Reconhecidas",
+      "text": "Na <span class='text-accent font-semibold'>SMH Systems</span>, valorizamos ética, transparência e integridade em todas as nossas ações!",
+      "button": "Saiba mais"
     }
+  },
+
+  "projectShowcase": {
+    "title": "Mercados Atendidos",
+    "subtitle": "A SMH SYSTEMS é especialista em Proteção Contra Incêndios para Ambientes Críticos e Riscos Especiais, atendendo diversos setores.",
+    "markets": [
+      { "name": "Data Centers", "description": "Sistemas de detecção e supressão de incêndio de alta performance, garantindo a segurança de terminais, hangares e infraestruturas aeroportuárias.", "image": "https://assets.ibm.com/is/image/ibm/22_27_p_gorodenkoff-549:2x1?dpr=on%2C1.25&wid=960&hei=480" },
+      { "name": "Centros Comerciais", "description": "Soluções robustas para proteção de grandes complexos comerciais, garantindo a segurança de pessoas e patrimônios.", "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Westminster_Arcade.jpg" },
+      { "name": "Construção Civil", "description": "Proteção contra incêndio em novas edificações e reformas, com foco em sistemas que se integram à arquitetura moderna.", "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Factory_of_National_Cement_Share_Company.jpg" },
+      { "name": "Salas Técnicas (CPDs)", "description": "Prevenção e combate a incêndios em ambientes críticos com equipamentos sensíveis, utilizando agentes limpos que não danificam os ativos.", "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Floridaserversfront1.jpg" },
+      { "name": "Aeroportos", "description": "Sistemas avançados de proteção contra incêndio para garantir a continuidade operacional em data centers hyperscale e colocation.", "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/20140308_Airport_ground_operations.jpg" },
+      { "name": "Indústrias", "description": "Soluções personalizadas para ambientes industriais com riscos específicos, protegendo linhas de produção e maquinários.", "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/Kunda_tsemenditehas.jpg" },
+      { "name": "Logística", "description": "Proteção para centros de distribuição, armazéns e galpões, com sistemas que garantem a segurança das mercadorias.", "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Automatisches_Kleinteilelager.jpg" },
+      { "name": "Mineração", "description": "Tecnologia de ponta para proteção de equipamentos pesados e infraestrutura em operações de mineração sob condições desafiadoras.", "image": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kalgoorlie_open_cast_mine.jpg" },
+      { "name": "Portos", "description": "Segurança contra incêndios para instalações portuárias, terminais de carga e áreas de armazenamento de grande escala.", "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Porto_de_Lisboa_%282%29.jpg" },
+      { "name": "Shoppings", "description": "Sistemas completos para proteção de centros de compras, garantindo a segurança de visitantes e complexos comerciais.", "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Mall_of_Tripla_sis%C3%A4kuvia_2.jpg" },
+      { "name": "Telecomunicações", "description": "Soluções críticas para centrais de telecomunicações, protegendo equipamentos eletrônicos e garantindo a continuidade dos serviços.", "image": "https://blog.tactium.com.br/wp-content/themes/softium/script/timthumb.php?src=https://blog.tactium.com.br/wp-content/uploads/2016/02/como-melhorar-performance-do-seu-telemarketing-ativo.jpg&w=930&h=480&zc=1&q=100" }
+    ],
+    "notFound": "Não encontrou o seu setor? Fale conosco e peça uma solução personalizada.",
+    "button": "Entrar em Contato",
+    "prev": "Mercado anterior",
+    "next": "Próximo mercado"
+  },
+
+  "ctaSection": {
+    "heading": "Conecte-se com especialistas que entendem do seu negócio.",
+    "button": "Falar com um Especialista",
+    "benefits": {
+      "fastResponse": {
+        "title": "Resposta Rápida",
+        "description": "Proposta personalizada na hora"
+      },
+      "noCommitment": {
+        "title": "Sem Compromisso",
+        "description": "Análise gratuita das suas necessidades"
+      },
+      "specializedConsulting": {
+        "title": "Consultoria Especializada",
+        "description": "Converse diretamente com nossos especialistas"
+      }
+    }
+  },
+
+  "sobreNos": {
+    "title": "Sobre Nós",
+    "intro": "Bem-vindo à <span class='font-semibold text-[#ff4747]'>SMH</span> — inovação, segurança e qualidade em soluções tecnológicas que transformam o futuro.",
+    "sections": [
+      {
+        "id": "historia",
+        "titulo": "Nossa História",
+        "texto": "Fundada com o propósito de oferecer sistemas modernos e confiáveis, a SMH nasceu da paixão por tecnologia e do compromisso com a segurança dos nossos clientes. Desenvolvemos projetos personalizados, unindo eficiência e simplicidade.",
+        "reverso": false,
+        "imagem": "src/assets/images/historia.jpeg"
+      },
+      {
+        "id": "missao",
+        "titulo": "Nossa Missão",
+        "texto": "Garantir a tranquilidade e satisfação dos nossos clientes por meio de soluções seguras, acessíveis e tecnológicas, promovendo o desenvolvimento sustentável e a confiança em cada parceria.",
+        "reverso": true,
+        "imagem": "src/assets/images/missao.jpg"
+      },
+      {
+        "id": "valores",
+        "titulo": "Nossos Valores",
+        "textoLista": [
+          "💡 Inovação constante e busca pela excelência",
+          "🤝 Comprometimento e transparência",
+          "🔒 Segurança e confiança em cada serviço",
+          "🌱 Sustentabilidade e responsabilidade social"
+        ],
+        "reverso": false,
+        "imagem": "src/assets/images/valores.jpg"
+      },
+      {
+        "id": "equipe",
+        "titulo": "Nossa Equipe",
+        "texto": "Contamos com uma equipe multidisciplinar apaixonada por tecnologia e inovação. Cada integrante contribui com habilidades únicas para tornar nossos produtos e serviços ainda melhores.",
+        "reverso": true,
+        "imagem": "src/assets/images/equipe.jpg"
+      },
+      {
+        "id": "contato",
+        "titulo": "Fale Conosco",
+        "texto": "Quer saber mais sobre nós ou tirar suas dúvidas? Teremos prazer em conversar com você! 📧 <span class='font-semibold text-[#ff4747]'>contato@smh.com.br</span>",
+        "reverso": false,
+        "imagem": "src/assets/images/contato.png"
+      }
+    ]
+  },
+
+  "systems": {
+    "title": "Sistemas de Incêndio",
+    "subtitle": "Explore nossos sistemas desenvolvidos para garantir segurança, eficiência e confiabilidade na prevenção e combate a incêndios.",
+    "components": "Componentes e Sistemas",
+    "moreInfo": "Saiba mais sobre esta categoria",
+    "mainItems": "Principais Sistemas:",
+    "others": "outros...",
+    "viewDetails": "Ver Detalhes",
+
+    "fireDetection": {
+      "title": "Sistemas Eletrônicos de Detecção e Alarme de Incêndio",
+      "description": "Tecnologias avançadas para detecção precoce de incêndios e alertas imediatos.",
+      "details": "Esses sistemas permitem o monitoramento contínuo e integração com painéis de alarme inteligentes, garantindo respostas rápidas e eficientes em caso de incêndio.",
+      "items": [
+        "Sistema de detecção de incêndio por laser (VESDA / HSSD)",
+        "Sistema de detecção de incêndio convencional e endereçável",
+        "Sistema de alarme de incêndio aspirativo",
+        "Sistema de monitoramento e supervisão de alarmes"
+      ]
+    },
+
+    "gaseousAgents": {
+      "title": "Sistemas de Supressão de Incêndio com Agentes Gasosos",
+      "description": "Soluções limpas e eficazes para áreas sensíveis e equipamentos eletrônicos.",
+      "details": "Permitem a extinção rápida sem danificar equipamentos eletrônicos, ideais para salas de servidores e laboratórios.",
+      "items": [
+        "Sistema de combate a incêndio com agente limpo (FM200, NOVEC 1230, CO₂)",
+        "Sistema automático de detecção e liberação de agente",
+        "Sistema de pressurização e descarga controlada"
+      ]
+    },
+
+    "hydraulicSystems": {
+      "title": "Sistemas Hidráulicos de Combate a Incêndio",
+      "description": "Estruturas robustas que garantem o abastecimento de água em emergências.",
+      "details": "Inclui bombas de alta pressão, hidrantes e reservatórios dimensionados para qualquer tipo de edificação.",
+      "items": [
+        "Sistemas de hidrantes e mangotinhos",
+        "Bombas de incêndio (elétricas e a diesel)",
+        "Reservatórios e casas de bombas"
+      ]
+    },
+
+    "sprinklers": {
+      "title": "Sistemas de Sprinklers Automáticos",
+      "description": "Reduzem rapidamente a propagação das chamas e minimizam danos estruturais.",
+      "details": "Tipos úmido, seco, pré-ação e dilúvio, com monitoramento eletrônico integrado.",
+      "items": [
+        "Sistemas de sprinklers úmidos e secos",
+        "Sistemas de pré-ação e dilúvio",
+        "Monitoramento e alarmes eletrônicos"
+      ]
+    },
+
+    "gasDetection": {
+      "title": "Sistemas de Detecção de Gases e Fumaça",
+      "description": "Monitoramento preciso para ambientes com risco de gases inflamáveis ou tóxicos.",
+      "details": "Inclui detectores fixos e portáteis integrados a sistemas de alarme e supervisão centralizada.",
+      "items": [
+        "Sistema fixo de detecção de gases tóxicos e inflamáveis",
+        "Sistema portátil de detecção de gases",
+        "Sistema de supervisão e alarme integrado"
+      ]
+    },
+
+    "passiveProtection": {
+      "title": "Sistemas de Proteção Passiva Contra Incêndios",
+      "description": "Barreiras preventivas que contêm o fogo e a fumaça.",
+      "details": "Inclui portas, paredes, revestimentos e compartimentações corta-fogo que limitam a propagação do incêndio.",
+      "items": [
+        "Portas e venezianas corta-fogo",
+        "Paredes e divisórias resistentes ao fogo",
+        "Revestimentos intumescentes e selagens corta-fogo"
+      ]
+    }
+  },
+
+  "footer": {
+    "logoAlt": "Logotipo da SMH Systems",
+    "companyName": "SMH Systems",
+    "tagline": "Proteção Contra Incêndio",
+    "description": "Líder em engenharia e sistemas de proteção contra incêndios, garantindo segurança e conformidade para o seu patrimônio.",
+    "follow": "Siga-nos",
+    "contact": "Contato",
+    "hours": "Seg-Sex: 8h às 18h",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Receba nossas últimas novidades e ofertas.",
+    "emailPlaceholder": "Seu melhor e-mail",
+    "subscribe": "Inscrever-se",
+    "privacy": "Respeitamos sua privacidade. Sem spam.",
+    "rights": "Todos os direitos reservados."
+  },
+
+  "newsletter": {
+    "thankYou": "Obrigado por se inscrever!"
   }
 }

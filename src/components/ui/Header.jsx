@@ -40,8 +40,6 @@ const Header = ({ className = '' }) => {
     { key: 'form', path: '/formulario-pedidos-clientes', icon: 'Home' },
     { key: 'register', path: '/cadastro-clientes', icon: 'Users' },
     { key: 'login', path: '/login-clientes', icon: 'User' },
-    { name: 'Marketplace', path: '/marketplace', icon: 'ShoppingCart' },
-    { name: 'Proposal Engine', path: '/proposal-engine', icon: 'FileText' },
     { key: 'compliance', path: '/compliance-qualidade', icon: 'ShieldCheck' },
   ];
 
@@ -202,7 +200,6 @@ const Header = ({ className = '' }) => {
                 ))}
               </div>
 
-              {/* Linha separadora */}
               <div className="w-px h-5 bg-gray-400"></div>
 
               <div className="flex items-center space-x-2">
