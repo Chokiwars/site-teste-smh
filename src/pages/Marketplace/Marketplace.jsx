@@ -2,18 +2,18 @@ import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const produtosSeed = [
-  { id: "p1", nome: "Sirene", descricaoCurta: "Sirene de alarme com alto volume.", descricaoLonga: "Sirene de alarme com alto volume para segurança residencial ou comercial.", preco: 199.9, imagem: "src/assets/imagens/sirene.png" },
+  { id: "p1", nome: "Sirene", descricaoCurta: "Sirene de alarme com alto volume.", descricaoLonga: "Sirene de alarme com alto volume para segurança residencial ou comercial.", preco: 199.9, imagem: "src/assets/images/0sirene.jpg" },
   { id: "p2", nome: "Detector", descricaoCurta: "Detector de fumaça ou movimento.", descricaoLonga: "Detector de fumaça ou movimento para monitoramento eficiente.", preco: 149.9, imagem: "src/assets/images/0detector.jpg" },
-  { id: "p3", nome: "Central de Alarme", descricaoCurta: "Gerencie seu sistema completo.", descricaoLonga: "Central inteligente para gerenciar seu sistema de alarme completo.", preco: 499.9, imagem: "src/assets/imagens/central.png" },
-  { id: "p4", nome: "Cilindro", descricaoCurta: "Cilindro de segurança para portas.", descricaoLonga: "Cilindro de segurança para portas e portões de alta proteção.", preco: 79.9, imagem: "src/assets/imagens/0cilindro.jpg" },
-  { id: "p5", nome: "Acionador Manual", descricaoCurta: "Acionamento imediato de alarme.", descricaoLonga: "Acionador manual de alarme para emergência imediata.", preco: 59.9, imagem: "src/assets/imagens/0acionadorManual.jpg" },
-  { id: "p6", nome: "Bateria", descricaoCurta: "Backup para sistemas de alarme.", descricaoLonga: "Bateria de backup para sistemas de alarme e automação.", preco: 129.9, imagem: "src/assets/imagens/bateria.png" },
-  { id: "p7", nome: "Fonte", descricaoCurta: "Alimentação confiável para dispositivos.", descricaoLonga: "Fonte de alimentação confiável para todos os seus dispositivos de segurança.", preco: 89.9, imagem: "src/assets/imagens/fonte.png" },
-  { id: "p8", nome: "Filtro", descricaoCurta: "Proteção para sensores sensíveis.", descricaoLonga: "Filtro de proteção para sensores e equipamentos sensíveis.", preco: 49.9, imagem: "src/assets/imagens/filtro.png" },
-  { id: "p9", nome: "Módulo", descricaoCurta: "Integração e ampliação do sistema.", descricaoLonga: "Módulo de integração para ampliar funcionalidades do sistema.", preco: 179.9, imagem: "src/assets/imagens/modulo.png" },
-  { id: "p10", nome: "Válvula", descricaoCurta: "Controle e prevenção de sistemas.", descricaoLonga: "Válvula de segurança para sistemas de prevenção e controle.", preco: 119.9, imagem: "src/assets/imagens/valvula.png" },
-  { id: "p11", nome: "Chave", descricaoCurta: "Acesso seguro a armários/portas.", descricaoLonga: "Chave de acesso e segurança para armários ou portas especiais.", preco: 39.9, imagem: "src/assets/imagens/chave.png" },
-  { id: "p12", nome: "Placa de sinalização", descricaoCurta: "Placa indicativa de segurança.", descricaoLonga: "Placa indicativa de segurança ou alerta para ambientes.", preco: 29.9, imagem: "src/assets/imagens/placa.png" },
+  { id: "p3", nome: "Central de Alarme", descricaoCurta: "Gerencie seu sistema completo.", descricaoLonga: "Central inteligente para gerenciar seu sistema de alarme completo.", preco: 499.9, imagem: "src/assets/images/0centralDeAlarme.jpg" },
+  { id: "p4", nome: "Cilindro", descricaoCurta: "Cilindro de segurança para portas.", descricaoLonga: "Cilindro de segurança para portas e portões de alta proteção.", preco: 79.9, imagem: "src/assets/images/0cilindro.jpg" },
+  { id: "p5", nome: "Acionador Manual", descricaoCurta: "Acionamento imediato de alarme.", descricaoLonga: "Acionador manual de alarme para emergência imediata.", preco: 59.9, imagem: "src/assets/images/0acionadorManual.jpg" },
+  { id: "p6", nome: "Bateria", descricaoCurta: "Backup para sistemas de alarme.", descricaoLonga: "Bateria de backup para sistemas de alarme e automação.", preco: 129.9, imagem: "src/assets/images/0bateria.jpg" },
+  { id: "p7", nome: "Fonte", descricaoCurta: "Alimentação confiável para dispositivos.", descricaoLonga: "Fonte de alimentação confiável para todos os seus dispositivos de segurança.", preco: 89.9, imagem: "src/assets/images/0fonte.jpg" },
+  { id: "p8", nome: "Filtro", descricaoCurta: "Proteção para sensores sensíveis.", descricaoLonga: "Filtro de proteção para sensores e equipamentos sensíveis.", preco: 49.9, imagem: "src/assets/images/0filtro.png" },
+  { id: "p9", nome: "Módulo", descricaoCurta: "Integração e ampliação do sistema.", descricaoLonga: "Módulo de integração para ampliar funcionalidades do sistema.", preco: 179.9, imagem: "src/assets/images/0modulo.jpg" },
+  { id: "p10", nome: "Válvula", descricaoCurta: "Controle e prevenção de sistemas.", descricaoLonga: "Válvula de segurança para sistemas de prevenção e controle.", preco: 119.9, imagem: "src/assets/images/0valvula.webp" },
+  { id: "p11", nome: "Chave", descricaoCurta: "Acesso seguro a armários/portas.", descricaoLonga: "Chave de acesso e segurança para armários ou portas especiais.", preco: 39.9, imagem: "src/assets/images/0chave.jpg" },
+  { id: "p12", nome: "Placa de sinalização", descricaoCurta: "Placa indicativa de segurança.", descricaoLonga: "Placa indicativa de segurança ou alerta para ambientes.", preco: 29.9, imagem: "src/assets/images/0placa.jpg" },
 ];
 
 // Variants para animação
