@@ -191,30 +191,32 @@ export default function MarketplaceMiniSMH() {
                 initial="hidden"
                 animate="show"
                 exit={{ opacity: 0, scale: 0.98 }}
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col items-center text-center min-h-[320px] transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center min-h-[320px] transition-transform duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
               >
-                <img src={p.imagem} alt={p.nome} className="w-20 h-20 mb-4" />
-                <h3 className="font-semibold text-slate-800 text-lg">{p.nome}</h3>
-                <p className="text-sm text-gray-500 mb-3">{p.descricaoCurta}</p>
-                <div className="mt-auto w-full">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-slate-900 font-bold">R$ {p.preco.toFixed(2)}</span>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => {
-                          setProdutoSelecionado(p);
-                          setTela("detail");
-                        }}
-                        className="text-sm px-3 py-1 rounded-md border border-gray-200 hover:bg-gray-50"
-                      >
-                        Ver mais
-                      </button>
-                      <button
-                        onClick={() => adicionarAoCarrinho(p, 1)}
-                        className="bg-slate-800 text-white px-3 py-1 rounded-md text-sm"
-                      >
-                        Adicionar
-                      </button>
+                <img src={p.imagem} alt={p.nome} className="w-full h-48 object-cover mb-4" />
+                <div className="p-4 w-full flex flex-col flex-1">
+                  <h3 className="font-semibold text-slate-800 text-lg">{p.nome}</h3>
+                  <p className="text-sm text-gray-500 mb-3">{p.descricaoCurta}</p>
+                  <div className="mt-auto w-full">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-slate-900 font-bold">R$ {p.preco.toFixed(2)}</span>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => {
+                            setProdutoSelecionado(p);
+                            setTela("detail");
+                          }}
+                          className="text-sm px-3 py-1 rounded-md border border-gray-200 hover:bg-gray-50"
+                        >
+                          Ver mais
+                        </button>
+                        <button
+                          onClick={() => adicionarAoCarrinho(p, 1)}
+                          className="bg-slate-800 text-white px-3 py-1 rounded-md text-sm"
+                        >
+                          Adicionar
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -239,10 +241,10 @@ export default function MarketplaceMiniSMH() {
     if (!produto) return null;
     return (
       <motion.div key={`detail-${produto.id}`} variants={pageVariant} initial="initial" animate="in" exit="out" className="w-full">
-        <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-8 items-start bg-white border border-gray-100 p-6 rounded-2xl shadow-sm">
-            <img src={produto.imagem} alt={produto.nome} className="w-40 h-40 object-contain" />
-            <div className="flex-1">
+        <div className="max-w-4xl mx-auto py-10 px-0 sm:px-0 lg:px-0">
+          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <img src={produto.imagem} alt={produto.nome} className="w-full h-80 object-cover" />
+            <div className="p-6 flex flex-col gap-4">
               <h2 className="text-2xl font-bold text-slate-900 mb-2">{produto.nome}</h2>
               <p className="text-sm text-gray-600 mb-4">{produto.descricaoLonga}</p>
               <p className="text-xl font-bold text-slate-900 mb-4">R$ {produto.preco.toFixed(2)}</p>
