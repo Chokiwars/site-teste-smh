@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import Icon from '../AppIcon';
 import Button from './Button';
 import Logo from '@/assets/images/smh_sistemas_logo.jpg';
+import { path } from 'd3';
+
 
 // Bandeiras externas
 const BRFlag = 'https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg';
@@ -41,6 +43,7 @@ const Header = ({ className = '' }) => {
     { key: 'register', path: '/cadastro-clientes', icon: 'Users' },
     { key: 'login', path: '/login-clientes', icon: 'User' },
     { key: 'compliance', path: '/compliance-qualidade', icon: 'ShieldCheck' },
+    { key: 'contato', path: '/nossocontato', icon: 'MailOpen' },
   ];
 
   const socialLinks = [
