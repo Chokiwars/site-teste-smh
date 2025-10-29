@@ -34,7 +34,8 @@ const Routes = () => {
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/login-clientes" element={<LoginClientes />} />
         <Route path="/cadastro-clientes" element={<CadastroClientes />} />
-
+        <Route path="/compliance-qualidade" element={<ComplianceQualidade />} />
+        <Route path="/marketplace" element={<Marketplace />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>
