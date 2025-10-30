@@ -52,7 +52,7 @@ const Homepage = () => {
     { icon: Phone, text: '+55 11 5060-5777', link: 'tel:+551150605777' }, 
     { icon: Mail, text: 'smh@smh.com.br', link: 'mailto:smh@smh.com.br' },
     { icon: MapPin, text: 'Av. Camilo Castelo Branco, 90, Vl. Gumercindo', link: 'https://www.google.com/maps/place/SMH+Sistemas+Contra+Inc%C3%AAndio/data=!4m2!3m1!1s0x0:0xf9a9f70eeef20071?sa=X&ved=1t:2428&ictx=111' },
-    { icon: Clock, text: t('contact.hours') },
+    { icon: Clock, text: t('footer.hours') },
   ];
 
   return (

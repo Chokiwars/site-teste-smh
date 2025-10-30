@@ -32,6 +32,32 @@ const Header = ({ className = '' }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Fecha menu mobile quando troca de rota
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Fecha menu mobile ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const menu = document.querySelector('.mobile-menu');
+      const button = document.querySelector('.mobile-menu-toggle');
+      if (
+        menu &&
+        !menu.contains(event.target) &&
+        !button.contains(event.target)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
   // Itens de navegação
   const navigationItems = [
     { key: 'home', path: '/homepage', icon: 'Home' },
@@ -66,17 +92,16 @@ const Header = ({ className = '' }) => {
     return location?.pathname === path;
   };
 
-  // Alterar idioma
+  // Alterar idioma e fechar menu mobile
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
     setLanguage(lang);
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg' : ''
-      } ${className}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''} ${className}`}
     >
       {/* Top Contact */}
       <div className="bg-[#003366] text-white py-1.5 text-sm font-medium">
@@ -115,33 +140,26 @@ const Header = ({ className = '' }) => {
               ))}
             </div>
 
-            {/* Linha separadora */}
             <div className="w-px h-5 bg-white/30"></div>
 
             {/* Language Buttons */}
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => changeLanguage('pt')}
-                className={`p-1 rounded-full border ${
-                  language === 'pt' ? 'border-white' : 'border-transparent'
-                } hover:border-white transition`}
+                className={`p-1 rounded-full border ${language === 'pt' ? 'border-white' : 'border-transparent'} hover:border-white transition`}
               >
                 <img src={BRFlag} alt="Português" className="w-5 h-5 object-cover rounded-full" />
               </button>
               <button
                 onClick={() => changeLanguage('en')}
-                className={`p-1 rounded-full border ${
-                  language === 'en' ? 'border-white' : 'border-transparent'
-                } hover:border-white transition`}
+                className={`p-1 rounded-full border ${language === 'en' ? 'border-white' : 'border-transparent'} hover:border-white transition`}
               >
                 <img src={UKFlag} alt="English" className="w-5 h-5 object-cover rounded-full" />
               </button>
             </div>
 
-            {/* Linha separadora */}
             <div className="w-px h-5 bg-white/30"></div>
 
-            {/* Fale Conosco */}
             <Button
               onClick={() => navigate('/contato')}
               className="bg-white/10 text-white border border-white/30 hover:bg-white/20 px-4 py-1.5 rounded-lg text-sm transition-all duration-300 transform hover:scale-105"
@@ -183,7 +201,7 @@ const Header = ({ className = '' }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
+            className="mobile-menu-toggle lg:hidden p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
             aria-label="Toggle mobile menu"
           >
             <Icon
@@ -196,7 +214,7 @@ const Header = ({ className = '' }) => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden transition-all duration-300 ease-out ${
+          className={`mobile-menu lg:hidden transition-all duration-300 ease-out ${
             isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         >
