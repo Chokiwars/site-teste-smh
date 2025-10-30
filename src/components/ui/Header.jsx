@@ -37,12 +37,7 @@ const Header = ({ className = '' }) => {
     { key: 'solutions', path: '/solucoes', icon: 'Layers' },
     { key: 'services', path: '/services', icon: 'Settings' },
     { key: 'clients', path: '/clientes', icon: 'Briefcase' },
-    { key: 'form', path: '/formulario-pedidos-clientes', icon: 'Home' },
-    { key: 'register', path: '/cadastro-clientes', icon: 'Users' },
-    { key: 'login', path: '/login-clientes', icon: 'User' },
     { key: 'compliance', path: '/compliance-qualidade', icon: 'ShieldCheck' },
-    { name: 'Proposal Engine', path: '/proposal-engine', icon: 'FileText' },
-    { name: 'Marketplace', path: '/marketplace', icon: 'ShoppingCart' },
   ];
 
   const socialLinks = [
@@ -146,7 +141,7 @@ const Header = ({ className = '' }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
-            {navigationItems.slice(0, 11).map((item) => (
+            {navigationItems.slice(0, 6).map((item) => (
               <button
                 key={item.key}
                 onClick={() => handleNavigation(item.path)}

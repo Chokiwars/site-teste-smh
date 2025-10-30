@@ -244,7 +244,7 @@
       {
         "id": "contato",
         "titulo": "Entre em Contato",
-        "texto": "Quer saber mais sobre nós ou tem dúvidas? Será um prazer falar com você! 📧 <span class='font-semibold text-[#ff4747]'>contact@smh.com.br</span>",
+        "texto": "Quer saber mais sobre nós ou tem dúvidas? Será um prazer falar com você! 📧 <span class='font-semibold text-[#ff4747]'>smh@smh.com.br</span>",
         "reverso": false,
         "imagem": "src/assets/images/contato.png"
       }
