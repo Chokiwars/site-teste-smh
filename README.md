@@ -88,3 +88,5 @@ Recebe -> Telefone/E-mail/WhatsApp
 🎨Bia: [`@Chokiwars`](https://github.com/Chokiwars/)  
 🙏Eric: [`@EricSouzaDosSantos`](https://github.com/EricSouzaDosSantos)  
 ❤️Sabrina: [`@sabrinasavini`](https://github.com/sabrinasavini)
+
+Rafa: [`Chefinho`](rafael.almeida@smhsistemas.com.br)
