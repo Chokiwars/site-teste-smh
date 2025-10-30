@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next"; // 1. IMPORTAR (Corrigido)
+import { useTranslation } from "react-i18next";
 import {
   FileText,
   ShieldAlert,
