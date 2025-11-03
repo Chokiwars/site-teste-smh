@@ -267,7 +267,7 @@ export default function SMHClientsCarousel() {
  
       <AnimatedText
         text="Clientes Parceiros"
-        className="text-3xl sm:text-4xl font-extrabold mb-1 text-center justify-center"
+        className="text-3xl sm:text-4xl font-extrabold mt-14 mb-1 text-center justify-center"
         style={{ color: 'var(--smh-900)' }}
         delay={0.1}
       />
