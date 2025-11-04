@@ -98,6 +98,42 @@
     ]
   },
   "contact": "Contato",
+  "contato": {
+    "hero": {
+      "title": "Fale Conosco",
+      "subtitle": "Entre em contato conosco para dúvidas, sugestões ou suporte."
+    },
+    "info": {
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Telefone"
+      },
+      "address": {
+        "title": "Endereço"
+      }
+    },
+    "map": {
+      "title": "Localização"
+    },
+    "form": {
+      "title": "Envie sua mensagem",
+      "name": {
+        "label": "Nome",
+        "placeholder": "Seu nome"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "seu@email.com"
+      },
+      "message": {
+        "label": "Mensagem",
+        "placeholder": "Sua mensagem"
+      },
+      "buttonText": "Enviar"
+    }
+  },
   "hero": {
     "title": {
       "part1": "Uma tecnologia que",

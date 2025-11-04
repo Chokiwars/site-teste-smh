@@ -98,6 +98,42 @@
     ]
   },
   "contact": "Contact Us",
+  "contato": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Get in touch with us for questions, suggestions, or support."
+    },
+    "info": {
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Phone"
+      },
+      "address": {
+        "title": "Address"
+      }
+    },
+    "map": {
+      "title": "Location"
+    },
+    "form": {
+      "title": "Send your message",
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Your message"
+      },
+      "buttonText": "Send"
+    }
+  },
   "hero": {
     "title": {
       "part1": "A technology that",
