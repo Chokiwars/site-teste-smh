@@ -172,7 +172,12 @@ const HeroSection = ({ onContactUs }) => {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={onContactUs}
+                onClick={() =>
+                  window.open(
+                    'https://wa.me/5511945443842?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es.',
+                    '_blank'
+                  )
+                }
                 iconName="Phone"
                 iconPosition="left"
                 className="border-white/50 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-semibold relative overflow-hidden group"
@@ -181,6 +186,7 @@ const HeroSection = ({ onContactUs }) => {
               </Button>
             </motion.div>
           </motion.div>
+
         </motion.div>
       </div>
 

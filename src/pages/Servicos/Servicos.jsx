@@ -159,7 +159,12 @@ const Servicos = () => {
             <Button
               variant="default"
               size="lg"
-              onClick={() => console.log(`Solicitar orçamento: ${selectedService.title}`)}
+              onClick={() =>
+                  window.open(
+                    'https://wa.me/5511945443842?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento.',
+                    '_blank'
+                  )
+                }
               iconName="Sparkles"
               iconPosition="left"
               className="bg-[#29314A] hover:bg-[#29314A]/90 px-8 py-4"

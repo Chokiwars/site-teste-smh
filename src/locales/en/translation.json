@@ -298,7 +298,7 @@
       {
         "id": "contato",
         "titulo": "Get in Touch",
-        "texto": "Want to know more about us or have questions? We would be happy to talk to you! 📧 <span class='font-semibold text-[#ff4747]'>contact@smh.com.br</span>",
+        "texto": "Want to know more about us or have questions? We would be happy to talk to you! 📧 <span class='font-semibold text-[#ff4747]'>smh@smh.com.br</span>",
         "reverso": false,
         "imagem": "src/assets/images/contato.png"
       }

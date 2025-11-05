@@ -77,7 +77,12 @@ const CTASection = ({ onGetProposal, onContactUs }) => {
             <Button
               variant="outline"
               size="lg"
-              onClick={onContactUs}
+              onClick={() =>
+                  window.open(
+                    'https://wa.me/5511945443842?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es.',
+                    '_blank'
+                  )
+                }
               iconName="MessageCircle"
               iconPosition="left"
               className="border-white text-white hover:bg-white hover:text-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold btn-magnetic w-full sm:w-auto"

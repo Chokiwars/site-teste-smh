@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Icon from '../AppIcon';
 import Button from './Button';
-import Logo from '@/assets/images/smh_sistemas_logo2.png';
+import Logo from '@/assets/images/BIG-smh-logo.png';
 
 const BRFlag = 'https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg';
 const UKFlag = 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg';
@@ -17,7 +17,7 @@ const primaryColor = {
 
 const Header = ({ className = '' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false); // Mantido para o shadow-lg
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { t, i18n } = useTranslation();
@@ -164,8 +164,8 @@ const Header = ({ className = '' }) => {
                 <button onClick={() => changeLanguage('pt')} className={`p-1 rounded-full border ${language === 'pt' ? 'border-gray-700' : 'border-transparent'}`}>
                   <img src={BRFlag} alt="Português" className="w-5 h-5 rounded-full" />
                 </button>
-              _ <button onClick={() => changeLanguage('en')} className={`p-1 rounded-full border ${language === 'en' ? 'border-gray-700' : 'border-transparent'}`}>
-        _         <img src={UKFlag} alt="English" className="w-5 h-5 rounded-full" />
+               <button onClick={() => changeLanguage('en')} className={`p-1 rounded-full border ${language === 'en' ? 'border-gray-700' : 'border-transparent'}`}>
+                 <img src={UKFlag} alt="English" className="w-5 h-5 rounded-full" />
                 </button>
               </div>
             </div>

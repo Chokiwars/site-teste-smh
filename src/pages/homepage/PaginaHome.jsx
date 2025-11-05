@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-
-// ⚠️ IMPORTAR LOGO
 import seuLogo from '../../assets/images/smh_sistemas_logo.jpg'; 
 
 // Ícones
@@ -42,7 +40,7 @@ const Homepage = () => {
   const handleViewProject = (project) => console.log('Project clicked:', project?.title);
 
   const socialLinks = [
-    { name: 'WhatsApp', url: 'https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+um+or%C3%A7amento.', icon: BsWhatsapp, style: 'hover:text-[#25D366]' },
+    { name: 'WhatsApp', url: 'https://wa.me/5511945443842?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es.', icon: BsWhatsapp, style: 'hover:text-[#25D366]' },
     { name: 'LinkedIn', url: 'https://br.linkedin.com/company/smhsistemas', icon: Linkedin, style: 'hover:text-[#0A66C2]' },
     { name: 'Instagram', url: 'https://www.instagram.com/smhsistemas/', icon: Instagram, style: 'hover:text-[#E4405F]' },
     { name: 'Facebook', url: 'https://web.facebook.com/smhsistemas?_rdc=1&_rdr#', icon: Facebook, style: 'hover:text-[#1877F2]' },

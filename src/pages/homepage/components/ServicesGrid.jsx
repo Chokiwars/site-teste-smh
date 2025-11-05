@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // 👈 importado aqui
+import { useTranslation } from "react-i18next";
 import Button from "../../../components/ui/Button";
 import ExtintorImage from "@/assets/images/extintores-smh.png";
 
@@ -55,7 +55,7 @@ const buttonVariants = {
 
 const ServicesGrid = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation(); // 👈 inicialização do hook
+  const { t } = useTranslation();
 
   return (
     <section className="py-24 bg-white overflow-hidden">
