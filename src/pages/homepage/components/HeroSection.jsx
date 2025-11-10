@@ -7,7 +7,7 @@ import Icon from '../../../components/AppIcon';
 // Imagens do carrossel
 import image1 from '../../../assets/images/data-center-1.png';
 import image2 from '../../../assets/images/smoke-detector.png';
-import image3 from '../../../assets/images/3.png';
+import image3 from '../../../assets/images/tres.png';
 import image4 from '../../../assets/images/4.png';
 import image5 from '../../../assets/images/5.png';
 import image6 from '../../../assets/images/6.png';
