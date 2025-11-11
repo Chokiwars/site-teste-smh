@@ -1,53 +1,77 @@
-### Item Equipamentos Modelo Fabricante
+### --> Item Equipamentos Modelo Fabricante
 
+> 1) Bateria Selada 1,3 ah/12v **------** `GetPower`  
 
-> **1)** Bateria Selada 1,3 ah/12v *modelo* ```GetPower```
+> 2) Bateria Selada 05 ah/12v **------** `GetPower`  
 
-> **2)** Bateria  Selada 05 ah/12v *modelo* ```GetPower```
+> 3) Bateria Selada 07 ah/12v **------** `GetPower`  
 
-> **3)** Bateria  Selada 07 ah/12v *modelo* ```GetPower```
+> 4) Bateria Selada 09 ah/12v **------** `GetPower`  
 
-> **4)** Bateria  Selada 09 ah/12v *modelo* ```GetPower```
+> 5) Bateria Selada 12 ah/12v **------** `GetPower`  
 
-> **5)** Bateria  Selada 12 ah/12v *modelo* ```GetPower```
+> 6) Bateria Selada 18 ah/12v **------** `GetPower`  
 
-> **6)** Bateria  Selada 18 ah/12v *modelo* ```GetPower```
+> 7) Bateria Selada 26 ah/12v **------** `GetPower`  
 
-> **7)** Bateria  Selada 26 ah/12v *modelo* ```GetPower```
+> 8) Bateria Estacionária 40 ah/12v **DF-500** `Freedom`  
 
-> **8)** Bateria Estacionária 40 ah/12v *DF-500* ```Freedom```
+> 9) Bateria Estacionária 45 ah/12v **DF-700** `Freedom`  
 
-> **9)** Bateria  Estacionária 45ah/12v *DF-700* ```Freedom```
+> 10) Bateria Estacionária 55 ah/12v **DF-700** `Freedom`  
 
-> **10)** Bateria  Estacionária 55 ah/12v *DF-700* ```Freedom```
+> 11) Bateria Estacionária 70 ah/12v **DF-1000** `Freedom`  
 
-> **)** ** ``````
+> 12) Sirene eletrônica **VRC-SVA** `Verin`  
 
-11	Bateria  Estacionária  70 ah/12v	DF-1000	Freedom  
-12	Sirene eletrônica 	VRC-SVA	Verin  
-13	Sirene eletrônica Mult Tom 	SVA-MT	Verin  
-14	Sirene eletrônica Mult Tom	SVA-MT/PT	Verin  
-15	Indicador visual	 IV-01	Verin  
-16		IV-01/PT	Verin  
-17	Sirene com sinalizador visual	SVF	Verin  
-18		SVF-MT	Verin  
-19		SVF/PT	Verin  
-20		SVF-MT/PT	Verin  
-21	Fonte de Alimentação Inteligent - 27 Vcc  4A + 1,2 A (160W)  RS485	SPS24160S 	INIM  
-22	Detector por Aspiração Senator 25 	9-30671-7-KID-ULF	Senator  
-23	Detector por Aspiração Senator 100	9-30764-KID 	Senator  
-24	Detector por Aspiração Senator 200	9-30621-KID 	Senator  
-25	Filtro para detector de aspiração Senator 25 a 100	9-30755-P 	Senator  
-26	Filtro para detector de aspiração Senator 200	9-30699N-P	Senator  
-27	Módulo de controle para detector por Aspiração modulaser c/ reles de alarme, módulo sem display 	9-30780-ULF	Senator  
-28	Módulo de controle para detector por Aspiração modulaser c/ reles de alarme, módulo com display 	9-30781-ULF 	Senator  
-29	Módulo detector por Aspiração modulaser c/ reles de alarme - Certificação UL e FM	9-30783-ULF 	Senator  
-30	Modulo de Comunicação de Rede	NCM-W	Notifier  
-31	Modulo de Comunicação de Rede Multimodo	NCM-F	Notifier  
-32	Modulo de Comunicação rapido de Rede Monomodo	HS-NCM-SF	Notifier  
-33	Modulo de Comunicação  rapido de Rede Multimodo	HS-NCM-MF	Notifier  
-34	Anunciador de Controle de Rede	NCA-2-PO	Notifier
-35	Tela da NAC	LCD-160-PO	Notifier  
+> 13) Sirene eletrônica Mult **Tom SVA-MT** `Verin`  
+
+> 14) Sirene eletrônica Mult Tom **SVA-MT/PT** `Verin`  
+
+> 15) Indicador visual IV-01 Verin  
+
+> 16) Indicador visual IV-01/PT Verin  
+
+> 17) Sirene com sinalizador visual SVF Verin  
+
+> 18) Sirene com sinalizador visual SVF-MT Verin  
+
+> 19) Sirene com sinalizador visual SVF/PT Verin  
+
+> 20) Sirene com sinalizador visual SVF-MT/PT Verin  
+
+> 21) Fonte de Alimentação Inteligente - 27 Vcc 4A + 1,2A (160W) RS485 SPS24160S INIM  
+
+> 22) Detector por Aspiração Senator 25 9-30671-7-KID-ULF Senator  
+
+> 23) Detector por Aspiração Senator 100 9-30764-KID Senator  
+
+> 24) Detector por Aspiração Senator 200 9-30621-KID Senator  
+
+> 25) Filtro para detector de aspiração Senator 25 a 100 9-30755-P Senator  
+
+> 26) Filtro para detector de aspiração Senator 200 9-30699N-P Senator  
+
+> 27) Módulo de controle para detector por Aspiração Modulaser c/ relés de alarme, módulo sem display 9-30780-ULF Senator  
+
+> 28) Módulo de controle para detector por Aspiração Modulaser c/ relés de alarme, módulo com display 9-30781-ULF Senator  
+
+> 29) Módulo detector por Aspiração Modulaser c/ relés de alarme – Certificação UL e FM 9-30783-ULF Senator  
+
+> 30) Módulo de Comunicação de Rede NCM-W Notifier  
+
+> 31) Módulo de Comunicação de Rede Multimodo NCM-F Notifier  
+
+> 32) Módulo de Comunicação Rápido de Rede Monomodo HS-NCM-SF Notifier  
+
+> 33) Módulo de Comunicação Rápido de Rede Multimodo HS-NCM-MF Notifier
+
+> 34) Anunciador de Controle de Rede NCA-2-PO Notifier 
+
+> 35) Tela da NAC LCD-160-PO Notifier  
+
+### CONTINUAR
+
 36	Anunciador de Controle de Rede	LCD2-80	Notifier
 37	Chassi para NAC	CHS-2D	Notifier  
 38	Caixa de Montagem da NAC	ABS-2D	Notifier  
