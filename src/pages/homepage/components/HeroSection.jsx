@@ -5,14 +5,14 @@ import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 
 // Imagens do carrossel
+import image0 from '../../../assets/images/smhcilindrosmain.jpg';
 import image1 from '../../../assets/images/data-center-1.png';
-import image2 from '../../../assets/images/smoke-detector.png';
+import image2 from '../../../assets/images/dois.jpg';
 import image3 from '../../../assets/images/tres.png';
 import image4 from '../../../assets/images/4.png';
 import image5 from '../../../assets/images/5.png';
-import image6 from '../../../assets/images/6.png';
 
-const images = [image1, image2, image3, image4, image5, image6];
+const images = [image0, image1, image2, image3, image4, image5];
 const INTERVAL_TIME = 5000;
 
 const HeroSection = ({ onContactUs }) => {
